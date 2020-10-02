@@ -1,38 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Index página</title>
+        <title>Cadastrar</title>
     </head>
     <body>
         <h1>Cadastro de Usuário</h1>
         <label>Nome:
-            <input id="nomeUsuario" type="text">
+            <input id="nomeUsuario" type="text" required>
         </label><br>
 
         <label>Data de nascimento:
-            <input id="nascimentoUsuario" type="date">
+            <input id="nascimentoUsuario" type="date" required>
         </label><br>
 
         <label>CPF:
-            <input id="cpfUsuario" type="number">
+            <input id="cpfUsuario" type="number" required>
         </label><br>
 
         <label>E-mail:
-            <input id="emailUsuario" type="email">
+            <input id="emailUsuario" type="email" required>
         </label><br>
 
         <label>Senha:
-            <input id="senhaUsuario" placeholder="Crie uma senha" type="password">
+            <input id="senhaUsuario" type="password" required>
         </label><br>
 
-        <label>Senha:
-            <input id="confirmaSenhaUsuario" placeholder="Confirme sua senha" type="password">
+        <label>Confirme sua senha:
+            <input id="confirmaSenhaUsuario" type="password" required>
         </label><br>
 
-        <label>Bairro:
-            <input id="bairroUsuario" type="text">
+        <label for="bairro">Bairro:
+        <input list="bairros" name="bairro" id="bairroUsuario" placeholder="Selecione o seu bairro">
+
+            <datalist id="bairros" >
+              <option value="Agronômica">
+              <option value="Armação do Pântano do Sul">
+              <option value="Balneário">
+              <option value="Barra da Lagoa">
+              <option value="Bom Abrigo">
+              <option value="Cachoeira do Bom Jesus">
+              <option value="Cacupé">
+              <option value="Campeche">
+              <option value="Canasvieiras">
+              <option value="Capoeiras">
+              <option value="Carianos">
+              <option value="Carvoeira">
+              <option value="Centro">
+              <option value="Coqueiros">
+              <option value="Córrego Grande">
+              <option value="Costeira do Pirajubaé">
+              <option value="Daniela">
+              <option value="Estreito">
+              <option value="Ingleses">
+              <option value="Itacorubi"> 
+              <option value="Itaguaçu">
+              <option value="Jardim Atlântico">
+              <option value="João Paulo">
+              <option value="José Mendes">
+              <option value="Jurerê">
+              <option value="Lagoa da Conceição">
+              <option value="Monte Verde">
+              <option value="Pantanal">
+              <option value="Pântano do Sul">
+              <option value="Ponta das Canas">
+              <option value="Praia Brava">
+              <option value="Ribeirão da Ilha">
+              <option value="Rio Tavares">
+              <option value="Rio Vermelho">
+              <option value="Saco dos Limões">
+              <option value="Saco Grande">
+              <option value="Sambaqui">
+              <option value="Santa Mônica">
+              <option value="Santo Antônio de Lisboa">
+              <option value="Tapera"> 
+              <option value="Trindade">                 
+            </datalist>
         </label><br>
 
         <button onclick="voltar()">Voltar</button>
