@@ -25,15 +25,13 @@ function cadastrarUsuario() {
 //validar cadastro
     //validar nome (Se está em branco ou já foi cadastrado)
     if (nome.value == "") {
-        alert ("O campo nome está em branco!")
-         
+        alert ("O campo nome está em branco!") 
     }
 
 
     //validar e-mail (Se está em branco ou já foi cadastrado)
     if (email.value == "") {
-        alert ("O campo e-mail está em branco!")
-             
+        alert("O campo e-mail está em branco!")      
     }
     //validar cpf
     if (cpf == "") {
@@ -99,32 +97,22 @@ function cadastrarUsuario() {
             return true;
 
         } else {
-            console.log("CPF NÃO VÁLIDO")
-
+            alert("CPF invalido!")
         }
     }
 
     //validar nascimento (Se está em branco)
     if (nascimento.value == "") {
         alert("O campo data de nascimento está em branco")
-    
-        } else {
-            console.log ("Data de nascimento OK!")
     }
 
      //validar bairro (Se está em branco)
     if (bairro.value == "") {
-        alert("O campo bairro está em branco")
-
-        } else {
-        console.log ("Bairro OK!")
+        alert("O campo bairro não foi selecionado!")
     }   
 
-
     //validacao da senha
-    if (senha.value == senhaConfirmacao.value) {
-        console.log("Senhas validas!")
-    } else {
+    if (senha.value !== senhaConfirmacao.value) {
         alert("Senhas incompatíveis!")
     }
 
@@ -153,9 +141,76 @@ function cadastrarUsuario() {
 var estabelecimentos = []
 
 //pega os dados do html
+var estabelecimento = document.getElementById("nomeEstabelecimento")
+var cep = document.getElementById("cepEstabelecimento")
+var contato = document.getElementById("contatoEstabelecimento")
+var bairroMercado = document.getElementById("bairroEstabelecimento")
 
+//cria um novo estabelecimento
+function criaEstabelecimento(estabelecimento, cep, contato, bairroMercado) {
+    this.estabelecimento = estabelecimento
+    this.cep = cep
+    this.contato = contato
+    this.bairroMercado = bairroMercado
+}
+//adicionar novo estabelecimento no Array estabelecimentos []
+function cadastrarEstabelecimento() {
+    
+//validar cadastro
+    if (estabelecimento.value == "") {
+        alert("O campo estabelecimento está em branco!")
+    }
 
-//cria um novo
+    if (cep.value == "") {
+        alert("O campo CEP está em branco!")
+    }
+    if (cep.value.length !== 7) {
+        alert("O campo CEP deve conter 7 números!")
+    }
 
+    if (contato.value == "") {
+        alert("O campo contato está em branco!")
+    }
 
+    if (bairroMercado.value == "") {
+        alert("O campo bairro não foi selecionado!")
+    }
+   
     //Fazer a validação das validações para rodar a função construtura e dar push no array
+    if ((estabelecimento.value !== "") && (cep.value !== "") && (cep.value.length == 7) && (contato.value !== "") && (bairroMercado.value !== "")) {
+
+        let novoEstabelecimento = new criaEstabelecimento(estabelecimento.value, cep.value, contato.value, bairroMercado.value)
+        estabelecimentos.push(novoEstabelecimento)
+        alert("Estabelecimento cadastrado com sucesso!")
+        localStorage.setItem("estabelecimentos", JSON.stringify(estabelecimentos))
+    }
+
+    document.getElementById("nomeEstabelecimento").value = ' '
+    document.getElementById("cepEstabelecimento").value = ' '
+    document.getElementById("contatoEstabelecimento").value = ' '
+    document.getElementById("bairroEstabelecimento").value = ' '
+
+}
+
+//Função para logar
+function login(){
+    
+    let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
+    let loginCpf = document.getElementById("loginCpf").value
+    let loginSenha = document.getElementById("loginSenha").value
+
+    for(i=0; i < listaUsuarios.length; i++) {
+        //Construir validação
+        if() { 
+            console.log("Logado!")
+        } else {
+            alert("CPF e/ou senha invalido!")
+        }   
+    }
+}
+
+//Função para voltar para pagina anterior
+function voltar() {
+    window.history.back()
+}
+

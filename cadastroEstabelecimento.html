@@ -7,24 +7,68 @@
     </head>
     <body>
         <h1>Cadastro de Estabelecimento</h1>
-        <label>Nome:
-            <input id="" type="text" required>
+        <label>Estabelecimento:
+            <input id="nomeEstabelecimento" type="text" required>
         </label><br>
 
         <label>CEP:
-            <input id="" type="number" required>
+            <input id="cepEstabelecimento" type="number" required>
         </label><br>
 
         <label>Contato:
-            <input id="" type="number" required>
+            <input id="contatoEstabelecimento" type="text" required>
         </label><br>
         
         <label>Bairro:
-            <input id="" type="text" required>
+            <input list="bairros" name="bairro" id="bairroEstabelecimento" placeholder="Selecione seu bairro" required>
+
+            <datalist id="bairros">
+              <option value="Agronômica">
+              <option value="Armação do Pântano do Sul">
+              <option value="Balneário">
+              <option value="Barra da Lagoa">
+              <option value="Bom Abrigo">
+              <option value="Cachoeira do Bom Jesus">
+              <option value="Cacupé">
+              <option value="Campeche">
+              <option value="Canasvieiras">
+              <option value="Capoeiras">
+              <option value="Carianos">
+              <option value="Carvoeira">
+              <option value="Centro">
+              <option value="Coqueiros">
+              <option value="Córrego Grande">
+              <option value="Costeira do Pirajubaé">
+              <option value="Daniela">
+              <option value="Estreito">
+              <option value="Ingleses">
+              <option value="Itacorubi"> 
+              <option value="Itaguaçu">
+              <option value="Jardim Atlântico">
+              <option value="João Paulo">
+              <option value="José Mendes">
+              <option value="Jurerê">
+              <option value="Lagoa da Conceição">
+              <option value="Monte Verde">
+              <option value="Pantanal">
+              <option value="Pântano do Sul">
+              <option value="Ponta das Canas">
+              <option value="Praia Brava">
+              <option value="Ribeirão da Ilha">
+              <option value="Rio Tavares">
+              <option value="Rio Vermelho">
+              <option value="Saco dos Limões">
+              <option value="Saco Grande">
+              <option value="Sambaqui">
+              <option value="Santa Mônica">
+              <option value="Santo Antônio de Lisboa">
+              <option value="Tapera"> 
+              <option value="Trindade">                 
+            </datalist>
         </label><br>
 
-        <button onclick="()">Voltar</button>
-        <button onclick="()">Cadastrar</button>
+        <button onclick="voltar()">Voltar</button>
+        <button onclick="cadastrarEstabelecimento()">Cadastrar</button>
 
     </body>
     <script src="script.js"></script>
