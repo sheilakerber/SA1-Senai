@@ -198,13 +198,18 @@ function login(){
     let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
     let loginCpf = document.getElementById("loginCpf").value
     let loginSenha = document.getElementById("loginSenha").value
-
+    //For para validação de login corret ou incorreto
     for(i=0; i < listaUsuarios.length; i++) {
+        
+        let validarLoginCpf = listaUsuarios.filter( l => l.cpf.includes(loginCpf))
+        let validarLoginSenha = listaUsuarios.filter( s => s.senha.includes(loginSenha))
+        console.log(validarLoginCpf)
+        console.log(validarLoginSenha)
         //Construir validação
-        if() { 
-            console.log("Logado!")
+        if((validarLoginCpf.length == 1) && (validarLoginSenha.length == 1)) { 
+            alert("Logado!")
         } else {
-            alert("CPF e/ou senha invalido!")
+            alert("CPF e/ou senha estã incorreto!")
         }   
     }
 }
