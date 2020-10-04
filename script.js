@@ -1,5 +1,6 @@
 //array para armazenar todos os usuarios cadastrados
 var usuarios = []
+var dataBairros = ["Agronômica", "Armação do Pântano do Sul", "Balneário", "Barra da Lagoa", "Bom Abrigo", "Cachoeira do Bom Jesus", "Cacupé", "Campeche", "Canasvieiras", "Capoeiras", "Carianos", "Carvoeira", "Centro","Coqueiros", "Córrego Grande", "Costeira do Pirajubaé", "Daniela", "Estreito", "Ingleses do Rio Vermelho", "Itacorubi", "Itaguaçu", "Jardim Atlântico", "João Paulo", "José Mendes", "Jurerê Internacional", "Jurerê Tradicional", "Lagoa da Conceição", "Monte Verde", "Pantanal", "Pântano do Sul", "Ponta das Canas", "Praia Brava",  "Ribeirão da Ilha", "Rio Tavares", "Rio Vermelho", "Saco dos Limões", "Saco Grande", "Sambaqui", "Santa Mônica", "Santo Antônio de Lisboa", "Tapera", "Trindade"]
 
 //pega os dados do html
 var nome = document.getElementById("nomeUsuario")
@@ -28,16 +29,22 @@ function cadastrarUsuario() {
         alert ("O campo nome está em branco!") 
     }
 
-
-    //validar e-mail (Se está em branco ou já foi cadastrado)
-    if (email.value == "") {
-        alert("O campo e-mail está em branco!")      
+    //validar nascimento (Se está em branco)
+    if (nascimento.value == "") {
+        alert("O campo data de nascimento está em branco")
     }
-    //validar cpf
+
+    //validar se o campo cpf esta vazio e se esta correto
     if (cpf == "") {
-        console.log("O campo CPF está em branco!")
+        alert("O campo CPF está em branco!")
+
     } else {
         verificarCpf()
+
+    }
+     //validar se o cpf já não foi cadastrado
+    if ((cpf !== '') && (verificarCpf() == true)) {
+        compararCpfs()
     }
 
 
@@ -97,42 +104,81 @@ function cadastrarUsuario() {
             return true;
 
         } else {
-            alert("CPF invalido!")
+            console.log("CPF invalido!")
         }
     }
 
-    //validar nascimento (Se está em branco)
-    if (nascimento.value == "") {
-        alert("O campo data de nascimento está em branco")
+    //validar se o cpf já foi cadastrado
+    function compararCpfs() {
+
+        let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
+        console.log(listaUsuarios)
+
+        for (i = 0; i < usuarios.length; i++) {
+            
+        let numeroCpf = cpf.value
+        var validarCpf = listaUsuarios.filter( c => c.cpf.includes(numeroCpf))
+        console.log(validarCpf)
+            if(validarCpf.length == 1) {
+            alert("Esse CPF já foi cadastrado!")
+            return false
+            }
+        }
+
     }
 
-     //validar bairro (Se está em branco)
-    if (bairro.value == "") {
-        alert("O campo bairro não foi selecionado!")
-    }   
+    //validar se o e-mail está em branco
+    if (email.value == "") {
+        alert("O campo e-mail está em branco!")      
+    } else {
+        validarEmail(email)
+    }
+
+    //validar se o e-mail o e-mail esta escrito corretamente
+    if ((email !== '') && (validarEmail(email) == false)) {
+        alert("E-mail invalido!")
+    } 
 
     //validacao da senha
     if (senha.value !== senhaConfirmacao.value) {
         alert("Senhas incompatíveis!")
     }
 
+    //função validar expressão do e-mail
+    function validarEmail(email) {
+        var emailCheck = email.value;
+        var filtro = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+        if(filtro.test(emailCheck)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+     //validar bairro (Se está em branco)
+     if ((bairro.value == "") || (dataBairros.includes(bairro.value) !== true)) {
+        alert("O campo bairro não foi selecionado!")
+    }
+    if (bairro.value == null) {
+        alert("O campo bairro não foi selecionado!")
+    } 
 
     //Fazer a validação das validações para rodar a função construtura e dar push no array
-    if ((nome.value !== "") && (nascimento.value !== "") && (email.value !== "") && (nascimento.value !== "") && (bairro.value !== "") && (verificarCpf()== true)) {
+    if ((nome.value !== "") && (nascimento.value !== "") && (compararCpfs() !== false) && (verificarCpf() == true) && ((email.value !== "") && (validarEmail(email) == true)) && (senha.value == senhaConfirmacao.value) && (bairro.value !== "") && (dataBairros.includes(bairro.value) == true) && (bairro.value !== null)) {
 
         let novoUsuario = new criaUsuario(nome.value, nascimento.value, cpf.value, email.value, senha.value, bairro.value)
         usuarios.push(novoUsuario)
         alert("Usuário cadastrado com sucesso!")
         localStorage.setItem("usuários", JSON.stringify(usuarios))
     }
-
+    //limpar campos
     document.getElementById("nomeUsuario").value = ' '
     document.getElementById("nascimentoUsuario").value = ' '
     document.getElementById("cpfUsuario").value = ' '
     document.getElementById("emailUsuario").value = ' '
     document.getElementById("senhaUsuario").value = ' '
     document.getElementById("confirmaSenhaUsuario").value = ' '
-    document.getElementById("bairroUsuario").value = ' '
+    document.getElementById("bairroUsuario").value = null
 
 }
     
@@ -172,12 +218,12 @@ function cadastrarEstabelecimento() {
         alert("O campo contato está em branco!")
     }
 
-    if (bairroMercado.value == "") {
+    if ((bairroMercado.value == "") || (dataBairros.includes(bairroMercado.value) !== true)) {
         alert("O campo bairro não foi selecionado!")
     }
    
     //Fazer a validação das validações para rodar a função construtura e dar push no array
-    if ((estabelecimento.value !== "") && (cep.value !== "") && (cep.value.length == 7) && (contato.value !== "") && (bairroMercado.value !== "")) {
+    if ((estabelecimento.value !== "") && (cep.value !== "") && (cep.value.length == 7) && (contato.value !== "") && (bairroMercado.value !== "") && (dataBairros.includes(bairroMercado.value) == true) && (bairroMercado.value !== null)) {
 
         let novoEstabelecimento = new criaEstabelecimento(estabelecimento.value, cep.value, contato.value, bairroMercado.value)
         estabelecimentos.push(novoEstabelecimento)
@@ -188,7 +234,7 @@ function cadastrarEstabelecimento() {
     document.getElementById("nomeEstabelecimento").value = ' '
     document.getElementById("cepEstabelecimento").value = ' '
     document.getElementById("contatoEstabelecimento").value = ' '
-    document.getElementById("bairroEstabelecimento").value = ' '
+    document.getElementById("bairroEstabelecimento").value = null
 
 }
 
@@ -212,10 +258,18 @@ function login(){
             alert("CPF e/ou senha estã incorreto!")
         }   
     }
+
 }
 
 //Função para voltar para pagina anterior
 function voltar() {
     window.history.back()
 }
+
+    //delimitar no html min e max tamanho dos campos 
+            //maxlenght=""     minlenght=""
+
+
+
+
 
