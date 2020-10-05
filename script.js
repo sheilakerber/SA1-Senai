@@ -255,7 +255,7 @@ function login(){
         if((validarLoginCpf.length == 1) && (validarLoginSenha.length == 1)) { 
             alert("Logado!")
         } else {
-            alert("CPF e/ou senha estã incorreto!")
+            alert("CPF e/ou senha estão incorreto!")
         }   
     }
 
@@ -268,8 +268,3 @@ function voltar() {
 
     //delimitar no html min e max tamanho dos campos 
             //maxlenght=""     minlenght=""
-
-
-
-
-
