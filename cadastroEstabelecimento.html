@@ -3,38 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastrar</title>
+        <title>Cadastrar Estabelecimento</title>
     </head>
     <body>
-        <h1>Cadastro de Usuário</h1>
-        <label>Nome:
-            <input id="nomeUsuario" type="text" required>
+        <h1>Cadastro de Estabelecimento</h1>
+        <label>Estabelecimento:
+            <input id="nomeEstabelecimento" type="text" required>
         </label><br>
 
-        <label>Data de nascimento:
-            <input id="nascimentoUsuario" type="date" required>
+        <label>CEP:
+            <input id="cepEstabelecimento" type="number" required>
         </label><br>
 
-        <label>CPF:
-            <input id="cpfUsuario" type="number" required>
+        <label>Contato:
+            <input id="contatoEstabelecimento" type="text" required>
         </label><br>
+        
+        <label>Bairro:
+            <input list="bairros" name="bairro" id="bairroEstabelecimento" placeholder="Selecione seu bairro" required>
 
-        <label>E-mail:
-            <input id="emailUsuario" type="email" required>
-        </label><br>
-
-        <label>Senha:
-            <input id="senhaUsuario" type="password" required>
-        </label><br>
-
-        <label>Confirme sua senha:
-            <input id="confirmaSenhaUsuario" type="password" required>
-        </label><br>
-
-        <label for="bairro">Bairro:
-        <input list="bairros" name="bairro" id="bairroUsuario" placeholder="Selecione o seu bairro">
-
-            <datalist id="bairros" >
+            <datalist id="bairros">
               <option value="Agronômica">
               <option value="Armação do Pântano do Sul">
               <option value="Balneário">
@@ -80,7 +68,7 @@
         </label><br>
 
         <button onclick="voltar()">Voltar</button>
-        <button onclick="cadastrarUsuario()">Cadastrar</button>
+        <button onclick="cadastrarEstabelecimento()">Cadastrar</button>
 
     </body>
     <script src="script.js"></script>
