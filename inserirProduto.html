@@ -10,27 +10,92 @@
         <h3><a href="https://www.google.com">Criar Tabela</a></h3>
         <h2>Complete as informações abaixo</h2>
         <label>Produto:
-            <input id="" type="text" required>
+            <input list="produtos" name="produto" id="produtoInserido" placeholder="Selecione o produto">
+            <datalist id="produtos" >
+                <option value="Arroz tipo 1 5Kg">
+                <option value="Arroz tipo 1 2Kg">
+                <option value="Sal 1Kg">
+                <option value="Açúcar refinado 5Kg">
+                <option value="Açúcar refinado 1Kg">
+                <option value="Farinha de trigo 5Kg">
+                <option value="Farinha de trigo 1Kg">
+                <option value="Óleo de soja 900mL">
+                <option value="Feijão 1Kg">
+                <option value="Café moído 230g">            
+            </datalist>
         </label><br>
 
         <label>Data da compra:
-            <input id="" type="date" required>
+            <input id="dataCompra" type="date" required>
         </label><br>
 
         <label>Estabelecimento:
-            <input id="" type="text" required>
+            <input list="estabelecimentos" name="estabelecimento" id="estabelecimentoProduto" placeholder="Local da compra">
+            <datalist id="estabelecimentos" >
+              <option value="Angeloni Capoeiras">
+              <option value="Angeloni Beira Mar">
+              <option value="Angeloni Santa Mônica">
+              <option value="Imperatriz Córrego Grande">
+              <option value="Big (Shopping Iguatemi)">
+              <option value="Supermercados Rosa (Itacorubi)">            
+            </datalist>
         </label><br>
 
-        <label>Bairro:
-            <input id="" type="text" required>
+        <label for="bairro">Bairro:
+        <input list="bairros" name="bairro" id="bairroProduto" placeholder="Selecione o bairro">
+
+            <datalist id="bairros" >
+              <option value="Agronômica">
+              <option value="Armação do Pântano do Sul">
+              <option value="Balneário">
+              <option value="Barra da Lagoa">
+              <option value="Bom Abrigo">
+              <option value="Cachoeira do Bom Jesus">
+              <option value="Cacupé">
+              <option value="Campeche">
+              <option value="Canasvieiras">
+              <option value="Capoeiras">
+              <option value="Carianos">
+              <option value="Carvoeira">
+              <option value="Centro">
+              <option value="Coqueiros">
+              <option value="Córrego Grande">
+              <option value="Costeira do Pirajubaé">
+              <option value="Daniela">
+              <option value="Estreito">
+              <option value="Ingleses">
+              <option value="Itacorubi"> 
+              <option value="Itaguaçu">
+              <option value="Jardim Atlântico">
+              <option value="João Paulo">
+              <option value="José Mendes">
+              <option value="Jurerê Internacional">
+              <option value="Jurerê Tradicional">
+              <option value="Lagoa da Conceição">
+              <option value="Monte Verde">
+              <option value="Pantanal">
+              <option value="Pântano do Sul">
+              <option value="Ponta das Canas">
+              <option value="Praia Brava">
+              <option value="Ribeirão da Ilha">
+              <option value="Rio Tavares">
+              <option value="Rio Vermelho">
+              <option value="Saco dos Limões">
+              <option value="Saco Grande">
+              <option value="Sambaqui">
+              <option value="Santa Mônica">
+              <option value="Santo Antônio de Lisboa">
+              <option value="Tapera"> 
+              <option value="Trindade">                 
+            </datalist>
         </label><br>
 
         <label>Valor unitário:
-            <input id="" type="number" required>
+            <input id="valorProduto" type="number" required placeholder="Ex: 2.50">
         </label><br>
 
         <button onclick="voltar()">Voltar</button>
-        <button onclick="()">Inserir produto</button>
+        <button onclick="inserirProduto()">Inserir Produto</button>
 
     </body>
     <script src="script.js"></script>

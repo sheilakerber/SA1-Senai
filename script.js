@@ -2,6 +2,8 @@
 var usuarios = []
 var dataBairros = ["Agronômica", "Armação do Pântano do Sul", "Balneário", "Barra da Lagoa", "Bom Abrigo", "Cachoeira do Bom Jesus", "Cacupé", "Campeche", "Canasvieiras", "Capoeiras", "Carianos", "Carvoeira", "Centro", "Coqueiros", "Córrego Grande", "Costeira do Pirajubaé", "Daniela", "Estreito", "Ingleses do Rio Vermelho", "Itacorubi", "Itaguaçu", "Jardim Atlântico", "João Paulo", "José Mendes", "Jurerê Internacional", "Jurerê Tradicional", "Lagoa da Conceição", "Monte Verde", "Pantanal", "Pântano do Sul", "Ponta das Canas", "Praia Brava", "Ribeirão da Ilha", "Rio Tavares", "Rio Vermelho", "Saco dos Limões", "Saco Grande", "Sambaqui", "Santa Mônica", "Santo Antônio de Lisboa", "Tapera", "Trindade"]
 
+var produtosDisponiveisSistema = ["Arroz tipo 1 5Kg", "Arroz tipo 1 2Kg", "Sal 1Kg", "Açúcar refinado 5Kg", "Açúcar refinado 1Kg", "Farinha de trigo 5Kg", "Farinha de trigo 1Kg", "Óleo de soja 900mL", "Feijão 1Kg", "Café moído 230g"]
+
 //pega os dados do html
 var nome = document.getElementById("nomeUsuario")
 var nascimento = document.getElementById("nascimentoUsuario")
@@ -134,7 +136,7 @@ function cadastrarUsuario() {
         validarEmail(email)
     }
 
-    //validar se o e-mail o e-mail esta escrito corretamente
+    //validar se o e-mail esta escrito corretamente
     if ((email !== '') && (validarEmail(email) == false)) {
         alert("E-mail invalido!")
     }
@@ -244,6 +246,9 @@ function login() {
     let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
     let loginCpf = document.getElementById("loginCpf").value
     let loginSenha = document.getElementById("loginSenha").value
+    console.log("listaUsuarios: " + listaUsuarios)
+    console.log("loginCpf: " + loginCpf)
+    console.log("loginSenha: " + loginSenha)
         //For para validação de login corret ou incorreto
     for (i = 0; i < listaUsuarios.length; i++) {
 
@@ -264,6 +269,67 @@ function login() {
 //Função para voltar para pagina anterior
 function voltar() {
     window.history.back()
+}
+
+//Funcao para criar lista de produtos cadastrados
+var listaProdutos = []
+
+//pega os dados do html
+var produto = document.getElementById("produtoInserido")
+var dataCompraProduto = document.getElementById("dataCompra")
+var estabelecimentoProduto = document.getElementById("estabelecimentoProduto")
+var bairroProduto = document.getElementById("bairroProduto")
+var valorProduto = document.getElementById("valorProduto")
+
+//cria um novo produto
+function criaProduto(produto, dataCompraProduto, estabelecimentoProduto, bairroProduto, valorProduto) {
+    this.produto = produto
+    this.dataCompraProduto = dataCompraProduto
+    this.estabelecimentoProduto = estabelecimentoProduto
+    this.bairroProduto = bairroProduto
+    this.valorProduto = valorProduto
+}
+//adicionar novo produto ao Array listaProdutos[]
+function inserirProduto() {
+    console.log("inicio funcao inserirProduto")
+
+    //validar entrada de dados
+    if ((produto.value == "") || (produtosDisponiveisSistema.includes(produto.value) !== true)) {
+        alert("O campo Produto está em branco!")
+    }
+
+    if (dataCompraProduto.value == "") {
+        alert("O campo Data da compra está em branco!")
+    }
+
+    if (estabelecimentoProduto.value == "") {
+        alert("O campo Estabelecimento está em branco!")
+    }
+
+    if (bairroProduto.value == "") {
+        alert("O campo bairro não foi selecionado!")
+    }
+
+    if (valorProduto.value == "") {
+        alert("O campo Valor unitário está em branco!")
+    }
+
+    //Fazer a validação das validações para rodar a função construtura e dar push no array
+    if ((produto.value !== "") && (dataCompraProduto.value !== "") && (estabelecimentoProduto.value !== "") && (bairroProduto.value !== "") && (valorProduto.value !== "")) {
+
+        let novoProduto = new criaProduto(produto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
+        listaProdutos.push(novoProduto)
+        alert("Produto inserido com sucesso!")
+        localStorage.setItem("produtosInseridos", JSON.stringify(listaProdutos))
+    }
+
+    //limpar campos para facilitar a add do próximo produto
+    document.getElementById("produtoInserido").value = ' '
+    document.getElementById("dataCompra").value = ' '
+    document.getElementById("estabelecimentoProduto").value = ' '
+    document.getElementById("bairroProduto").value = ' '
+    document.getElementById("valorProduto").value = ' '
+
 }
 
 //delimitar no html min e max tamanho dos campos 
