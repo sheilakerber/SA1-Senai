@@ -14,7 +14,7 @@ var cpf = document.getElementById("cpfUsuario")
 var email = document.getElementById("emailUsuario")
 var senha = document.getElementById("senhaUsuario")
 var senhaConfirmacao = document.getElementById("confirmaSenhaUsuario")
-var bairro = document.getElementById("usuarioBairro")
+var bairro = document.getElementById("bairroUsuario")
 
 //cria um novo usuario
 function criaUsuario(nome, nascimento, cpf, email, senha, bairro) {
@@ -380,17 +380,6 @@ function alterarSenha() {
             localStorage.setItem("usuários", JSON.stringify(usuarios))
             // window.location.href = "loginUsuario.html"
         }
-    }
-}
-
-
-//funcao que gera a lista de bairros no html
-function gerarBairros() {
-    var opcao;
-    for (i = 0; i < dataBairros.length; i++) {
-        opcao = document.createElement('option')
-        opcao.setAttribute('value', `${dataBairros[i]}`)
-        document.getElementById('bairros').appendChild(opcao)
     }
 }
 
