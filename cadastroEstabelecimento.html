@@ -7,6 +7,7 @@
         <script src="script.js"></script>
     </head>
     <body onload="gerarBairros()">
+
         <h1>Cadastro de Estabelecimento</h1>
         <label>Estabelecimento:
             <input id="nomeEstabelecimento" type="text" required>
@@ -21,9 +22,11 @@
         </label><br>
         
         <label>Bairro:
+
             <input list="bairros" id="bairroEstabelecimento" name="bairro" placeholder="Selecione seu bairro" required >
             <datalist id="bairros">       
             </datalist> 
+
         </label><br>
 
         <button onclick="voltar()">Voltar</button>

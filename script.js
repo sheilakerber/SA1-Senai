@@ -1,9 +1,6 @@
 //array para armazenar todos os usuarios cadastrados
-<<<<<<< Updated upstream
+
 var usuarios = []
-=======
-let usuarios = []
->>>>>>> Stashed changes
 var dataBairros = ["Agronômica", "Armação do Pântano do Sul", "Balneário", "Barra da Lagoa", "Bom Abrigo", "Cachoeira do Bom Jesus", "Cacupé", "Campeche", "Canasvieiras", "Capoeiras", "Carianos", "Carvoeira", "Centro", "Coqueiros", "Córrego Grande", "Costeira do Pirajubaé", "Daniela", "Estreito", "Ingleses", "Itacorubi", "Itaguaçu", "Jardim Atlântico", "João Paulo", "José Mendes", "Jurerê Internacional", "Jurerê Tradicional", "Lagoa da Conceição", "Monte Verde", "Pantanal", "Pântano do Sul", "Ponta das Canas", "Praia Brava", "Ribeirão da Ilha", "Rio Tavares", "Rio Vermelho", "Saco dos Limões", "Saco Grande", "Sambaqui", "Santa Mônica", "Santo Antônio de Lisboa", "Tapera", "Trindade"]
 var produtosDisponiveisSistema = ["Arroz tipo 1 5Kg", "Arroz tipo 1 2Kg", "Sal 1Kg", "Açúcar refinado 5Kg", "Açúcar refinado 1Kg", "Farinha de trigo 5Kg", "Farinha de trigo 1Kg", "Óleo de soja 900mL", "Feijão 1Kg", "Café moído 230g"]
 
@@ -338,14 +335,14 @@ function inserirProduto() {
 
 function gerarBairros() {
     var opcao;
-    console.log('OI')
     for(i=0; i<dataBairros.length; i++) {
         
         opcao = document.createElement('option')
         opcao.setAttribute('value', `${dataBairros[i]}`)
         
+
         document.getElementById('bairros').appendChild(opcao)
-        
+ 
     }
 }
 
@@ -400,4 +397,3 @@ function gerarListaProdutos() {
         opcao.setAttribute('value', `${produtosDisponiveisSistema[i]}`)
         document.getElementById('listaProdutos').appendChild(opcao)
     }
-}
