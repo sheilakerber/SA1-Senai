@@ -3,20 +3,46 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/login.css">
         <title>Login</title>
     </head>
     <body>
-        <h1>Login</h1>
-        <label>CPF:
-            <input id="loginCpf" type="number" required>
-        </label><br>
-
-        <label>Senha:
-            <input id="loginSenha" type="password" required>
-        </label><br>
-
-        <button onclick="voltar()">Voltar</button>
-        <button onclick="login()">Login</button>
+    <div class="container" id="container">
+        
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Cadastro</h1>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Cadastre-se</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Login</h1>
+                <input type="cpf" placeholder="CPF" />
+                <input type="password" placeholder="Password" />
+                <a href="#">Esqueceu sua senha?</a>
+                <button>Login</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Já tem cadastro?</h1>
+                    <p>Faça seu login</p>
+                    <button class="ghost" id="signIn">Login</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1 style="margin-bottom: 40px;" >Olá! Ainda não tem cadastro?</h1>
+                    <button class="ghost" id="signUp">Cadastre-se</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </body>
-    <script src="script.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/script.js"></script>
 </html>
