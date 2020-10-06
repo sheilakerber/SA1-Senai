@@ -6,7 +6,8 @@
         <title>Cadastrar Estabelecimento</title>
         <script src="script.js"></script>
     </head>
-    <body onload="gerarBairros(), gerarProdutos()">
+    <body onload="gerarBairros()">
+
         <h1>Cadastro de Estabelecimento</h1>
         <label>Estabelecimento:
             <input id="nomeEstabelecimento" type="text" required>
@@ -21,53 +22,11 @@
         </label><br>
         
         <label>Bairro:
-            <input list="teste" name="bairro" placeholder="Selecione seu bairro" required >
-            <datalist id="teste">
-            </datalist>
-            <!-- <datalist id="bairros" onload="gerarBairros()">
-              <option value="Agronômica">
-              <option value="Armação do Pântano do Sul">
-              <option value="Balneário">
-              <option value="Barra da Lagoa">
-              <option value="Bom Abrigo">
-              <option value="Cachoeira do Bom Jesus">
-              <option value="Cacupé">
-              <option value="Campeche">
-              <option value="Canasvieiras">
-              <option value="Capoeiras">
-              <option value="Carianos">
-              <option value="Carvoeira">
-              <option value="Centro">
-              <option value="Coqueiros">
-              <option value="Córrego Grande">
-              <option value="Costeira do Pirajubaé">
-              <option value="Daniela">
-              <option value="Estreito">
-              <option value="Ingleses">
-              <option value="Itacorubi"> 
-              <option value="Itaguaçu">
-              <option value="Jardim Atlântico">
-              <option value="João Paulo">
-              <option value="José Mendes">
-              <option value="Jurerê Internacional">
-              <option value="Jurerê Tradicional">
-              <option value="Lagoa da Conceição">
-              <option value="Monte Verde">
-              <option value="Pantanal">
-              <option value="Pântano do Sul">
-              <option value="Ponta das Canas">
-              <option value="Praia Brava">
-              <option value="Ribeirão da Ilha">
-              <option value="Rio Tavares">
-              <option value="Rio Vermelho">
-              <option value="Saco dos Limões">
-              <option value="Saco Grande">
-              <option value="Sambaqui">
-              <option value="Santa Mônica">
-              <option value="Santo Antônio de Lisboa">
-              <option value="Tapera"> 
-              <option value="Trindade">                 
-            </datalist> -->
+
+            <input list="bairros" id="bairroEstabelecimento" name="bairro" placeholder="Selecione seu bairro" required >
+            <datalist id="bairros">       
+            </datalist> 
+
         </label><br>
 
         <button onclick="voltar()">Voltar</button>

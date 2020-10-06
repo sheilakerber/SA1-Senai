@@ -6,52 +6,35 @@
         <link href="style.css" rel="stylesheet" type="text/css" />
         <title>Criar Lista</title>
     </head>
-    <body>
+    <body onload="gerarListaProdutos()">
         <h3><a href="https://www.google.com">Inserir produto</a></h3>
         
-        <table>
+        <table id="tabelaListaProdutos">
             <colgroup span="4" class="columns"></colgroup>
             <tr>
-                <th>Produto</th>
-                <th>Mercado 1</th>
-                <th>Mercado 2</th>
-                <th>Mercado 3</th>
+                <th id="nomeProduto">Produto</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
+
             <tr>
                 <td>
-                    <label for="myBrowser"></label>
-          <input list="lista" id="myBrowser" name="myBrowser" />
-          <datalist id="lista">
-            <option value="Arroz">
-            <option value="Feijão">
-            <option value="Café">
-            <option value="Macarrão">
-            <option value="Carne">
-            <option value="Farinha">
-          </datalist>
-        </td>
-        <td>5,99</td>
-        <td>3,99</td>
-        <td>4,99</td>
-      </tr>
-      <tr>
-        <td>
-                <label for="myBrowser"></label>
-          <input list="lista" id="myBrowser" name="myBrowser" />
-          <datalist id="lista">
-            <option value="Arr">
-            <option value="Feijão">
-            <option value="Café">
-            <option value="Macarrão">
-            <option value="Carne">
-            <option value="Farinha">
-          </datalist>
-        </td>
-        <td>1,99</td>
-        <td>0,99</td>
-        <td>1,39</td>
-      </tr>
-    </table>
+                    <input list="listaProdutos" name="listaProdutos" placeholder="Selecione aqui"/>
+                    <datalist id="listaProdutos">
+                    </datalist>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </table>
+
+    <button id="botaoAddNovoItem" onclick="gerarNovoItemTabela()">Add outro item</button>
+    <button onclick="finalizarLista()">Finalizar lista</button>
+
+        <p id="testeLista"></p>
+        
 
     </body>
     <script src="script.js"></script>
