@@ -5,22 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cadastrar</title>
     </head>
-    <body>
+    <body onload="gerarBairros()">
         <h1>Cadastro de Usuário</h1>
         <label>Nome:
             <input id="nomeUsuario" type="text" required>
+            <div id="nomeValidar"></div>
         </label><br>
 
         <label>Data de nascimento:
             <input id="nascimentoUsuario" type="date" required>
+            <div id="nascimentoValidar"></div>
         </label><br>
 
         <label>CPF:
             <input id="cpfUsuario" type="number" required>
+            <div id="cpfValidar"></div>
         </label><br>
 
         <label>E-mail:
             <input id="emailUsuario" type="email" required>
+            <div id="emailValidar"></div>
         </label><br>
 
         <label>Senha:
@@ -29,55 +33,14 @@
 
         <label>Confirme sua senha:
             <input id="confirmaSenhaUsuario" type="password" required>
+            <div id="senhaValidar"></div>
         </label><br>
 
-        <label for="bairro">Bairro:
-        <input list="bairros" name="bairro" id="bairroUsuario" placeholder="Selecione o seu bairro">
-
-            <datalist id="bairros" >
-              <option value="Agronômica">
-              <option value="Armação do Pântano do Sul">
-              <option value="Balneário">
-              <option value="Barra da Lagoa">
-              <option value="Bom Abrigo">
-              <option value="Cachoeira do Bom Jesus">
-              <option value="Cacupé">
-              <option value="Campeche">
-              <option value="Canasvieiras">
-              <option value="Capoeiras">
-              <option value="Carianos">
-              <option value="Carvoeira">
-              <option value="Centro">
-              <option value="Coqueiros">
-              <option value="Córrego Grande">
-              <option value="Costeira do Pirajubaé">
-              <option value="Daniela">
-              <option value="Estreito">
-              <option value="Ingleses do Rio Vermelho">
-              <option value="Itacorubi"> 
-              <option value="Itaguaçu">
-              <option value="Jardim Atlântico">
-              <option value="João Paulo">
-              <option value="José Mendes">
-              <option value="Jurerê Internacional">
-              <option value="Jurerê Tradicional">
-              <option value="Lagoa da Conceição">
-              <option value="Monte Verde">
-              <option value="Pantanal">
-              <option value="Pântano do Sul">
-              <option value="Ponta das Canas">
-              <option value="Praia Brava">
-              <option value="Ribeirão da Ilha">
-              <option value="Rio Tavares">
-              <option value="Rio Vermelho">
-              <option value="Saco dos Limões">
-              <option value="Saco Grande">
-              <option value="Sambaqui">
-              <option value="Santa Mônica">
-              <option value="Santo Antônio de Lisboa">
-              <option value="Tapera"> 
-              <option value="Trindade">                 
+        <label>Bairro:
+            <input list="bairros" id="usuarioBairro" name="bairro" placeholder="Selecione seu bairro" required >
+            <datalist id="bairros">     
             </datalist>
+            <div id="bairroValidar"></div>    
         </label><br>
 
         <button onclick="voltar()">Voltar</button>

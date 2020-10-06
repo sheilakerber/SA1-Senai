@@ -1,5 +1,9 @@
 //array para armazenar todos os usuarios cadastrados
+<<<<<<< Updated upstream
 var usuarios = []
+=======
+let usuarios = []
+>>>>>>> Stashed changes
 var dataBairros = ["Agronômica", "Armação do Pântano do Sul", "Balneário", "Barra da Lagoa", "Bom Abrigo", "Cachoeira do Bom Jesus", "Cacupé", "Campeche", "Canasvieiras", "Capoeiras", "Carianos", "Carvoeira", "Centro", "Coqueiros", "Córrego Grande", "Costeira do Pirajubaé", "Daniela", "Estreito", "Ingleses", "Itacorubi", "Itaguaçu", "Jardim Atlântico", "João Paulo", "José Mendes", "Jurerê Internacional", "Jurerê Tradicional", "Lagoa da Conceição", "Monte Verde", "Pantanal", "Pântano do Sul", "Ponta das Canas", "Praia Brava", "Ribeirão da Ilha", "Rio Tavares", "Rio Vermelho", "Saco dos Limões", "Saco Grande", "Sambaqui", "Santa Mônica", "Santo Antônio de Lisboa", "Tapera", "Trindade"]
 var produtosDisponiveisSistema = ["Arroz tipo 1 5Kg", "Arroz tipo 1 2Kg", "Sal 1Kg", "Açúcar refinado 5Kg", "Açúcar refinado 1Kg", "Farinha de trigo 5Kg", "Farinha de trigo 1Kg", "Óleo de soja 900mL", "Feijão 1Kg", "Café moído 230g"]
 
@@ -10,7 +14,7 @@ var cpf = document.getElementById("cpfUsuario")
 var email = document.getElementById("emailUsuario")
 var senha = document.getElementById("senhaUsuario")
 var senhaConfirmacao = document.getElementById("confirmaSenhaUsuario")
-var bairro = document.getElementById("bairroUsuario")
+var bairro = document.getElementById("usuarioBairro")
 
 //cria um novo usuario
 function criaUsuario(nome, nascimento, cpf, email, senha, bairro) {
@@ -27,25 +31,23 @@ function cadastrarUsuario() {
     //validar cadastro
     //validar nome (Se está em branco ou já foi cadastrado)
     if (nome.value == "") {
-        alert("O campo nome está em branco!")
+        document.getElementById("nomeValidar").innerHTML = `O campo nome está em branco!`
     }
 
     //validar nascimento (Se está em branco)
     if (nascimento.value == "") {
-        alert("O campo data de nascimento está em branco")
+        document.getElementById("nascimentoValidar").innerHTML = `O campo data de nascimento está em branco!`
     }
 
     //validar se o campo cpf esta vazio e se esta correto
-    if (cpf == "") {
-        alert("O campo CPF está em branco!")
-
-    } else {
+    
+    if (cpf == null || cpf !== null) {
         verificarCpf()
+        document.getElementById("cpfValidar").innerHTML = `Digite um CPF valido!`
 
-    }
-    //validar se o cpf já não foi cadastrado
-    if ((cpf !== '') && (verificarCpf() == true)) {
+    } else if ((cpf !== '') && (verificarCpf() == true)) {
         compararCpfs()
+
     }
 
 
@@ -105,7 +107,7 @@ function cadastrarUsuario() {
             return true;
 
         } else {
-            console.log("CPF invalido!")
+            return false;
         }
     }
 
@@ -121,7 +123,7 @@ function cadastrarUsuario() {
             var validarCpf = listaUsuarios.filter(c => c.cpf.includes(numeroCpf))
             console.log(validarCpf)
             if (validarCpf.length == 1) {
-                alert("Esse CPF já foi cadastrado!")
+                document.getElementById("cpfValidar").innerHTML = `Esse CPF já foi cadastrado!`
                 return false
             }
         }
@@ -130,19 +132,18 @@ function cadastrarUsuario() {
 
     //validar se o e-mail está em branco
     if (email.value == "") {
-        alert("O campo e-mail está em branco!")
-    } else {
-        validarEmail(email)
-    }
+        document.getElementById("emailValidar").innerHTML = `O campo e-mail está em branco!`
+        //validar se o e-mail esta escrito corretamente
+        } else if (((email !== '') && (validarEmail(email) == false))) {
+            document.getElementById("emailValidar").innerHTML = `E-mail invalido!`
 
-    //validar se o e-mail esta escrito corretamente
-    if ((email !== '') && (validarEmail(email) == false)) {
-        alert("E-mail invalido!")
+        } else {
+            validarEmail(email)
     }
 
     //validacao da senha
     if (senha.value !== senhaConfirmacao.value) {
-        alert("Senhas incompatíveis!")
+        document.getElementById("senhaValidar").innerHTML = `Senhas incompatíveis!`
     }
 
     //função validar expressão do e-mail
@@ -158,10 +159,10 @@ function cadastrarUsuario() {
 
     //validar bairro (Se está em branco)
     if ((bairro.value == "") || (dataBairros.includes(bairro.value) !== true)) {
-        alert("O campo bairro não foi selecionado!")
+        document.getElementById("bairroValidar").innerHTML = `O campo bairro não foi selecionado!`
     }
     if (bairro.value == null) {
-        alert("O campo bairro não foi selecionado!")
+        document.getElementById("bairroValidar").innerHTML = `O campo bairro não foi selecionado!`
     }
 
     //Fazer a validação das validações para rodar a função construtura e dar push no array
@@ -173,16 +174,15 @@ function cadastrarUsuario() {
         localStorage.setItem("usuários", JSON.stringify(usuarios))
     }
     //limpar campos
-    document.getElementById("nomeUsuario").value = ' '
-    document.getElementById("nascimentoUsuario").value = ' '
-    document.getElementById("cpfUsuario").value = ' '
-    document.getElementById("emailUsuario").value = ' '
-    document.getElementById("senhaUsuario").value = ' '
-    document.getElementById("confirmaSenhaUsuario").value = ' '
-    document.getElementById("bairroUsuario").value = null
+    document.getElementById("nomeUsuario").value = ''
+    document.getElementById("nascimentoUsuario").value = ''
+    document.getElementById("cpfUsuario").value = ''
+    document.getElementById("emailUsuario").value = ''
+    document.getElementById("senhaUsuario").value = ''
+    document.getElementById("confirmaSenhaUsuario").value = ''
+    document.getElementById("bairrosUsuario").value = null
 
 }
-
 
 //Array para todos os estabelecimentos cadastrados
 var estabelecimentos = []
@@ -258,11 +258,12 @@ function login() {
             //Construir validação
         if ((validarLoginCpf.length == 1) && (validarLoginSenha.length == 1)) {
             alert("Logado!")
+            window.location.href = "criarLista.html"
         } else {
             alert("CPF e/ou senha estão incorreto!")
         }
     }
-
+    
 }
 
 //Função para voltar para pagina anterior
@@ -333,3 +334,81 @@ function inserirProduto() {
 
 //delimitar no html min e max tamanho dos campos 
 //maxlenght=""     minlenght=""
+
+
+function gerarBairros() {
+    var opcao;
+    console.log('OI')
+    for(i=0; i<dataBairros.length; i++) {
+        
+        opcao = document.createElement('option')
+        opcao.setAttribute('value', `${dataBairros[i]}`)
+        
+        document.getElementById('bairros').appendChild(opcao)
+        
+    }
+}
+
+//função alterar senha
+function alterarSenha() {
+
+    let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
+    let cpfParaChecar = document.getElementById("alterarSenhaCpf").value
+    let emailParaChecar = document.getElementById("alterarSenhaEmail").value
+    let senhaParaAlterar = document.getElementById("alterarSenhaNova").value
+
+    for (i = 0; i < listaUsuarios.length; i++) {
+
+        let validarLoginCpf = listaUsuarios.filter(c => c.cpf.includes(cpfParaChecar))
+        let validarLoginEmail = listaUsuarios.filter(e => e.email.includes(emailParaChecar))
+        let indice = i
+
+        console.log(listaUsuarios)
+        console.log(cpfParaChecar)
+        console.log(emailParaChecar)
+        console.log(senhaParaAlterar)
+
+        if ((validarLoginCpf.length !== 1) && (validarLoginEmail.length !== 1)) {
+
+            alert("Os campos foram preenchidos incorretamente!")
+
+        } else {
+            //
+            usuarios[index].senha = senhaParaAlterar.value;
+            console.log(usuarios)
+            alert("Senha alterada com sucesso!")
+            localStorage.setItem("usuários", JSON.stringify(usuarios))
+            // window.location.href = "loginUsuario.html"
+        }
+    }
+}
+
+
+//funcao que gera a lista de bairros no html
+function gerarBairros() {
+    var opcao;
+    for (i = 0; i < dataBairros.length; i++) {
+        opcao = document.createElement('option')
+        opcao.setAttribute('value', `${dataBairros[i]}`)
+        document.getElementById('bairros').appendChild(opcao)
+    }
+}
+
+//gerar nova linha na tabela para add outro item de compra
+function gerarNovoItemTabela() {
+    var table = document.getElementById("tabelaListaProdutos")
+    var row = table.insertRow()
+    row.insertCell(0).innerHTML = `<input list="listaProdutos"  id="listaProdutos" placeholder="Novo item"> `
+        //chamando a funcao para mostrar a lista de produtos novamente
+    document.getElementById("botaoAddNovoItem").addEventListener("onclick", gerarListaProdutos());
+}
+
+//funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
+function gerarListaProdutos() {
+    var opcao;
+    for (i = 0; i < produtosDisponiveisSistema.length; i++) {
+        opcao = document.createElement('option')
+        opcao.setAttribute('value', `${produtosDisponiveisSistema[i]}`)
+        document.getElementById('listaProdutos').appendChild(opcao)
+    }
+}

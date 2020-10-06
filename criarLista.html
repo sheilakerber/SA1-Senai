@@ -3,23 +3,37 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet" type="text/css" />
         <title>Criar Lista</title>
     </head>
-    <body>
+    <body onload="gerarListaProdutos()">
         <h3><a href="https://www.google.com">Inserir produto</a></h3>
-        <h2>Escolha como deseja continuar</h2>
-        <label>Buscar produtos separadamente:
-            <input type="radio" checked="checked" name="radio">
-        </label><br>
+        
+        <table id="tabelaListaProdutos">
+            <colgroup span="4" class="columns"></colgroup>
+            <tr>
+                <th id="nomeProduto">Produto</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
 
-        <label>Buscar lista completa:
-            <input type="radio" name="radio">
-        </label><br>
+            <tr>
+                <td>
+                    <input list="listaProdutos" name="listaProdutos" placeholder="Selecione aqui"/>
+                    <datalist id="listaProdutos">
+                    </datalist>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </table>
 
+    <button id="botaoAddNovoItem" onclick="gerarNovoItemTabela()">Add outro item</button>
+    <button onclick="finalizarLista()">Finalizar lista</button>
 
-
-        <button onclick="voltar()">Voltar</button>
-        <button onclick="()">Cadastrar</button>
+        <p id="testeLista"></p>
 
     </body>
     <script src="script.js"></script>
