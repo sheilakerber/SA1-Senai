@@ -258,6 +258,7 @@ function login() {
             //Construir validação
         if ((validarLoginCpf.length == 1) && (validarLoginSenha.length == 1)) {
             alert("Logado!")
+            window.location.href = "criarLista.html"
         } else {
             alert("CPF e/ou senha estão incorreto!")
         }
@@ -333,3 +334,21 @@ function inserirProduto() {
 
 //delimitar no html min e max tamanho dos campos 
 //maxlenght=""     minlenght=""
+
+
+function gerarBairros() {
+    var opcao;
+    console.log('OI')
+    for(i=0; i<dataBairros.length; i++) {
+        
+        opcao = document.createElement('option')
+        opcao.setAttribute('value', `${dataBairros[i]}`)
+        
+        document.getElementById('teste').appendChild(opcao)
+        
+    }
+}
+
+function gerarProdutos() {
+    console.log('7X1')
+}
