@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inserir Produto</title>
     </head>
-    <body onload="gerarBairros(), gerarListaProdutos()">
+    <body onload="gerarBairros(), gerarListaProdutos(), gerarListaEstabelecimentos()">
 
         <h3><a href="https://www.google.com">Criar Tabela</a></h3>
         <h2>Complete as informações abaixo</h2>
@@ -20,14 +20,8 @@
         </label><br>
 
         <label>Estabelecimento:
-            <input list="estabelecimentos" name="estabelecimento" id="estabelecimentoProduto" placeholder="Local da compra">
-            <datalist id="estabelecimentos" >
-              <option value="Angeloni Capoeiras">
-              <option value="Angeloni Beira Mar">
-              <option value="Angeloni Santa Mônica">
-              <option value="Imperatriz Córrego Grande">
-              <option value="Big (Shopping Iguatemi)">
-              <option value="Supermercados Rosa (Itacorubi)">            
+            <input list="listaEstabelecimentos" name="listaEstabelecimento" id="estabelecimentoProduto" placeholder="Local da compra">
+            <datalist id="listaEstabelecimentos" >         
             </datalist>
         </label><br>
 

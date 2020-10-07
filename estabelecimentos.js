@@ -1,5 +1,6 @@
 //Array para todos os estabelecimentos cadastrados
-var estabelecimentos = []
+var listaEstabelecimentos = []
+var listaDeEstabelecimentosObjeto = []
 
 //pega os dados do html
 var estabelecimento = document.getElementById("nomeEstabelecimento")
@@ -41,14 +42,32 @@ function cadastrarEstabelecimento() {
     if ((estabelecimento.value !== "") && (cep.value !== "") && (cep.value.length == 8) && (contato.value !== "") && (bairroMercado.value !== "") && (dataBairros.includes(bairroMercado.value) == true) && (bairroMercado.value !== null)) {
 
         let novoEstabelecimento = new criaEstabelecimento(estabelecimento.value, cep.value, contato.value, bairroMercado.value)
-        estabelecimentos.push(novoEstabelecimento)
+        listaEstabelecimentos.push(document.getElementById("nomeEstabelecimento").value)
+        listaDeEstabelecimentosObjeto.push(novoEstabelecimento)
         alert("Estabelecimento cadastrado com sucesso!")
-        localStorage.setItem("estabelecimentos", JSON.stringify(estabelecimentos))
+        localStorage.setItem("listaTodosEstabelecimentos", JSON.stringify(listaEstabelecimentos))
+        localStorage.setItem("estabelecimentos", JSON.stringify(listaDeEstabelecimentosObjeto))
     }
 
     document.getElementById("nomeEstabelecimento").value = ' '
     document.getElementById("cepEstabelecimento").value = ' '
     document.getElementById("contatoEstabelecimento").value = ' '
     document.getElementById("bairroEstabelecimento").value = null
+
+}
+
+
+let listaDeEstabelecimentos = JSON.parse(localStorage.getItem("listaTodosEstabelecimentos"))
+
+function gerarListaEstabelecimentos() {
+    
+    console.log(listaDeEstabelecimentos)
+    if (listaDeEstabelecimentos)
+        for (i = 0; i < listaDeEstabelecimentos.length; i++) {
+            var opcao = document.createElement('option')
+            opcao.setAttribute('value', `${listaDeEstabelecimentos[i]}`)
+
+            document.getElementById('listaEstabelecimentos').appendChild(opcao)
+        }
 
 }
