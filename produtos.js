@@ -48,7 +48,7 @@ function inserirProduto() {
         let novoCadastroProduto = new criaProduto(produto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
         listaProdutos.push(document.getElementById("produtoInserido").value)
         alert("Produto inserido com sucesso!")
-        localStorage.setItem("testando", JSON.stringify(listaProdutos))
+        localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))
         localStorage.setItem("novoCadastroProduto", JSON.stringify(novoCadastroProduto))
         //para esse segundo localstorage funcionar(criar um array de objetos com todos os produtos+atributos), talvez seja necessario clonar o "novoCadastroProduto" e fazer um push pro para cada um dos VAR's lá em cima
 
@@ -76,7 +76,7 @@ function gerarNovoItemTabela() {
 
 
 //funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
-let lista = JSON.parse(localStorage.getItem("testando"))
+let lista = JSON.parse(localStorage.getItem("listaTodosProdutos"))
 function gerarListaProdutos() {
   
     var opcao;
