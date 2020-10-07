@@ -45,6 +45,7 @@ function inserirProduto() {
 
         let novoCadastroProduto = new criaProduto(produto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
         listaProdutos.push(document.getElementById("produtoInserido").value)
+        listaDeProdutosObjeto.push(novoCadastroProduto)
         alert("Produto inserido com sucesso!")
         localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))
         localStorage.setItem("novoCadastroProduto", JSON.stringify(novoCadastroProduto))
