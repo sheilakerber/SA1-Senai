@@ -243,7 +243,6 @@ function alterarSenha() {
     }
 }
 
-
 //Função para voltar para pagina anterior
 function voltar() {
     window.history.back()
