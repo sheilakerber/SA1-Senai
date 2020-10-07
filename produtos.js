@@ -74,18 +74,15 @@ function gerarNovoItemTabela() {
     document.getElementById("botaoAddNovoItem").addEventListener("onclick", gerarListaProdutos());
 }
 
-
 //funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
 let lista = JSON.parse(localStorage.getItem("listaTodosProdutos"))
+
 function gerarListaProdutos() {
-  
-    var opcao;
-        console.log(lista)
-    for (i = 0; i < lista.length; i++) {
-        console.log(lista)
-        opcao = document.createElement('option')
-        opcao.setAttribute('value', `${lista[i]}`)
-        document.getElementById('listaProdutos').appendChild(opcao)
-        
+    if (lista) {
+        for (i = 0; i < lista.length; i++) {
+            var opcao = document.createElement('option')
+            opcao.setAttribute('value', `${lista[i]}`)
+            document.getElementById('listaProdutos').appendChild(opcao)
+        }
     }
 }
