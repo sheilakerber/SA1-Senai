@@ -1,5 +1,6 @@
 //Funcao para criar lista de produtos cadastrados
 var listaProdutos = []
+var listaoDeProdutos = []
 
 //pega os dados do html
 var produto = document.getElementById("produtoInserido")
@@ -46,10 +47,13 @@ function inserirProduto() {
 
         let novoCadastroProduto = new criaProduto(produto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
         listaProdutos.push(document.getElementById("produtoInserido").value)
-        console.log(listaProdutos)
         alert("Produto inserido com sucesso!")
+        localStorage.setItem("testando", JSON.stringify(listaProdutos))
         localStorage.setItem("novoCadastroProduto", JSON.stringify(novoCadastroProduto))
+        //para esse segundo localstorage funcionar(criar um array de objetos com todos os produtos+atributos), talvez seja necessario clonar o "novoCadastroProduto" e fazer um push pro para cada um dos VAR's lá em cima
+
     }
+    
 
     //limpar campos para facilitar a add do próximo produto
     document.getElementById("produtoInserido").value = ' '
@@ -72,12 +76,15 @@ function gerarNovoItemTabela() {
 
 
 //funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
+let lista = JSON.parse(localStorage.getItem("testando"))
 function gerarListaProdutos() {
+  
     var opcao;
-        console.log(listaProdutos)
-    for (i = 0; i < listaProdutos.length; i++) {
+        console.log(lista)
+    for (i = 0; i < lista.length; i++) {
+        console.log(lista)
         opcao = document.createElement('option')
-        opcao.setAttribute('value', `${listaProdutos[i]}`)
+        opcao.setAttribute('value', `${lista[i]}`)
         document.getElementById('listaProdutos').appendChild(opcao)
         
     }

@@ -166,6 +166,7 @@ function cadastrarUsuario() {
         usuarios.push(novoUsuario)
         alert("Usuário cadastrado com sucesso!")
         localStorage.setItem("usuários", JSON.stringify(usuarios))
+        window.location.href = "loginUsuario.html"
     }
     //limpar campos
     document.getElementById("nomeUsuario").value = ''
