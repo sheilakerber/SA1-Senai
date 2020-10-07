@@ -1,6 +1,6 @@
 //Funcao para criar lista de produtos cadastrados
 var listaProdutos = []
-var listaoDeProdutos = []
+var listaDeProdutosObjeto = []
 
 //pega os dados do html
 var produto = document.getElementById("produtoInserido")
