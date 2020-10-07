@@ -63,7 +63,6 @@ function gerarNovoItemTabela() {
     var table = document.getElementById("tabelaListaProdutos")
     var row = table.insertRow()
     row.insertCell(0).innerHTML = `<input list="listaProdutos"  id="listaProdutos" placeholder="Novo item"> `
-    document.getElementById("botaoAddNovoItem").addEventListener("onclick", gerarListaProdutos());
 }
 
 //funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
