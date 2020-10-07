@@ -48,7 +48,7 @@ function inserirProduto() {
         listaDeProdutosObjeto.push(novoCadastroProduto)
         alert("Produto inserido com sucesso!")
         localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))
-        localStorage.setItem("novoCadastroProduto", JSON.stringify(novoCadastroProduto))
+        localStorage.setItem("cadastros", JSON.stringify(listaDeProdutosObjeto))
     }
 
     //limpar campos para facilitar a add do próximo produto
