@@ -19,8 +19,6 @@ function criaProduto(produto, dataCompraProduto, estabelecimentoProduto, bairroP
 }
 //adicionar novo produto ao Array listaProdutos[]
 function inserirProduto() {
-    console.log("inicio funcao inserirProduto")
-
     //validar entrada de dados
     if ((produto.value == "") || (listaProdutos.includes(produto.value) !== true)) {
         alert("O campo Produto está em branco!")
@@ -50,10 +48,7 @@ function inserirProduto() {
         alert("Produto inserido com sucesso!")
         localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))
         localStorage.setItem("novoCadastroProduto", JSON.stringify(novoCadastroProduto))
-        //para esse segundo localstorage funcionar(criar um array de objetos com todos os produtos+atributos), talvez seja necessario clonar o "novoCadastroProduto" e fazer um push pro para cada um dos VAR's lá em cima
-
     }
-    
 
     //limpar campos para facilitar a add do próximo produto
     document.getElementById("produtoInserido").value = ' '
@@ -61,16 +56,13 @@ function inserirProduto() {
     document.getElementById("estabelecimentoProduto").value = ' '
     document.getElementById("bairroProduto").value = ' '
     document.getElementById("valorProduto").value = ' '
-
 }
-
 
 //gerar nova linha na tabela para add outro item de compra
 function gerarNovoItemTabela() {
     var table = document.getElementById("tabelaListaProdutos")
     var row = table.insertRow()
     row.insertCell(0).innerHTML = `<input list="listaProdutos"  id="listaProdutos" placeholder="Novo item"> `
-        //chamando a funcao para mostrar a lista de produtos novamente
     document.getElementById("botaoAddNovoItem").addEventListener("onclick", gerarListaProdutos());
 }
 
