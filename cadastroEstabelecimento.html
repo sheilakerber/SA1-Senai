@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cadastrar Estabelecimento</title>
-        <script src="script.js"></script>
+
     </head>
     <body onload="gerarBairros()">
+
         <h1>Cadastro de Estabelecimento</h1>
         <label>Estabelecimento:
             <input id="nomeEstabelecimento" type="text" required>
@@ -21,14 +22,19 @@
         </label><br>
         
         <label>Bairro:
+
             <input list="bairros" id="bairroEstabelecimento" name="bairro" placeholder="Selecione seu bairro" required >
             <datalist id="bairros">       
             </datalist> 
+
         </label><br>
 
         <button onclick="voltar()">Voltar</button>
         <button onclick="cadastrarEstabelecimento()">Cadastrar</button>
 
     </body>
-
+    <script src="usuario.js"></script>
+    <script src="produtos.js"></script>
+    <script src="bairros.js"></script>
+    <script src="estabelecimentos.js"></script>
 </html>
