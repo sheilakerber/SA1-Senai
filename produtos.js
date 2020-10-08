@@ -3,6 +3,7 @@ var listaProdutos = []
 var listaDeProdutosObjeto = []
 
 //pega os dados do html
+
 var produto = document.getElementById("produtoInserido")
 var dataCompraProduto = document.getElementById("dataCompra")
 var estabelecimentoProduto = document.getElementById("estabelecimentoProduto")
@@ -19,8 +20,13 @@ function criaProduto(produto, dataCompraProduto, estabelecimentoProduto, bairroP
 }
 //adicionar novo produto ao Array listaProdutos[]
 function inserirProduto() {
+
     //validar entrada de dados
     if ((produto.value == "") || (listaProdutos.includes(produto.value) !== true)) {
+        var produtoExistente = document.getElementsByName('listaProdutos')[0]
+            produtoExistente.addEventListener('input', function() {
+                listaProdutos.push(this.value)
+            })
         alert("O campo Produto está em branco!")
     }
 
@@ -44,7 +50,7 @@ function inserirProduto() {
     if ((produto.value !== "") && (dataCompraProduto.value !== "") && (estabelecimentoProduto.value !== "") && (bairroProduto.value !== "") && (valorProduto.value !== "")) {
 
         let novoCadastroProduto = new criaProduto(produto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
-        listaProdutos.push(document.getElementById("produtoInserido").value)
+        listaProdutos.push(produto.value)
         listaDeProdutosObjeto.push(novoCadastroProduto)
         alert("Produto inserido com sucesso!")
         localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))
@@ -77,4 +83,10 @@ function gerarListaProdutos() {
             document.getElementById('listaProdutos').appendChild(opcao)
         }
     }
+}
+
+function buscarDados() {
+    var table = document.getElementById("tabelaListaProdutos").getElementsByTagName('tr')
+    var cells = table[1].getElementsByTagName('input')
+    console.log(cells[0].value)
 }
