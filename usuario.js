@@ -35,7 +35,7 @@ function cadastrarUsuario() {
 
     //validar se o campo cpf esta vazio e se esta correto
     
-    if (cpf == null || cpf !== null) {
+    if (cpf == '' || cpf == null) {
         verificarCpf()
         document.getElementById("cpfValidar").innerHTML = `Digite um CPF valido!`
 
@@ -166,7 +166,7 @@ function cadastrarUsuario() {
         usuarios.push(novoUsuario)
         alert("Usuário cadastrado com sucesso!")
         localStorage.setItem("usuários", JSON.stringify(usuarios))
-        window.location.href = "loginUsuario.html"
+        //window.location.href = "loginUsuario.html"
     }
     //limpar campos
     document.getElementById("nomeUsuario").value = ''
@@ -191,23 +191,31 @@ function login() {
         //For para validação de login corret ou incorreto
     for (i = 0; i < listaUsuarios.length; i++) {
 
-        let validarLoginCpf = listaUsuarios.filter(l => l.cpf.includes(loginCpf))
-        let validarLoginSenha = listaUsuarios.filter(s => s.senha.includes(loginSenha))
+        let validarLoginCpf = listaUsuarios.indexOf(filter(l => l.cpf.includes(loginCpf)))
+        let validarLoginSenha = listaUsuarios.indexOf(filter(s => s.senha.includes(loginSenha)))
         console.log(validarLoginCpf)
         console.log(validarLoginSenha)
             //Construir validação
         if ((validarLoginCpf.length == 1) && (validarLoginSenha.length == 1)) {
             alert("Logado!")
-            window.location.href = "criarLista.html"
+            //window.location.href = "criarLista.html"
         } else {
             alert("CPF e/ou senha estão incorreto!")
+        }
+
+        if ((loginCpf = null) && (loginSenha = null)) {
+            document.getElementById("loginValidar").innerHTML = `Os campos CPF  e Senha estão em branco!`
+        } else if (loginCpf = '') {
+            document.getElementById("loginValidar").innerHTML = `O campo CPF está em branco!`
+        } else {
+            document.getElementById("loginValidar").innerHTML = `O campo Senha está em branco!`
         }
     }
     
 }
 
 //delimitar no html min e max tamanho dos campos 
-//maxlenght=""     minlenght=""
+//maxlenght="40"     minlenght="5"
 
 //função alterar senha
 function alterarSenha() {
