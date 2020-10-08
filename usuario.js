@@ -181,37 +181,21 @@ function cadastrarUsuario() {
 
 //Função para logar
 function login() {
-
+    
     let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
     let loginCpf = document.getElementById("loginCpf").value
     let loginSenha = document.getElementById("loginSenha").value
-    console.log("listaUsuarios: " + listaUsuarios)
-    console.log("loginCpf: " + loginCpf)
-    console.log("loginSenha: " + loginSenha)
         //For para validação de login corret ou incorreto
     for (i = 0; i < listaUsuarios.length; i++) {
-
-        let validarLoginCpf = listaUsuarios.indexOf(filter(l => l.cpf.includes(loginCpf)))
-        let validarLoginSenha = listaUsuarios.indexOf(filter(s => s.senha.includes(loginSenha)))
-        console.log(validarLoginCpf)
-        console.log(validarLoginSenha)
+        console.log(listaUsuarios[i].cpf)
+        console.log(listaUsuarios[i].senha)
             //Construir validação
-        if ((validarLoginCpf.length == 1) && (validarLoginSenha.length == 1)) {
+        if ((listaUsuarios[i].cpf == loginCpf) && (listaUsuarios[i].senha == loginSenha)) {
             alert("Logado!")
-            //window.location.href = "criarLista.html"
-        } else {
-            alert("CPF e/ou senha estão incorreto!")
-        }
-
-        if ((loginCpf = null) && (loginSenha = null)) {
-            document.getElementById("loginValidar").innerHTML = `Os campos CPF  e Senha estão em branco!`
-        } else if (loginCpf = '') {
-            document.getElementById("loginValidar").innerHTML = `O campo CPF está em branco!`
-        } else {
-            document.getElementById("loginValidar").innerHTML = `O campo Senha está em branco!`
+            window.location.href = "criarLista.html"
         }
     }
-    
+    document.getElementById("loginValidar").innerHTML = `CPF e/ou senha estão incorreto!`
 }
 
 //delimitar no html min e max tamanho dos campos 
