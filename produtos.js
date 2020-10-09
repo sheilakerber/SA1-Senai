@@ -3,6 +3,7 @@ var listaProdutos = []
 var listaDeProdutosObjeto = []
 
 //pega os dados do html
+
 var produto = document.getElementById("produtoInserido")
 var dataCompraProduto = document.getElementById("dataCompra")
 var estabelecimentoProduto = document.getElementById("estabelecimentoProduto")
@@ -19,32 +20,39 @@ function criaProduto(produto, dataCompraProduto, estabelecimentoProduto, bairroP
 }
 //adicionar novo produto ao Array listaProdutos[]
 function inserirProduto() {
+
     //validar entrada de dados
-    if ((produto.value == "") || (listaProdutos.includes(produto.value) !== true)) {
-        alert("O campo Produto está em branco!")
+    if ((produto.value !== "") || (listaProdutos.includes(produto.value) !== true)) {
+        var produtoExistente = document.getElementsByName('listaProdutos')[0]
+            produtoExistente.addEventListener('input', function() {
+                listaProdutos.push(this.value)
+            })
     }
 
+    if (produto.value == "") {
+        document.getElementById("produtoValidar").innerHTML = `O campo produto está em branco!`
+    } 
     if (dataCompraProduto.value == "") {
-        alert("O campo Data da compra está em branco!")
+        document.getElementById("dataCompraProdutoValidar").innerHTML = `O campo data da compra está em branco!`
     }
 
     if (estabelecimentoProduto.value == "") {
-        alert("O campo Estabelecimento está em branco!")
+        document.getElementById("estabelecimentoProdutoValidar").innerHTML = `O campo estabelecimento não foi selecionado!`
     }
 
     if (bairroProduto.value == "") {
-        alert("O campo bairro não foi selecionado!")
+        document.getElementById("bairroProdutoValidar").innerHTML = `O campo bairro não foi selecionado!`
     }
 
     if (valorProduto.value == "") {
-        alert("O campo Valor unitário está em branco!")
+        document.getElementById("valorProdutoValidar").innerHTML = `O campo valor unitário está em branco!`
     }
 
     //Fazer a validação das validações para rodar a função construtura e dar push no array
     if ((produto.value !== "") && (dataCompraProduto.value !== "") && (estabelecimentoProduto.value !== "") && (bairroProduto.value !== "") && (valorProduto.value !== "")) {
 
         let novoCadastroProduto = new criaProduto(produto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
-        listaProdutos.push(document.getElementById("produtoInserido").value)
+        listaProdutos.push(produto.value)
         listaDeProdutosObjeto.push(novoCadastroProduto)
         alert("Produto inserido com sucesso!")
         localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))
@@ -77,4 +85,10 @@ function gerarListaProdutos() {
             document.getElementById('listaProdutos').appendChild(opcao)
         }
     }
+}
+
+function buscarDados() {
+    var table = document.getElementById("tabelaListaProdutos").getElementsByTagName('tr')
+    var cells = table[1].getElementsByTagName('input')
+    console.log(cells[0].value)
 }
