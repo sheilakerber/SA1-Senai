@@ -34,12 +34,14 @@ function cadastrarUsuario() {
     }
 
     //validar se o campo cpf esta vazio e se esta correto
-    
-    if (cpf == '' || cpf == null) {
+
+
+
+    if (cpf == "") {
         verificarCpf()
         document.getElementById("cpfValidar").innerHTML = `Digite um CPF valido!`
 
-    } else if ((cpf !== '') && (verificarCpf() == true)) {
+    } else if ((cpf !== "") && (verificarCpf() == true)) {
         compararCpfs()
 
     }
@@ -169,13 +171,7 @@ function cadastrarUsuario() {
         //window.location.href = "loginUsuario.html"
     }
     //limpar campos
-    document.getElementById("nomeUsuario").value = ''
-    document.getElementById("nascimentoUsuario").value = ''
-    document.getElementById("cpfUsuario").value = ''
-    document.getElementById("emailUsuario").value = ''
-    document.getElementById("senhaUsuario").value = ''
-    document.getElementById("confirmaSenhaUsuario").value = ''
-    document.getElementById("bairrosUsuario").value = null
+    document.forms[0].reset();
 
 }
 

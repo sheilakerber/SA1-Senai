@@ -6,7 +6,10 @@
         <title>Cadastrar</title>
     </head>
     <body onload="gerarBairros()">
+
         <h1>Cadastro de Usuário</h1>
+        
+        <form action="">
         <label>Nome:
             <input id="nomeUsuario" type="text" required>
             <div id="nomeValidar"></div>
@@ -19,7 +22,7 @@
 
         <label>CPF:
             <input id="cpfUsuario" type="number" required>
-            <div id="cpfValidar"></div>
+            <div id="cpfValidar">Campo Obrigatório.</div>
         </label><br>
 
         <label>E-mail:
@@ -29,20 +32,21 @@
 
         <label>Senha:
             <input id="senhaUsuario" type="password" required>
+            <div>Campo Obrigatório.</div>
         </label><br>
 
         <label>Confirme sua senha:
             <input id="confirmaSenhaUsuario" type="password" required>
-            <div id="senhaValidar"></div>
+            <div id="senhaValidar">Campo Obrigatório.</div>
         </label><br>
 
         <label>Bairro:
             <input list="bairros" id="bairroUsuario" name="bairro" placeholder="Selecione seu bairro" required >
             <datalist id="bairros">     
-
             </datalist>
             <div id="bairroValidar"></div>    
         </label><br>
+        </form>
 
         <button onclick="voltar()">Voltar</button>
         <button onclick="cadastrarUsuario()">Cadastrar</button>

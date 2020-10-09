@@ -9,6 +9,8 @@
     <body onload="gerarBairros()">
 
         <h1>Cadastro de Estabelecimento</h1>
+
+        <form action="">
         <label>Estabelecimento:
             <input id="nomeEstabelecimento" type="text" required>
             <div id="estabelecimentoValidar"></div>
@@ -30,8 +32,9 @@
             <datalist id="bairros">       
             </datalist> 
             <div id="bairroEstabelecimentoValidar"></div>
-
         </label><br>
+        </form>
+
 
         <button onclick="voltar()">Voltar</button>
         <button onclick="cadastrarEstabelecimento()">Cadastrar</button>

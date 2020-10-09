@@ -48,10 +48,7 @@ function cadastrarEstabelecimento() {
         localStorage.setItem("estabelecimentos", JSON.stringify(listaDeEstabelecimentosObjeto))
     }
 
-    document.getElementById("nomeEstabelecimento").value = null
-    document.getElementById("cepEstabelecimento").value = null
-    document.getElementById("contatoEstabelecimento").value = null
-    document.getElementById("bairroEstabelecimento").value = null
+    document.forms[0].reset();
 
 }
 
