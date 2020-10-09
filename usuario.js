@@ -207,30 +207,18 @@ function alterarSenha() {
     let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
     let cpfParaChecar = document.getElementById("alterarSenhaCpf").value
     let emailParaChecar = document.getElementById("alterarSenhaEmail").value
-    let senhaParaAlterar = document.getElementById("alterarSenhaNova").value
 
     for (i = 0; i < listaUsuarios.length; i++) {
-
-        let validarLoginCpf = listaUsuarios.filter(c => c.cpf.includes(cpfParaChecar))
-        let validarLoginEmail = listaUsuarios.filter(e => e.email.includes(emailParaChecar))
-        let indice = i
-
-        console.log(listaUsuarios)
-        console.log(cpfParaChecar)
-        console.log(emailParaChecar)
-        console.log(senhaParaAlterar)
-
-        if ((validarLoginCpf.length !== 1) && (validarLoginEmail.length !== 1)) {
-
-            alert("Os campos foram preenchidos incorretamente!")
-
-        } else {
-            
-            usuarios[indice].senha = senhaParaAlterar.value;
-            console.log(usuarios)
-            alert("Senha alterada com sucesso!")
+        
+        if ((cpfParaChecar == listaUsuarios[i].cpf) && (emailParaChecar == listaUsuarios[i].email)) {
+        
+            listaUsuarios[i].senha = document.getElementById("alterarSenhaNova").value
+            usuarios = listaUsuarios
             localStorage.setItem("usuários", JSON.stringify(usuarios))
+            alert("Senha alterada com sucesso!")
             window.location.href = "loginUsuario.html"
+        } else {
+            document.getElementById("loginValidar").innerHTML = `CPF e/ou E-mail invalido!`
         }
     }
 }
