@@ -13,26 +13,31 @@
             <input list="listaProdutos" name="listaProdutos" placeholder="Adicione ou escolha da lista" id="produtoInserido"/>
             <datalist id="listaProdutos">
             </datalist>
+            <div id="produtoValidar"></div>
         </label><br>
 
         <label>Data da compra:
             <input id="dataCompra" type="date" required>
+            <div id="dataCompraProdutoValidar"></div>
         </label><br>
 
         <label>Estabelecimento:
             <input list="listaEstabelecimentos" name="listaEstabelecimento" id="estabelecimentoProduto" placeholder="Local da compra">
             <datalist id="listaEstabelecimentos" >         
             </datalist>
+            <div id="estabelecimentoProdutoValidar"></div>
         </label><br>
 
         <label>Bairro:
             <input list="bairros" id="bairroProduto" name="bairro" placeholder="Selecione seu bairro" required >
             <datalist id="bairros">        
             </datalist> 
+            <div id="bairroProdutoValidar"></div>
         </label><br>
 
         <label>Valor unitário:
             <input id="valorProduto" type="number" required placeholder="Ex: 2.50">
+            <div id="valorProdutoValidar"></div>
         </label><br>
 
         <button onclick="voltar()">Voltar</button>
