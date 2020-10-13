@@ -5,16 +5,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inserir Produto</title>
     </head>
-    <body onload="gerarBairros(), gerarListaProdutos(), gerarListaEstabelecimentos()">
+    <body onload="gerarBairros(), gerarTiposProdutos(),  gerarListaEstabelecimentos()">
 
         <h3><a href="https://www.google.com">Criar Tabela</a></h3>
         <h2>Complete as informações abaixo</h2>
+
+        <form action="">
         <label>Produto:
-            <input list="listaProdutos" name="listaProdutos" placeholder="Adicione ou escolha da lista" id="produtoInserido"/>
+            <input list="listaProdutos" name="listaProdutos" placeholder="Escolha da lista" id="produtoInserido"/>
             <datalist id="listaProdutos">
             </datalist>
             <div id="produtoValidar"></div>
         </label><br>
+
+        <label>Marca:
+                <input list="marcaProduto" name="marcaProduto" id="marcaProdutoInserido" placeholder="Marca do produto" required="required">
+                <div id="marcaProdutoValidar"></div>
+                <datalist id="marcaProdutoInserido"></datalist>
+            </label><br>
+
+            <label>Peso/Volume:
+                <input list="volumePesoProduto" name="volumePesoProduto" id="volumePesoProdutoInserido" placeholder="Ex: 1L, 500g, 1Kg" required="required">
+                <div id="pesoVolumeProdutoValidar"></div>
+                <datalist id="volumePesoProdutoInserido"></datalist>
+            </label><br>
+
 
         <label>Data da compra:
             <input id="dataCompra" type="date" required>
@@ -39,6 +54,7 @@
             <input id="valorProduto" type="number" required placeholder="Ex: 2.50">
             <div id="valorProdutoValidar"></div>
         </label><br>
+        </form>
 
         <button onclick="voltar()">Voltar</button>
         <button onclick="inserirProduto()">Inserir Produto</button>
