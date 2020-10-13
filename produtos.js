@@ -88,6 +88,9 @@ function inserirProduto() {
         listaTodosProdutos.push(produto.value)
         listaCadastros.push(novoCadastroProduto)
 
+        //ordenar os produtos alfabeticamente
+        listaCadastros.sort(dynamicSort("produto"))
+
         localStorage.setItem("listaTodosProdutos", JSON.stringify(listaTodosProdutos))
         localStorage.setItem("cadastros", JSON.stringify(listaCadastros))
 
@@ -113,6 +116,25 @@ function gerarListaProdutos() {
             var opcao = document.createElement('option')
             opcao.setAttribute('value', `${lista[i]}`)
             document.getElementById('listaProdutos').appendChild(opcao)
+        }
+    }
+}
+
+
+//funcao que ordena a lista
+//Ref:<https://ourcodeworld.com/articles/read/764/how-to-sort-alphabetically-an-array-of-objects-by-key-in-javascript>
+function dynamicSort(property) {
+    var sortOrder = 1;
+    if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+
+    return function(a, b) {
+        if (sortOrder == -1) {
+            return b[property].localeCompare(a[property]);
+        } else {
+            return a[property].localeCompare(b[property]);
         }
     }
 }
