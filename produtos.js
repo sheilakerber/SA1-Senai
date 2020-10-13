@@ -28,27 +28,35 @@ function inserirProduto() {
         listaCadastros = [] // primeira vez que usa, se não for válido, seta para array vazio
     }
 
+    //variavel para validar se existem campos vazios
+    let todosInputsCompletos = true
+
     if (produto.value == "") {
         document.getElementById("produtoValidar").innerHTML = `O campo produto está em branco!`
+        todosInputsCompletos = false
     }
     if (dataCompraProduto.value == "") {
         document.getElementById("dataCompraProdutoValidar").innerHTML = `O campo data da compra está em branco!`
+        todosInputsCompletos = false
     }
 
     if (estabelecimentoProduto.value == "") {
         document.getElementById("estabelecimentoProdutoValidar").innerHTML = `O campo estabelecimento não foi selecionado!`
+        todosInputsCompletos = false
     }
 
     if (bairroProduto.value == "") {
         document.getElementById("bairroProdutoValidar").innerHTML = `O campo bairro não foi selecionado!`
+        todosInputsCompletos = false
     }
 
     if (valorProduto.value == "") {
         document.getElementById("valorProdutoValidar").innerHTML = `O campo valor unitário está em branco!`
+        todosInputsCompletos = false
     }
 
     //Fazer a validação das validações para rodar a função construtura e dar push no array
-    if ((produto.value !== "") && (dataCompraProduto.value !== "") && (estabelecimentoProduto.value !== "") && (bairroProduto.value !== "") && (valorProduto.value !== "")) {
+    if (todosInputsCompletos) {
 
         let novoCadastroProduto = new criaProduto(produto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
 
