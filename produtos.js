@@ -108,19 +108,6 @@ function inserirProduto() {
     }
 }
 
-//funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
-function gerarListaProdutos() {
-    let lista = JSON.parse(localStorage.getItem("listaTodosProdutos"))
-    if (lista) {
-        for (i = 0; i < lista.length; i++) {
-            var opcao = document.createElement('option')
-            opcao.setAttribute('value', `${lista[i]}`)
-            document.getElementById('listaProdutos').appendChild(opcao)
-        }
-    }
-}
-
-
 //funcao que ordena a lista
 //Ref:<https://ourcodeworld.com/articles/read/764/how-to-sort-alphabetically-an-array-of-objects-by-key-in-javascript>
 function dynamicSort(property) {
