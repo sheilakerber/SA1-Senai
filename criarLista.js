@@ -1,5 +1,4 @@
 //funcao que gera a lista de produtos a partir dos itens cadastrados no local storage
-
 function gerarListaProdutos() {
     var lista = JSON.parse(localStorage.getItem("listaTodosProdutos"))
 
@@ -45,6 +44,7 @@ var produtosSelecionados //array que guarda os produtos filtrados pelo tipo de p
 function finalizarLista() {
     //limpa o html para não sobrescrever resultados
     document.getElementById("listaFinal").innerHTML = ""
+    document.getElementById("idTabelaHtml").innerHTML = ""
 
     //pega todos os produtos salvos no local storage
     var arrayObjetosLista = JSON.parse(localStorage.getItem("cadastros"))
@@ -90,4 +90,15 @@ function generateTable(table, arrayObjetosSelecionados) {
             }
         }
     }
+}
+
+function reiniciarLista() {
+    //limpa o html para não sobrescrever resultados
+    document.getElementById("listaFinal").innerHTML = ""
+    document.getElementById("idTabelaHtml").innerHTML = ""
+
+    //limpar array produtosListaFinal
+    produtosListaFinal = []
+
+
 }
