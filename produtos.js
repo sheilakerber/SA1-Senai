@@ -67,13 +67,6 @@ function inserirProduto() {
     document.getElementById("valorProduto").value = ' '
 }
 
-//gerar nova linha na tabela para add outro item de compra
-function gerarNovoItemTabela() {
-    var table = document.getElementById("tabelaListaProdutos")
-    var row = table.insertRow()
-    row.insertCell(0).innerHTML = `<input list="listaProdutos"  id="listaProdutos" placeholder="Novo item"> `
-}
-
 //funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
 let lista = JSON.parse(localStorage.getItem("listaTodosProdutos"))
 
@@ -87,8 +80,3 @@ function gerarListaProdutos() {
     }
 }
 
-function buscarDados() {
-    var table = document.getElementById("tabelaListaProdutos").getElementsByTagName('tr')
-    var cells = table[1].getElementsByTagName('input')
-    console.log(cells[0].value)
-}
