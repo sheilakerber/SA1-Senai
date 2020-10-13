@@ -71,10 +71,20 @@ function inserirProduto() {
 
     //limpar campos para facilitar a add do próximo produto
     document.getElementById("produtoInserido").value = ' '
+    document.getElementById("produtoValidar").innerHTML = ' '
+
     document.getElementById("dataCompra").value = ' '
+    document.getElementById("dataCompraProdutoValidar").innerHTML = ' '
+
     document.getElementById("estabelecimentoProduto").value = ' '
+    document.getElementById("estabelecimentoProdutoValidar").innerHTML = ' '
+
     document.getElementById("bairroProduto").value = ' '
+    document.getElementById("bairroProdutoValidar").innerHTML = ' '
+
     document.getElementById("valorProduto").value = ' '
+    document.getElementById("valorProdutoValidar").innerHTML = ' '
+
 }
 
 //funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
