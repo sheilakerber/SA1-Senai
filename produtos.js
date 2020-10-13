@@ -1,3 +1,13 @@
+var dataProduto = ["Açúcar refinado", "Arroz", "Azeite", "Café", "Farinha", "Feijão", "Leite", "Macarrão", "Óleo", "Sal", "Vinagre"]
+
+function gerarTiposProdutos() {
+    for (i = 0; i < dataProduto.length; i++) {
+        var opcao = document.createElement('option')
+        opcao.setAttribute('value', `${dataProduto[i]}`)
+        document.getElementById('listaProdutos').appendChild(opcao)
+    }
+}
+
 //pega os dados do html
 var produto = document.getElementById("produtoInserido")
 var dataCompraProduto = document.getElementById("dataCompra")
