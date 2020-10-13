@@ -89,25 +89,18 @@ function inserirProduto() {
         localStorage.setItem("listaTodosProdutos", JSON.stringify(listaTodosProdutos))
         localStorage.setItem("cadastros", JSON.stringify(listaCadastros))
 
+        //limpar campos para facilitar a add do próximo produto
+        document.forms[0].reset();
+        document.getElementById("produtoValidar").innerHTML = ' '
+        document.getElementById("marcaProdutoValidar").innerHTML = ' '
+        document.getElementById("pesoVolumeProdutoValidar").innerHTML = ' '
+        document.getElementById("dataCompraProdutoValidar").innerHTML = ' '
+        document.getElementById("estabelecimentoProdutoValidar").innerHTML = ' '
+        document.getElementById("bairroProdutoValidar").innerHTML = ' '
+        document.getElementById("valorProdutoValidar").innerHTML = ' '
+
         alert("Produto inserido com sucesso!")
     }
-
-    //limpar campos para facilitar a add do próximo produto
-    document.getElementById("produtoInserido").value = ' '
-    document.getElementById("produtoValidar").innerHTML = ' '
-
-    document.getElementById("dataCompra").value = ' '
-    document.getElementById("dataCompraProdutoValidar").innerHTML = ' '
-
-    document.getElementById("estabelecimentoProduto").value = ' '
-    document.getElementById("estabelecimentoProdutoValidar").innerHTML = ' '
-
-    document.getElementById("bairroProduto").value = ' '
-    document.getElementById("bairroProdutoValidar").innerHTML = ' '
-
-    document.getElementById("valorProduto").value = ' '
-    document.getElementById("valorProdutoValidar").innerHTML = ' '
-
 }
 
 //funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
