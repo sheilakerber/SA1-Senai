@@ -81,7 +81,7 @@ function inserirProduto() {
     //Fazer a validação das validações para rodar a função construtura e dar push no array
     if (todosInputsCompletos) {
 
-        let novoCadastroProduto = new criaProduto(produto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
+        let novoCadastroProduto = new criaProduto(produto.value, marcaProduto.value, volumePesoProduto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
 
         listaTodosProdutos.push(produto.value)
         listaCadastros.push(novoCadastroProduto)
