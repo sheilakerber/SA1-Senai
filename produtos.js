@@ -1,5 +1,7 @@
+//array contendo os tipos de produtos cadastraveis no sistema
 var dataProduto = ["Açúcar refinado", "Arroz", "Azeite", "Café", "Farinha", "Feijão", "Leite", "Macarrão", "Óleo", "Sal", "Vinagre"]
 
+//funcao que cria a lista de produtos disponiveis em criarLista.html a partir daqueles cadastrados em inserirProduto.html
 function gerarTiposProdutos() {
     for (i = 0; i < dataProduto.length; i++) {
         var opcao = document.createElement('option')
