@@ -67,7 +67,7 @@ function finalizarLista() {
 
 //////////   TABELA que COMPARA os PRECOS  ////////// Referencia: https://www.valentinog.com/blog/html-table/
 function generateTableHead(table) {
-    var nomeColunas = ["Produto", "Marca", "Peso/Volume", "Estabelecimento", "Valor (R$)"]
+    var nomeColunas = ["Data Compra", "Produto", "Marca", "Peso/Volume", "Estabelecimento", "Valor (R$)"]
     let thead = table.createTHead();
     let row = thead.insertRow();
     for (let key of nomeColunas) {
@@ -81,14 +81,31 @@ function generateTableHead(table) {
 function generateTable(table, arrayObjetosSelecionados) {
     for (let compra of arrayObjetosSelecionados) {
         let row = table.insertRow();
-        for (key in compra) {
-            //bairro e data da compra nao precisam aparecer no html
-            if (key !== "bairroProduto" && key !== "dataCompraProduto") {
-                let cell = row.insertCell();
-                let text = document.createTextNode(compra[key]);
-                cell.appendChild(text);
-            }
-        }
+
+        let cellDataCompra = row.insertCell();
+        let textDataCompra = document.createTextNode(compra.dataCompraProduto)
+        cellDataCompra.appendChild(textDataCompra)
+        console.log("qwe compra", compra);
+
+        let cellProduto = row.insertCell();
+        let textProduto = document.createTextNode(compra.produto)
+        cellProduto.appendChild(textProduto)
+
+        let cellMarca = row.insertCell();
+        let textMarca = document.createTextNode(compra.marcaProduto)
+        cellMarca.appendChild(textMarca)
+
+        let cellPesoVolume = row.insertCell();
+        let textPesoVolume = document.createTextNode(compra.volumePesoProduto)
+        cellPesoVolume.appendChild(textPesoVolume)
+
+        let cellEstabelecimento = row.insertCell();
+        let textEstabelecimento = document.createTextNode(compra.estabelecimentoProduto)
+        cellEstabelecimento.appendChild(textEstabelecimento)
+
+        let cellValor = row.insertCell();
+        let textValor = document.createTextNode(compra.valorProduto)
+        cellValor.appendChild(textValor)
     }
 }
 

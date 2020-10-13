@@ -11,20 +11,20 @@ function gerarTiposProdutos() {
 }
 
 //pega os dados do html
+var dataCompraProduto = document.getElementById("dataCompra")
 var produto = document.getElementById("produtoInserido")
 var marcaProduto = document.getElementById("marcaProdutoInserido")
 var volumePesoProduto = document.getElementById("volumePesoProdutoInserido")
-var dataCompraProduto = document.getElementById("dataCompra")
 var estabelecimentoProduto = document.getElementById("estabelecimentoProduto")
 var bairroProduto = document.getElementById("bairroProduto")
 var valorProduto = document.getElementById("valorProduto")
 
 //cria um novo produto
-function criaProduto(produto, marcaProduto, volumePesoProduto, dataCompraProduto, estabelecimentoProduto, bairroProduto, valorProduto) {
+function criaProduto(dataCompraProduto, produto, marcaProduto, volumePesoProduto, estabelecimentoProduto, bairroProduto, valorProduto) {
+    this.dataCompraProduto = dataCompraProduto
     this.produto = produto
     this.marcaProduto = marcaProduto
     this.volumePesoProduto = volumePesoProduto
-    this.dataCompraProduto = dataCompraProduto
     this.estabelecimentoProduto = estabelecimentoProduto
     this.bairroProduto = bairroProduto
     this.valorProduto = valorProduto
