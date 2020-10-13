@@ -3,43 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="style.css" rel="stylesheet" type="text/css" />
+        <link href="style.css" rel="stylesheet" type="text/css"/>
         <title>Criar Lista</title>
-        <script src="produtos.js"></script>
+        <script src="criarLista.js"></script>
     </head>
     <body onload="gerarListaProdutos()">
-        <h3><a href="https://www.google.com">Inserir produto</a></h3>
-        
-        <table id="tabelaListaProdutos">
-            <colgroup span="4" class="columns"></colgroup>
-            <tr>
-                <th id="nomeProduto">Produto</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
+        <h3>
+            <a href="https://www.google.com">Inserir produto</a>
+        </h3>
 
-            <tr>
-                <td>
-                    <input list="listaProdutos" name="listaProdutos" placeholder="Selecione aqui"/>
-                    <datalist id="listaProdutos">
-                    </datalist>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </table>
+        <form action="">
+            <input id="produtoSelecionado" list="listaProdutos">
+            <datalist id="listaProdutos"></datalist>
+        </form>
 
-    <button id="botaoAddNovoItem" onclick="gerarNovoItemTabela(), buscarDados()">Add outro item</button>
-    <button onclick="finalizarLista()">Finalizar lista</button>
+        <p id="produtosInseridosUsuario">Sua lista irá aparecer aqui:</p>
 
-        <p id="testeLista"></p>
-        
+        <button id="botaoAddNovoItem" onclick="addItemLista()">Add à lista</button>
+        <button onclick="finalizarLista()">Finalizar lista</button><br>
 
+        <p id="listaFinal"></p>
+
+        <table></table>
     </body>
-    <script src="usuario.js"></script>
-    
-    <script src="bairros.js"></script>
-    <script src="estabelecimentos.js"></script>
 </html>
