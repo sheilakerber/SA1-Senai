@@ -67,7 +67,7 @@ function finalizarLista() {
 
 //////////   TABELA que COMPARA os PRECOS  ////////// Referencia: https://www.valentinog.com/blog/html-table/
 function generateTableHead(table) {
-    var nomeColunas = ["Produto", "Estabelecimento", "Valor (R$)"]
+    var nomeColunas = ["Produto", "Marca", "Peso/Volume", "Estabelecimento", "Valor (R$)"]
     let thead = table.createTHead();
     let row = thead.insertRow();
     for (let key of nomeColunas) {
