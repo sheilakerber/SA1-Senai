@@ -10,14 +10,18 @@ function gerarTiposProdutos() {
 
 //pega os dados do html
 var produto = document.getElementById("produtoInserido")
+var marcaProduto = document.getElementById("marcaProdutoInserido")
+var volumePesoProduto = document.getElementById("volumePesoProdutoInserido")
 var dataCompraProduto = document.getElementById("dataCompra")
 var estabelecimentoProduto = document.getElementById("estabelecimentoProduto")
 var bairroProduto = document.getElementById("bairroProduto")
 var valorProduto = document.getElementById("valorProduto")
 
 //cria um novo produto
-function criaProduto(produto, dataCompraProduto, estabelecimentoProduto, bairroProduto, valorProduto) {
+function criaProduto(produto, marcaProduto, volumePesoProduto, dataCompraProduto, estabelecimentoProduto, bairroProduto, valorProduto) {
     this.produto = produto
+    this.marcaProduto = marcaProduto
+    this.volumePesoProduto = volumePesoProduto
     this.dataCompraProduto = dataCompraProduto
     this.estabelecimentoProduto = estabelecimentoProduto
     this.bairroProduto = bairroProduto
@@ -45,6 +49,15 @@ function inserirProduto() {
         document.getElementById("produtoValidar").innerHTML = `O campo produto está em branco!`
         todosInputsCompletos = false
     }
+    if (marcaProduto.value == "") {
+        document.getElementById("marcaProdutoValidar").innerHTML = `O campo marca está em branco!`
+        todosInputsCompletos = false
+    }
+    if (volumePesoProduto.value == "") {
+        document.getElementById("pesoVolumeProdutoValidar").innerHTML = `O campo volume/peso está em branco!`
+        todosInputsCompletos = false
+    }
+
     if (dataCompraProduto.value == "") {
         document.getElementById("dataCompraProdutoValidar").innerHTML = `O campo data da compra está em branco!`
         todosInputsCompletos = false
