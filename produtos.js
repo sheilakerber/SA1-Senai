@@ -1,9 +1,4 @@
-//Funcao para criar lista de produtos cadastrados
-var listaProdutos = []
-var listaDeProdutosObjeto = []
-
 //pega os dados do html
-
 var produto = document.getElementById("produtoInserido")
 var dataCompraProduto = document.getElementById("dataCompra")
 var estabelecimentoProduto = document.getElementById("estabelecimentoProduto")
@@ -18,20 +13,24 @@ function criaProduto(produto, dataCompraProduto, estabelecimentoProduto, bairroP
     this.bairroProduto = bairroProduto
     this.valorProduto = valorProduto
 }
+
 //adicionar novo produto ao Array listaProdutos[]
 function inserirProduto() {
 
-    //validar entrada de dados
-    if ((produto.value !== "") || (listaProdutos.includes(produto.value) !== true)) {
-        var produtoExistente = document.getElementsByName('listaProdutos')[0]
-            produtoExistente.addEventListener('input', function() {
-                listaProdutos.push(this.value)
-            })
+    let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
+    let listaCadastros = JSON.parse(localStorage.getItem("cadastros"))
+
+    if (!listaTodosProdutos) {
+        listaTodosProdutos = [] // primeira vez que usa, se não for válido, seta para array vazio
+    }
+
+    if (!listaCadastros) {
+        listaCadastros = [] // primeira vez que usa, se não for válido, seta para array vazio
     }
 
     if (produto.value == "") {
         document.getElementById("produtoValidar").innerHTML = `O campo produto está em branco!`
-    } 
+    }
     if (dataCompraProduto.value == "") {
         document.getElementById("dataCompraProdutoValidar").innerHTML = `O campo data da compra está em branco!`
     }
@@ -52,11 +51,14 @@ function inserirProduto() {
     if ((produto.value !== "") && (dataCompraProduto.value !== "") && (estabelecimentoProduto.value !== "") && (bairroProduto.value !== "") && (valorProduto.value !== "")) {
 
         let novoCadastroProduto = new criaProduto(produto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
-        listaProdutos.push(produto.value)
-        listaDeProdutosObjeto.push(novoCadastroProduto)
+
+        listaTodosProdutos.push(produto.value)
+        listaCadastros.push(novoCadastroProduto)
+
+        localStorage.setItem("listaTodosProdutos", JSON.stringify(listaTodosProdutos))
+        localStorage.setItem("cadastros", JSON.stringify(listaCadastros))
+
         alert("Produto inserido com sucesso!")
-        localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))
-        localStorage.setItem("cadastros", JSON.stringify(listaDeProdutosObjeto))
     }
 
     //limpar campos para facilitar a add do próximo produto
@@ -68,9 +70,8 @@ function inserirProduto() {
 }
 
 //funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
-let lista = JSON.parse(localStorage.getItem("listaTodosProdutos"))
-
 function gerarListaProdutos() {
+    let lista = JSON.parse(localStorage.getItem("listaTodosProdutos"))
     if (lista) {
         for (i = 0; i < lista.length; i++) {
             var opcao = document.createElement('option')
@@ -79,4 +80,3 @@ function gerarListaProdutos() {
         }
     }
 }
-
