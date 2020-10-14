@@ -117,5 +117,4 @@ function reiniciarLista() {
     //limpar array produtosListaFinal
     produtosListaFinal = []
 
-
 }
