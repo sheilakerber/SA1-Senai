@@ -34,12 +34,14 @@ function cadastrarUsuario() {
     }
 
     //validar se o campo cpf esta vazio e se esta correto
-    
-    if (cpf == null || cpf !== null) {
+
+
+
+    if (cpf == "") {
         verificarCpf()
         document.getElementById("cpfValidar").innerHTML = `Digite um CPF valido!`
 
-    } else if ((cpf !== '') && (verificarCpf() == true)) {
+    } else if ((cpf !== "") && (verificarCpf() == true)) {
         compararCpfs()
 
     }
@@ -166,48 +168,34 @@ function cadastrarUsuario() {
         usuarios.push(novoUsuario)
         alert("Usuário cadastrado com sucesso!")
         localStorage.setItem("usuários", JSON.stringify(usuarios))
-        window.location.href = "loginUsuario.html"
+        //window.location.href = "loginUsuario.html"
     }
     //limpar campos
-    document.getElementById("nomeUsuario").value = ''
-    document.getElementById("nascimentoUsuario").value = ''
-    document.getElementById("cpfUsuario").value = ''
-    document.getElementById("emailUsuario").value = ''
-    document.getElementById("senhaUsuario").value = ''
-    document.getElementById("confirmaSenhaUsuario").value = ''
-    document.getElementById("bairrosUsuario").value = null
+    document.forms[0].reset();
 
 }
 
 //Função para logar
 function login() {
-
+    
     let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
     let loginCpf = document.getElementById("loginCpf").value
     let loginSenha = document.getElementById("loginSenha").value
-    console.log("listaUsuarios: " + listaUsuarios)
-    console.log("loginCpf: " + loginCpf)
-    console.log("loginSenha: " + loginSenha)
         //For para validação de login corret ou incorreto
     for (i = 0; i < listaUsuarios.length; i++) {
-
-        let validarLoginCpf = listaUsuarios.filter(l => l.cpf.includes(loginCpf))
-        let validarLoginSenha = listaUsuarios.filter(s => s.senha.includes(loginSenha))
-        console.log(validarLoginCpf)
-        console.log(validarLoginSenha)
+        console.log(listaUsuarios[i].cpf)
+        console.log(listaUsuarios[i].senha)
             //Construir validação
-        if ((validarLoginCpf.length == 1) && (validarLoginSenha.length == 1)) {
+        if ((listaUsuarios[i].cpf == loginCpf) && (listaUsuarios[i].senha == loginSenha)) {
             alert("Logado!")
             window.location.href = "criarLista.html"
-        } else {
-            alert("CPF e/ou senha estão incorreto!")
         }
     }
-    
+    document.getElementById("loginValidar").innerHTML = `CPF e/ou senha estão incorreto!`
 }
 
 //delimitar no html min e max tamanho dos campos 
-//maxlenght=""     minlenght=""
+//maxlenght="40"     minlenght="5"
 
 //função alterar senha
 function alterarSenha() {
@@ -215,34 +203,21 @@ function alterarSenha() {
     let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
     let cpfParaChecar = document.getElementById("alterarSenhaCpf").value
     let emailParaChecar = document.getElementById("alterarSenhaEmail").value
-    let senhaParaAlterar = document.getElementById("alterarSenhaNova").value
 
     for (i = 0; i < listaUsuarios.length; i++) {
-
-        let validarLoginCpf = listaUsuarios.filter(c => c.cpf.includes(cpfParaChecar))
-        let validarLoginEmail = listaUsuarios.filter(e => e.email.includes(emailParaChecar))
-        let indice = i
-
-        console.log(listaUsuarios)
-        console.log(cpfParaChecar)
-        console.log(emailParaChecar)
-        console.log(senhaParaAlterar)
-
-        if ((validarLoginCpf.length !== 1) && (validarLoginEmail.length !== 1)) {
-
-            alert("Os campos foram preenchidos incorretamente!")
-
-        } else {
-            
-            usuarios[indice].senha = senhaParaAlterar.value;
-            console.log(usuarios)
-            alert("Senha alterada com sucesso!")
+        
+        if ((cpfParaChecar == listaUsuarios[i].cpf) && (emailParaChecar == listaUsuarios[i].email)) {
+        
+            listaUsuarios[i].senha = document.getElementById("alterarSenhaNova").value
+            usuarios = listaUsuarios
             localStorage.setItem("usuários", JSON.stringify(usuarios))
+            alert("Senha alterada com sucesso!")
             window.location.href = "loginUsuario.html"
+        } else {
+            document.getElementById("loginValidar").innerHTML = `CPF e/ou E-mail invalido!`
         }
     }
 }
-
 
 //Função para voltar para pagina anterior
 function voltar() {

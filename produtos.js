@@ -1,91 +1,127 @@
-//Funcao para criar lista de produtos cadastrados
-var listaProdutos = []
-var listaoDeProdutos = []
+//array contendo os tipos de produtos cadastraveis no sistema
+var dataProduto = ["Açúcar refinado", "Arroz", "Azeite", "Café", "Farinha", "Feijão", "Leite", "Macarrão", "Óleo", "Sal", "Vinagre"]
+
+//funcao que cria a lista de produtos disponiveis em criarLista.html a partir daqueles cadastrados em inserirProduto.html
+function gerarTiposProdutos() {
+    for (i = 0; i < dataProduto.length; i++) {
+        var opcao = document.createElement('option')
+        opcao.setAttribute('value', `${dataProduto[i]}`)
+        document.getElementById('listaProdutos').appendChild(opcao)
+    }
+}
 
 //pega os dados do html
-var produto = document.getElementById("produtoInserido")
 var dataCompraProduto = document.getElementById("dataCompra")
+var produto = document.getElementById("produtoInserido")
+var marcaProduto = document.getElementById("marcaProdutoInserido")
+var volumePesoProduto = document.getElementById("volumePesoProdutoInserido")
 var estabelecimentoProduto = document.getElementById("estabelecimentoProduto")
 var bairroProduto = document.getElementById("bairroProduto")
 var valorProduto = document.getElementById("valorProduto")
 
 //cria um novo produto
-function criaProduto(produto, dataCompraProduto, estabelecimentoProduto, bairroProduto, valorProduto) {
-    this.produto = produto
+function criaProduto(dataCompraProduto, produto, marcaProduto, volumePesoProduto, estabelecimentoProduto, bairroProduto, valorProduto) {
     this.dataCompraProduto = dataCompraProduto
+    this.produto = produto
+    this.marcaProduto = marcaProduto
+    this.volumePesoProduto = volumePesoProduto
     this.estabelecimentoProduto = estabelecimentoProduto
     this.bairroProduto = bairroProduto
     this.valorProduto = valorProduto
 }
+
 //adicionar novo produto ao Array listaProdutos[]
 function inserirProduto() {
-    console.log("inicio funcao inserirProduto")
 
-    //validar entrada de dados
-    if ((produto.value == "") || (listaProdutos.includes(produto.value) !== true)) {
-        alert("O campo Produto está em branco!")
+    let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
+    let listaCadastros = JSON.parse(localStorage.getItem("cadastros"))
+
+    if (!listaTodosProdutos) {
+        listaTodosProdutos = [] // primeira vez que usa, se não for válido, seta para array vazio
+    }
+
+    if (!listaCadastros) {
+        listaCadastros = [] // primeira vez que usa, se não for válido, seta para array vazio
+    }
+
+    //variavel para validar se existem campos vazios
+    let todosInputsCompletos = true
+
+    if (produto.value == "") {
+        document.getElementById("produtoValidar").innerHTML = `O campo produto está em branco!`
+        todosInputsCompletos = false
+    }
+    if (marcaProduto.value == "") {
+        document.getElementById("marcaProdutoValidar").innerHTML = `O campo marca está em branco!`
+        todosInputsCompletos = false
+    }
+    if (volumePesoProduto.value == "") {
+        document.getElementById("pesoVolumeProdutoValidar").innerHTML = `O campo volume/peso está em branco!`
+        todosInputsCompletos = false
     }
 
     if (dataCompraProduto.value == "") {
-        alert("O campo Data da compra está em branco!")
+        document.getElementById("dataCompraProdutoValidar").innerHTML = `O campo data da compra está em branco!`
+        todosInputsCompletos = false
     }
 
     if (estabelecimentoProduto.value == "") {
-        alert("O campo Estabelecimento está em branco!")
+        document.getElementById("estabelecimentoProdutoValidar").innerHTML = `O campo estabelecimento não foi selecionado!`
+        todosInputsCompletos = false
     }
 
     if (bairroProduto.value == "") {
-        alert("O campo bairro não foi selecionado!")
+        document.getElementById("bairroProdutoValidar").innerHTML = `O campo bairro não foi selecionado!`
+        todosInputsCompletos = false
     }
 
     if (valorProduto.value == "") {
-        alert("O campo Valor unitário está em branco!")
+        document.getElementById("valorProdutoValidar").innerHTML = `O campo valor unitário está em branco!`
+        todosInputsCompletos = false
     }
 
     //Fazer a validação das validações para rodar a função construtura e dar push no array
-    if ((produto.value !== "") && (dataCompraProduto.value !== "") && (estabelecimentoProduto.value !== "") && (bairroProduto.value !== "") && (valorProduto.value !== "")) {
+    if (todosInputsCompletos) {
 
-        let novoCadastroProduto = new criaProduto(produto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
-        listaProdutos.push(document.getElementById("produtoInserido").value)
+        let novoCadastroProduto = new criaProduto(produto.value, marcaProduto.value, volumePesoProduto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
+
+        listaTodosProdutos.push(produto.value)
+        listaCadastros.push(novoCadastroProduto)
+
+        //ordenar os produtos alfabeticamente
+        listaCadastros.sort(dynamicSort("produto"))
+
+        localStorage.setItem("listaTodosProdutos", JSON.stringify(listaTodosProdutos))
+        localStorage.setItem("cadastros", JSON.stringify(listaCadastros))
+
+        //limpar campos para facilitar a add do próximo produto
+        document.forms[0].reset();
+        document.getElementById("produtoValidar").innerHTML = ' '
+        document.getElementById("marcaProdutoValidar").innerHTML = ' '
+        document.getElementById("pesoVolumeProdutoValidar").innerHTML = ' '
+        document.getElementById("dataCompraProdutoValidar").innerHTML = ' '
+        document.getElementById("estabelecimentoProdutoValidar").innerHTML = ' '
+        document.getElementById("bairroProdutoValidar").innerHTML = ' '
+        document.getElementById("valorProdutoValidar").innerHTML = ' '
+
         alert("Produto inserido com sucesso!")
-        localStorage.setItem("testando", JSON.stringify(listaProdutos))
-        localStorage.setItem("novoCadastroProduto", JSON.stringify(novoCadastroProduto))
-        //para esse segundo localstorage funcionar(criar um array de objetos com todos os produtos+atributos), talvez seja necessario clonar o "novoCadastroProduto" e fazer um push pro para cada um dos VAR's lá em cima
-
     }
-    
-
-    //limpar campos para facilitar a add do próximo produto
-    document.getElementById("produtoInserido").value = ' '
-    document.getElementById("dataCompra").value = ' '
-    document.getElementById("estabelecimentoProduto").value = ' '
-    document.getElementById("bairroProduto").value = ' '
-    document.getElementById("valorProduto").value = ' '
-
 }
 
+//funcao que ordena a lista
+//Ref:<https://ourcodeworld.com/articles/read/764/how-to-sort-alphabetically-an-array-of-objects-by-key-in-javascript>
+function dynamicSort(property) {
+    var sortOrder = 1;
+    if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
 
-//gerar nova linha na tabela para add outro item de compra
-function gerarNovoItemTabela() {
-    var table = document.getElementById("tabelaListaProdutos")
-    var row = table.insertRow()
-    row.insertCell(0).innerHTML = `<input list="listaProdutos"  id="listaProdutos" placeholder="Novo item"> `
-        //chamando a funcao para mostrar a lista de produtos novamente
-    document.getElementById("botaoAddNovoItem").addEventListener("onclick", gerarListaProdutos());
-}
-
-
-//funcao que gera a lista de produtos dentro da célula, na coluna 'produtos'
-let lista = JSON.parse(localStorage.getItem("testando"))
-function gerarListaProdutos() {
-  
-    var opcao;
-        console.log(lista)
-    for (i = 0; i < lista.length; i++) {
-        console.log(lista)
-        opcao = document.createElement('option')
-        opcao.setAttribute('value', `${lista[i]}`)
-        document.getElementById('listaProdutos').appendChild(opcao)
-        
+    return function(a, b) {
+        if (sortOrder == -1) {
+            return b[property].localeCompare(a[property]);
+        } else {
+            return a[property].localeCompare(b[property]);
+        }
     }
 }

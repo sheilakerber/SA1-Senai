@@ -5,42 +5,56 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inserir Produto</title>
     </head>
-    <body onload="gerarBairros(), gerarListaProdutos()">
+    <body onload="gerarBairros(), gerarTiposProdutos(),  gerarListaEstabelecimentos()">
 
         <h3><a href="https://www.google.com">Criar Tabela</a></h3>
         <h2>Complete as informações abaixo</h2>
+
+        <form action="">
         <label>Produto:
-            <input list="produtos" name="produto" id="produtoInserido" placeholder="Selecione o produto">
-            <datalist id="produtoInserido" >
-         
+            <input list="listaProdutos" name="listaProdutos" placeholder="Escolha da lista" id="produtoInserido"/>
+            <datalist id="listaProdutos">
             </datalist>
+            <div id="produtoValidar"></div>
         </label><br>
+
+        <label>Marca:
+                <input list="marcaProduto" name="marcaProduto" id="marcaProdutoInserido" placeholder="Marca do produto" required="required">
+                <div id="marcaProdutoValidar"></div>
+                <datalist id="marcaProdutoInserido"></datalist>
+            </label><br>
+
+            <label>Peso/Volume:
+                <input list="volumePesoProduto" name="volumePesoProduto" id="volumePesoProdutoInserido" placeholder="Ex: 1L, 500g, 1Kg" required="required">
+                <div id="pesoVolumeProdutoValidar"></div>
+                <datalist id="volumePesoProdutoInserido"></datalist>
+            </label><br>
+
 
         <label>Data da compra:
             <input id="dataCompra" type="date" required>
+            <div id="dataCompraProdutoValidar"></div>
         </label><br>
 
         <label>Estabelecimento:
-            <input list="estabelecimentos" name="estabelecimento" id="estabelecimentoProduto" placeholder="Local da compra">
-            <datalist id="estabelecimentos" >
-              <option value="Angeloni Capoeiras">
-              <option value="Angeloni Beira Mar">
-              <option value="Angeloni Santa Mônica">
-              <option value="Imperatriz Córrego Grande">
-              <option value="Big (Shopping Iguatemi)">
-              <option value="Supermercados Rosa (Itacorubi)">            
+            <input list="listaEstabelecimentos" name="listaEstabelecimento" id="estabelecimentoProduto" placeholder="Local da compra">
+            <datalist id="listaEstabelecimentos" >         
             </datalist>
+            <div id="estabelecimentoProdutoValidar"></div>
         </label><br>
 
         <label>Bairro:
             <input list="bairros" id="bairroProduto" name="bairro" placeholder="Selecione seu bairro" required >
             <datalist id="bairros">        
             </datalist> 
+            <div id="bairroProdutoValidar"></div>
         </label><br>
 
         <label>Valor unitário:
             <input id="valorProduto" type="number" required placeholder="Ex: 2.50">
+            <div id="valorProdutoValidar"></div>
         </label><br>
+        </form>
 
         <button onclick="voltar()">Voltar</button>
         <button onclick="inserirProduto()">Inserir Produto</button>

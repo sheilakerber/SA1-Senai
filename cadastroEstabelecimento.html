@@ -9,16 +9,21 @@
     <body onload="gerarBairros()">
 
         <h1>Cadastro de Estabelecimento</h1>
+
+        <form action="">
         <label>Estabelecimento:
             <input id="nomeEstabelecimento" type="text" required>
+            <div id="estabelecimentoValidar"></div>
         </label><br>
 
         <label>CEP:
             <input id="cepEstabelecimento" type="number" required>
+            <div id="cepValidar"></div>
         </label><br>
 
         <label>Contato:
             <input id="contatoEstabelecimento" type="text" required>
+            <div id="contatoValidar"></div>
         </label><br>
         
         <label>Bairro:
@@ -26,8 +31,10 @@
             <input list="bairros" id="bairroEstabelecimento" name="bairro" placeholder="Selecione seu bairro" required >
             <datalist id="bairros">       
             </datalist> 
-
+            <div id="bairroEstabelecimentoValidar"></div>
         </label><br>
+        </form>
+
 
         <button onclick="voltar()">Voltar</button>
         <button onclick="cadastrarEstabelecimento()">Cadastrar</button>
