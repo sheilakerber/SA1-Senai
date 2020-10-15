@@ -39,9 +39,16 @@ function pesquisarItemLista() {
     //forma mais simples de resetar todos os campos
     document.forms[0].reset();
 
+    gerarTabelaComparativa()
 }
 
+//array para guardar somente os itens escolhidos pelo usuario
+let produtosInseridosUsuario = []
 
+//array que guarda os produtos filtrados pelo tipo de produto da lista
+var produtosSelecionados
+
+function gerarTabelaComparativa() {
     //limpa o html para não sobrescrever resultados
     document.getElementById("idTabelaHtml").innerHTML = ""
 
@@ -109,6 +116,8 @@ function generateTable(table, arrayObjetosSelecionados) {
 
         //cria o checkbox
         var checkSign = document.createElement('input')
+
+        //var idCheck
         checkSign.setAttribute('type', "checkbox")
         checkSign.setAttribute('name', "nomeCheckbox")
         checkSign.setAttribute('id', `${arrayObjetosSelecionados.indexOf(compra)}`)
@@ -135,9 +144,19 @@ function produtosChecked() {
     for (i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked) {
             var row = checkBoxes[i].parentNode.parentNode
+                //listaInnerHtml += row.cells[i].innerHTML
 
             //pega o conteudo das celulas dos itens selecionados
             var cells = row.getElementsByTagName("td")
+                // console.log("cells ", cells[0].innerText);
+                // console.log("cells ", cells[1].innerText);
+                // console.log("cells ", cells[2].innerText);
+                // console.log("cells ", cells[3].innerText);
+                // console.log("cells ", cells[4].innerText);
+                // console.log("cells ", cells[5].innerText);
+                // console.log("cells ", cells[6].innerText);
+
+            var tempObjeto = {}
             tempObjeto.Produto = cells[1].innerText
             tempObjeto.Marca = cells[2].innerText
             tempObjeto.PesoVolume = cells[3].innerText
@@ -145,6 +164,8 @@ function produtosChecked() {
             tempObjeto.Valor = cells[5].innerText
 
             objListaFinal.push(tempObjeto)
+            console.log("objListaFinal: ", objListaFinal);
+            localStorage.setItem("ListaFinal", JSON.stringify(objListaFinal))
 
         }
     }
