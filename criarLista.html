@@ -14,7 +14,12 @@
         </h3>
 
         <form action="">
+            <input id="produtoSelecionado" list="listaProdutos" placeholder="Selecione o produto">
             <datalist id="listaProdutos"></datalist>
+        </form><br>
+        
+        <button onclick="pesquisarItemLista()">Pesquisar</button>
+        <button id="botaoAddNovoItem" onclick="produtosChecked()">Add produto(s)</button>
         <button onclick="reiniciarLista()">Reiniciar lista</button><br>
 
         <table class="testTable" id="idTabelaHtml"></table>
