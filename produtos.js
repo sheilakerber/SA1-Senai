@@ -106,7 +106,8 @@ function inserirProduto() {
         document.getElementById("valorProdutoValidar").innerHTML = ' '
 
         alert("Produto inserido com sucesso!")
-    }
+        window.location.href = "inserirProduto.html"
+        }
 }
 
 //funcao que ordena a lista

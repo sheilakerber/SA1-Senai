@@ -169,12 +169,61 @@ function produtosChecked() {
 
         }
     }
+    listaPreview()
 }
 
 function reiniciarLista() {
     //limpa o html para não sobrescrever resultados
     document.getElementById("idTabelaHtml").innerHTML = ""
-
+    document.getElementById('tabelaPreview').innerHTML = ""
     //limpar array produtosListaFinal
     produtosListaFinal = []
+}
+
+function listaPreview() {
+    document.getElementById('tabelaPreview').innerHTML = ""
+
+    var listapreview = JSON.parse(localStorage.getItem("ListaFinal"))
+    console.log('listapreview', listapreview)
+
+    table = document.getElementById('tabelaPreview')
+
+    let dataPreview = ["Produto", "Marca", "Peso/Volume", "Estabelecimento", "Valor (R$)"]
+
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for (let key of dataPreview) {
+        let th = document.createElement("th");
+        let text = document.createTextNode(key);
+        th.appendChild(text);
+        row.appendChild(th);
+    }
+
+    function generateTablePreview(table, arrayObjetosSelecionados) {
+        for (let compra of arrayObjetosSelecionados) {
+            let row = table.insertRow();
+    
+            let cellProduto = row.insertCell();
+            let textProduto = document.createTextNode(compra.Produto)
+            cellProduto.appendChild(textProduto)
+    
+            let cellMarca = row.insertCell();
+            let textMarca = document.createTextNode(compra.Marca)
+            cellMarca.appendChild(textMarca)
+    
+            let cellPesoVolume = row.insertCell();
+            let textPesoVolume = document.createTextNode(compra.PesoVolume)
+            cellPesoVolume.appendChild(textPesoVolume)
+    
+            let cellEstabelecimento = row.insertCell();
+            let textEstabelecimento = document.createTextNode(compra.Estabelecimento)
+            cellEstabelecimento.appendChild(textEstabelecimento)
+    
+            let cellValor = row.insertCell();
+            let textValor = document.createTextNode(compra.Valor)
+            cellValor.appendChild(textValor)
+
+        }
+    }
+    generateTablePreview(table, listapreview)
 }
