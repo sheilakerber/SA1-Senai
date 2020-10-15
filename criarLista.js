@@ -1,5 +1,3 @@
-var indice
-
 //funcao que gera a lista de produtos a partir dos itens cadastrados no local storage
 function gerarListaProdutos() {
     var lista = JSON.parse(localStorage.getItem("listaTodosProdutos"))
@@ -23,7 +21,7 @@ function gerarListaProdutos() {
 var produtosListaFinal = []
 
 //funcao que mostra os itens escolhidos na tela, conforme o usuário escolhe os produtos
-function addItemLista() {
+function pesquisarItemLista() {
     //limpar array antes de inserir proximo produto
     produtosListaFinal = []
 
@@ -41,16 +39,10 @@ function addItemLista() {
     //forma mais simples de resetar todos os campos
     document.forms[0].reset();
 
-    finalizarLista()
-
 }
 
-let produtosInseridosUsuario = [] //array para guardar somente os itens escolhidos pelo usuario
-var produtosSelecionados //array que guarda os produtos filtrados pelo tipo de produto da lista
 
-function finalizarLista() {
     //limpa o html para não sobrescrever resultados
-    document.getElementById("listaFinal").innerHTML = ""
     document.getElementById("idTabelaHtml").innerHTML = ""
 
     //pega todos os produtos salvos no local storage
@@ -62,7 +54,6 @@ function finalizarLista() {
 
         //geração da tabela no html
         let table = document.querySelector("table");
-
         let data = Object.keys(produtosSelecionados[0]);
 
         generateTableHead(table, data);
@@ -86,7 +77,6 @@ function generateTableHead(table) {
 }
 
 var idRow
-
 var novoArrayListaCompras = []
 
 function generateTable(table, arrayObjetosSelecionados) {
@@ -119,7 +109,6 @@ function generateTable(table, arrayObjetosSelecionados) {
 
         //cria o checkbox
         var checkSign = document.createElement('input')
-            //var idCheck
         checkSign.setAttribute('type', "checkbox")
         checkSign.setAttribute('name', "nomeCheckbox")
         checkSign.setAttribute('id', `${arrayObjetosSelecionados.indexOf(compra)}`)
@@ -130,21 +119,11 @@ function generateTable(table, arrayObjetosSelecionados) {
         cellCheckBox.appendChild(checkSign)
 
         idRow = arrayObjetosSelecionados.indexOf(compra)
-            //console.log(arrayObjetosSelecionados.indexOf(compra));
     }
 }
 
 //novo array contendo a lista final do consumidor
 var objListaFinal = []
-
-//nosso obj temporario
-var tempObjeto = {
-    Produto: "temp",
-    Marca: "temp",
-    PesoVolume: "temp",
-    Estabelecimento: "temp",
-    Valor: "temp"
-}
 
 function produtosChecked() {
     //pegar tabela
@@ -153,26 +132,12 @@ function produtosChecked() {
     //get checked 
     var checkBoxes = getTable.getElementsByTagName("input")
 
-    //onde a lista vai aparecer
-    var listaInnerHtml = document.getElementById("testeCheck")
-
     for (i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked) {
             var row = checkBoxes[i].parentNode.parentNode
-            listaInnerHtml += row.cells[i].innerHTML
 
             //pega o conteudo das celulas dos itens selecionados
             var cells = row.getElementsByTagName("td")
-            console.log("cells ", cells[0].innerText);
-            console.log("cells ", cells[1].innerText);
-            console.log("cells ", cells[2].innerText);
-            console.log("cells ", cells[3].innerText);
-            console.log("cells ", cells[4].innerText);
-            console.log("cells ", cells[5].innerText);
-            console.log("cells ", cells[6].innerText);
-
-            //document.getElementById("testeCheck").innerHTML += cells[1].innerText + cells[2].innerText + cells[3].innerText + cells[4].innerText + cells[5].innerText + '<br>'
-
             tempObjeto.Produto = cells[1].innerText
             tempObjeto.Marca = cells[2].innerText
             tempObjeto.PesoVolume = cells[3].innerText
@@ -183,16 +148,10 @@ function produtosChecked() {
 
         }
     }
-    console.log("objListaFinal ", JSON.stringify(objListaFinal))
 }
-
-
-
-
 
 function reiniciarLista() {
     //limpa o html para não sobrescrever resultados
-    document.getElementById("listaFinal").innerHTML = ""
     document.getElementById("idTabelaHtml").innerHTML = ""
 
     //limpar array produtosListaFinal
