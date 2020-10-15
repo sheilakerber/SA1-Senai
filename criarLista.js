@@ -1,3 +1,5 @@
+var indice
+
 //funcao que gera a lista de produtos a partir dos itens cadastrados no local storage
 function gerarListaProdutos() {
     var lista = JSON.parse(localStorage.getItem("listaTodosProdutos"))
@@ -22,6 +24,9 @@ var produtosListaFinal = []
 
 //funcao que mostra os itens escolhidos na tela, conforme o usuário escolhe os produtos
 function addItemLista() {
+    //limpar array antes de inserir proximo produto
+    produtosListaFinal = []
+
     var novoProduto = document.getElementById("produtoSelecionado").value
 
     if (novoProduto == "") {
@@ -30,12 +35,14 @@ function addItemLista() {
         if (produtosListaFinal.includes(novoProduto)) {
             alert("Este produto já foi adicionado à lista!")
         } else {
-            document.getElementById("listaFinal").innerHTML += " - " + novoProduto + '<br>'
             produtosListaFinal.push(novoProduto)
         }
     }
     //forma mais simples de resetar todos os campos
     document.forms[0].reset();
+
+    finalizarLista()
+
 }
 
 let produtosInseridosUsuario = [] //array para guardar somente os itens escolhidos pelo usuario
@@ -65,9 +72,9 @@ function finalizarLista() {
     }
 }
 
-//////////   TABELA que COMPARA os PRECOS  ////////// Referencia: https://www.valentinog.com/blog/html-table/
+//   TABELA que COMPARA os PRECOS  Referencia: https://www.valentinog.com/blog/html-table/
 function generateTableHead(table) {
-    var nomeColunas = ["Data Compra", "Produto", "Marca", "Peso/Volume", "Estabelecimento", "Valor (R$)"]
+    var nomeColunas = ["Data Compra", "Produto", "Marca", "Peso/Volume", "Estabelecimento", "Valor (R$)", "Selecione"]
     let thead = table.createTHead();
     let row = thead.insertRow();
     for (let key of nomeColunas) {
@@ -78,6 +85,10 @@ function generateTableHead(table) {
     }
 }
 
+var idRow
+
+var novoArrayListaCompras = []
+
 function generateTable(table, arrayObjetosSelecionados) {
     for (let compra of arrayObjetosSelecionados) {
         let row = table.insertRow();
@@ -85,7 +96,6 @@ function generateTable(table, arrayObjetosSelecionados) {
         let cellDataCompra = row.insertCell();
         let textDataCompra = document.createTextNode(compra.dataCompraProduto)
         cellDataCompra.appendChild(textDataCompra)
-        console.log("qwe compra", compra);
 
         let cellProduto = row.insertCell();
         let textProduto = document.createTextNode(compra.produto)
@@ -106,8 +116,79 @@ function generateTable(table, arrayObjetosSelecionados) {
         let cellValor = row.insertCell();
         let textValor = document.createTextNode(compra.valorProduto)
         cellValor.appendChild(textValor)
+
+        //cria o checkbox
+        var checkSign = document.createElement('input')
+            //var idCheck
+        checkSign.setAttribute('type', "checkbox")
+        checkSign.setAttribute('name', "nomeCheckbox")
+        checkSign.setAttribute('id', `${arrayObjetosSelecionados.indexOf(compra)}`)
+            //console.log("arrayObjetosSelecionados.indexOf(compra) ", arrayObjetosSelecionados.indexOf(compra));
+
+        //insere o checkbox dentro da tabela
+        let cellCheckBox = row.insertCell();
+        cellCheckBox.appendChild(checkSign)
+
+        idRow = arrayObjetosSelecionados.indexOf(compra)
+            //console.log(arrayObjetosSelecionados.indexOf(compra));
     }
 }
+
+//novo array contendo a lista final do consumidor
+var objListaFinal = []
+
+//nosso obj temporario
+var tempObjeto = {
+    Produto: "temp",
+    Marca: "temp",
+    PesoVolume: "temp",
+    Estabelecimento: "temp",
+    Valor: "temp"
+}
+
+function produtosChecked() {
+    //pegar tabela
+    var getTable = document.getElementById("idTabelaHtml")
+
+    //get checked 
+    var checkBoxes = getTable.getElementsByTagName("input")
+
+    //onde a lista vai aparecer
+    var listaInnerHtml = document.getElementById("testeCheck")
+
+    for (i = 0; i < checkBoxes.length; i++) {
+        if (checkBoxes[i].checked) {
+            var row = checkBoxes[i].parentNode.parentNode
+            listaInnerHtml += row.cells[i].innerHTML
+
+            //pega o conteudo das celulas dos itens selecionados
+            var cells = row.getElementsByTagName("td")
+            console.log("cells ", cells[0].innerText);
+            console.log("cells ", cells[1].innerText);
+            console.log("cells ", cells[2].innerText);
+            console.log("cells ", cells[3].innerText);
+            console.log("cells ", cells[4].innerText);
+            console.log("cells ", cells[5].innerText);
+            console.log("cells ", cells[6].innerText);
+
+            //document.getElementById("testeCheck").innerHTML += cells[1].innerText + cells[2].innerText + cells[3].innerText + cells[4].innerText + cells[5].innerText + '<br>'
+
+            tempObjeto.Produto = cells[1].innerText
+            tempObjeto.Marca = cells[2].innerText
+            tempObjeto.PesoVolume = cells[3].innerText
+            tempObjeto.Estabelecimento = cells[4].innerText
+            tempObjeto.Valor = cells[5].innerText
+
+            objListaFinal.push(tempObjeto)
+
+        }
+    }
+    console.log("objListaFinal ", JSON.stringify(objListaFinal))
+}
+
+
+
+
 
 function reiniciarLista() {
     //limpa o html para não sobrescrever resultados
@@ -116,6 +197,4 @@ function reiniciarLista() {
 
     //limpar array produtosListaFinal
     produtosListaFinal = []
-
-
 }
