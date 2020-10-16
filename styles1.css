@@ -108,7 +108,7 @@ button:hover {
     font-weight: lighter;
     font-style:italic;
 }
-#nomeValidar, #nascimentoValidar, #cpfValidar, #emailValidar, #bairroValidar, #senhaValidar {
+#nomeValidar, #nascimentoValidar, #cpfValidar, #emailValidar, #bairroValidar, #senhaValidar, #loginValidar {
     color: black;
     font-size: 14px;
     font-weight: lighter;
