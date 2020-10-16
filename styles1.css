@@ -1,3 +1,9 @@
+html {
+    font-family: 'Lato', sans-serif;
+}
+
+
+
 
 body, ul, li {
     margin: 0px;
@@ -120,13 +126,38 @@ input {
     border-radius: 3px;
     width: 150px;
     text-align: center;
-    color: rgb(190, 190, 190);
+    color: rgb(31, 31, 31);
 }
+input, textarea, select {
+    outline: 0;
+}
+
 input[type="date"] {
     color: rgb(134, 134, 134);
 }
+
+	
+input[type="text"], input[type="number"], input[type="date"]{
+    outline:none;
+}
+
 input:hover {
     border: 1px solid orange;
+}
+
+input:active {
+    border: 1px solid orange;
+}
+
+input[type="number"]:-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+
+input[type="number"] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
 }
 
 h5 > a {
@@ -138,3 +169,4 @@ h5 > a:hover {
     color:orange;
 
 }
+
