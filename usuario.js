@@ -22,6 +22,12 @@ function criaUsuario(nome, nascimento, cpf, email, senha, bairro) {
 
 //adiciona o novo usuario ao array 'usuarios[]'
 function cadastrarUsuario() {
+    document.getElementById("nomeValidar").innerHTML = ''
+    document.getElementById("nascimentoValidar").innerHTML = ''
+    document.getElementById("cpfValidar").innerHTML = ''
+    document.getElementById("emailValidar").innerHTML = ''
+    document.getElementById("senhaValidar").innerHTML = ''
+    document.getElementById("bairroValidar").innerHTML = null
     //validar cadastro
     //validar nome (Se está em branco ou já foi cadastrado)
     if (nome.value == "") {
@@ -34,93 +40,76 @@ function cadastrarUsuario() {
     }
 
     //validar se o campo cpf esta vazio e se esta correto
+    if (cpf == '' || cpf == null) {
+    
+        document.getElementById("cpfValidar").innerHTML = `O campo CPF está em branco!`
 
-
-
-    if (cpf == "") {
-        verificarCpf()
-        document.getElementById("cpfValidar").innerHTML = `Digite um CPF valido!`
-
-    } else if ((cpf !== "") && (verificarCpf() == true)) {
-        compararCpfs()
+    }
+    if ((cpf !== '') && (validarCPF() !== true)) {
+        document.getElementById("cpfValidar").innerHTML = `CPF inválido!!`
 
     }
 
+    if ((cpf !== '') && (validarCPF() == true) && (compararCpfs() == true)) {
+        document.getElementById("cpfValidar").innerHTML = `Esse CPF já foi cadastrado!`
 
-    function verificarCpf() {
-
-        //pegando o cpf do usuario do html
-        let cpfUsuario = cpf.value
-
-        //separando o cpf em digitos
-        let cpfUsuarioDigitos = cpfUsuario.toString().split('')
-        let digitos = cpfUsuarioDigitos.map(Number)
-
-        //atribuindo variaveis aos 2 ultimos digitos do cpf
-        let digitoVerificador1 = digitos[9]
-        let digitoVerificador2 = digitos[10]
-
-        //criando a variavel multiplicadora
-        let multiplicadorDig1 = 10
-        let multiplicadorDig2 = 11
-
-        //criando variaveis soma dos dois digitos verificadores
-        let somaVerificador1 = 0
-        let somaVerificador2 = 0
-
-        //verificacao do primeiro digito
-        //loop para somar a multiplicacao dos 9 primeiros digit com 10, 9, 8... ate 2
-        for (i = 0; i < 9; i++) {
-            somaVerificador1 += (digitos[i] * (multiplicadorDig1))
-            multiplicadorDig1--
-        }
-
-        //calculo padrao com a soma encontrada para verificar o primeiro digito
-        let restoDigito1 = ((somaVerificador1 * 10) % 11)
-        if (restoDigito1 == 10 || restoDigito1 == 11) {
-            restoDigito1 = 0
-        } else {
-            restoDigito1
-        }
-
-        //verificacao do segundo digito
-        //loop para somar a multiplicacao dos 10 primeiros digit com 11, 10, 9, 8... ate 2
-        for (i = 0; i < 10; i++) {
-            somaVerificador2 += (digitos[i] * multiplicadorDig2)
-            multiplicadorDig2--
-        }
-
-        //calculo padrao com a soma encontrada para verificar o segundo digito
-        let restoDigito2 = ((somaVerificador2 * 10) % 11)
-        if (restoDigito2 == 10 || restoDigito2 == 11) {
-            restoDigito2 = 0
-        } else {
-            restoDigito2
-        }
-
-        //resultado usuario
-        if (restoDigito1 === digitoVerificador1 && restoDigito2 === digitoVerificador2) {
+    } 
+    
+    function validarCPF(){
+        if(valida_cpf(document.getElementById("cpfUsuario").value))
             return true;
-
-        } else {
-            return false;
-        }
+        else
+            document.getElementById("cpfValidar").innerHTML = `CPF inválido!!`
+    }
+    
+    function valida_cpf(cpf){
+          var numeros, digitos, soma, i, resultado, digitos_iguais;
+          digitos_iguais = 1;
+          if (cpf.length < 11)
+                return false;
+          for (i = 0; i < cpf.length - 1; i++)
+                if (cpf.charAt(i) != cpf.charAt(i + 1))
+                      {
+                      digitos_iguais = 0;
+                      break;
+                      }
+          if (!digitos_iguais)
+                {
+                numeros = cpf.substring(0,9);
+                digitos = cpf.substring(9);
+                soma = 0;
+                for (i = 10; i > 1; i--)
+                      soma += numeros.charAt(10 - i) * i;
+                resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+                if (resultado != digitos.charAt(0))
+                      return false;
+                numeros = cpf.substring(0,10);
+                soma = 0;
+                for (i = 11; i > 1; i--)
+                      soma += numeros.charAt(11 - i) * i;
+                resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+                if (resultado != digitos.charAt(1))
+                      return false;
+                return true;
+                }
+          else
+                return false;
     }
 
     //validar se o cpf já foi cadastrado
     function compararCpfs() {
 
-        let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
-        console.log(listaUsuarios)
-
         for (i = 0; i < usuarios.length; i++) {
 
-            let numeroCpf = cpf.value
-            var validarCpf = listaUsuarios.filter(c => c.cpf.includes(numeroCpf))
-            console.log(validarCpf)
-            if (validarCpf.length == 1) {
-                document.getElementById("cpfValidar").innerHTML = `Esse CPF já foi cadastrado!`
+            let numeroCpf = document.getElementById("cpfUsuario").value
+            
+            console.log(usuarios[i].cpf)
+            if (usuarios[i].cpf !== numeroCpf) {
+                console.log("Não foi cadastrado!")
                 return false
+            } else {
+                document.getElementById("cpfValidar").innerHTML = `Esse CPF já foi cadastrado!`
+                return true
             }
         }
 
@@ -133,9 +122,7 @@ function cadastrarUsuario() {
         } else if (((email !== '') && (validarEmail(email) == false))) {
             document.getElementById("emailValidar").innerHTML = `E-mail invalido!`
 
-        } else {
-            validarEmail(email)
-    }
+        }
 
     //validacao da senha
     if (senha.value !== senhaConfirmacao.value) {
@@ -162,17 +149,22 @@ function cadastrarUsuario() {
     }
 
     //Fazer a validação das validações para rodar a função construtura e dar push no array
-    if ((nome.value !== "") && (nascimento.value !== "") && (compararCpfs() !== false) && (verificarCpf() == true) && ((email.value !== "") && (validarEmail(email) == true)) && (senha.value == senhaConfirmacao.value) && (bairro.value !== "") && (dataBairros.includes(bairro.value) == true) && (bairro.value !== null)) {
+    if ((nome.value !== "") && (nascimento.value !== "") && ((cpf !== '') && (validarCPF() == true) && (compararCpfs() !== true)) && ((email.value !== "") && (validarEmail(email) == true)) && (senha.value == senhaConfirmacao.value) && (bairro.value !== "") && (dataBairros.includes(bairro.value) == true) && (bairro.value !== null)) {
 
-        let novoUsuario = new criaUsuario(nome.value, nascimento.value, cpf.value, email.value, senha.value, bairro.value)
-        usuarios.push(novoUsuario)
-        alert("Usuário cadastrado com sucesso!")
-        localStorage.setItem("usuários", JSON.stringify(usuarios))
-        //window.location.href = "loginUsuario.html"
-    }
+         let novoUsuario = new criaUsuario(nome.value, nascimento.value, cpf.value, email.value, senha.value, bairro.value)
+         usuarios.push(novoUsuario)
+         alert("Usuário cadastrado com sucesso!")
+         localStorage.setItem("usuários", JSON.stringify(usuarios))
+     }
     //limpar campos
     document.forms[0].reset();
-
+    document.getElementById("nomeUsuario").value = ''
+    document.getElementById("nascimentoUsuario").value = ''
+    document.getElementById("cpfUsuario").value = ''
+    document.getElementById("emailUsuario").value = ''
+    document.getElementById("senhaUsuario").value = ''
+    document.getElementById("confirmaSenhaUsuario").value = ''
+    document.getElementById("bairrosUsuario").value = null
 }
 
 //Função para logar

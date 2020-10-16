@@ -6,6 +6,7 @@
         <link href="style.css" rel="stylesheet" type="text/css"/>
         <title>Criar Lista</title>
         <script src="criarLista.js"></script>
+
     </head>
     <body onload="gerarListaProdutos()">
         <h3>
@@ -13,19 +14,19 @@
         </h3>
 
         <form action="">
-            <input id="produtoSelecionado" list="listaProdutos">
+            <input id="produtoSelecionado" list="listaProdutos" placeholder="Selecione o produto">
             <datalist id="listaProdutos"></datalist>
-        </form>
-
-        <p id="produtosInseridosUsuario">Sua lista irá aparecer aqui:</p>
-
-        <button id="botaoAddNovoItem" onclick="addItemLista()">Add à lista</button>
-        <button onclick="finalizarLista()">Finalizar lista</button>
+        </form><br>
+        
+        <button onclick="pesquisarItemLista()">Pesquisar</button>
+        <button id="botaoAddNovoItem" onclick="produtosChecked()">Add produto(s)</button>
         <button onclick="reiniciarLista()">Reiniciar lista</button><br>
 
-
-        <p id="listaFinal"></p>
-
-        <table id="idTabelaHtml"></table>
+        <table class="testTable" id="idTabelaHtml"></table>
+        
+        <p>
+        <section id="previewLista">
+            <table id="tabelaPreview"></table>
+        </section>
     </body>
 </html>

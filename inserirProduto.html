@@ -3,57 +3,56 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastrar Produto</title>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <title>Inserir Produto</title>
     </head>
-    <body onload="gerarBairros(), gerarTiposProdutos(),  gerarListaEstabelecimentos()">
+    <body onload="gerarBairros(), gerarListaProdutos(),  gerarListaEstabelecimentos()">
 
-        <h3><a href="https://www.google.com">Criar Tabela</a></h3>
+        <h3><a href="criarLista.html">Criar Lista</a></h3>
         <h2>Complete as informações abaixo</h2>
 
         <form action="">
-        <label>Produto:
+        <label>Produto:</label>
             <input list="listaProdutos" name="listaProdutos" placeholder="Escolha da lista" id="produtoInserido"/>
-            <datalist id="listaProdutos">
-            </datalist>
             <div id="produtoValidar"></div>
-        </label><br>
+            <datalist id="listaProdutos"></datalist>
+        <br>
 
-        <label>Marca:
+        <label>Marca:</label>
                 <input list="marcaProduto" name="marcaProduto" id="marcaProdutoInserido" placeholder="Marca do produto" required="required">
                 <div id="marcaProdutoValidar"></div>
                 <datalist id="marcaProdutoInserido"></datalist>
-            </label><br>
+            <br>
 
-            <label>Peso/Volume:
+            <label>Peso/Volume:</label>
                 <input list="volumePesoProduto" name="volumePesoProduto" id="volumePesoProdutoInserido" placeholder="Ex: 1L, 500g, 1Kg" required="required">
                 <div id="pesoVolumeProdutoValidar"></div>
                 <datalist id="volumePesoProdutoInserido"></datalist>
-            </label><br>
+            <br>
 
 
-        <label>Data da compra:
+        <label>Data da compra:</label>
             <input id="dataCompra" type="date" required>
             <div id="dataCompraProdutoValidar"></div>
-        </label><br>
+        <br>
 
-        <label>Estabelecimento:
+        <label>Estabelecimento:</label>
             <input list="listaEstabelecimentos" name="listaEstabelecimento" id="estabelecimentoProduto" placeholder="Local da compra">
+            <div id="estabelecimentoProdutoValidar"></div>
             <datalist id="listaEstabelecimentos" >         
             </datalist>
-            <div id="estabelecimentoProdutoValidar"></div>
-        </label><br>
+        <br>
 
-        <label>Bairro:
+        <label>Bairro:</label>
             <input list="bairros" id="bairroProduto" name="bairro" placeholder="Selecione seu bairro" required >
-            <datalist id="bairros">        
-            </datalist> 
             <div id="bairroProdutoValidar"></div>
-        </label><br>
+            <datalist id="bairros"></datalist> 
+        <br>
 
-        <label>Valor unitário:
+        <label>Valor unitário:</label>
             <input id="valorProduto" type="number" required placeholder="Ex: 2.50">
             <div id="valorProdutoValidar"></div>
-        </label><br>
+        <br>
         </form>
 
         <button onclick="voltar()">Voltar</button>
@@ -62,6 +61,7 @@
     </body>
     <script src="usuario.js"></script>
     <script src="produtos.js"></script>
+    <script src="criarLista.js"></script>
     <script src="bairros.js"></script>
     <script src="estabelecimentos.js"></script>
 </html>
