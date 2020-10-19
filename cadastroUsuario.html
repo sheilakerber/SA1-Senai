@@ -9,13 +9,15 @@
     </head>
     <body onload="gerarBairros()">
 
-        <section id="main">
+    <section id="main">
         <header class="header">
             <a href="">SuperLista</a>
             <nav class="nav">
                 <ul class ="menu">
-                    <li><a href="">Inicio</a></li>
+                    <li><a href="ladingPage.html">Inicio</a></li>
+                    <li><a href="cadastroUsuario.html">Cadastrar</a></li>
                     <li><a href="loginUsuario.html">Login</a></li>
+                    <li><a href="criarLista.html">Pesquisar</a></li>
                     <li><a href="">Sobre</a></li>
                 </ul>
             </nav>
@@ -27,7 +29,7 @@
         
             <form action="">
             <label>Nome:<br>
-                <input id="nomeUsuario" type="text" required>
+                <input id="nomeUsuario" type="text" minlength="5" maxlength="35" required>
                 <div id="nomeValidar"></div>
             </label><br>
 
@@ -37,31 +39,31 @@
             </label><br>
 
             <label>CPF:<br>
-                <input id="cpfUsuario" type="number" required>
+                <input id="cpfUsuario" type="number" minlength="11" maxlength="11" required>
                 <div id="cpfValidar">
                     <div id="campo-info">Campo Obrigatório!</div>
                 </div>
             </label><br>
 
             <label>E-mail:<br>
-                <input id="emailUsuario" type="email" required>
+                <input id="emailUsuario" type="email" minlength="11" maxlength="35"  required>
                 <div id="emailValidar"></div>
             </label><br>
 
             <label>Senha:<br>
-                <input id="senhaUsuario" type="password" required>
+                <input id="senhaUsuario" type="password" minlength="4" maxlength="12" required>
                 <div id="campo-info">Campo Obrigatório!</div>
             </label><br>
 
             <label>Confirme sua senha:<br>
-                <input id="confirmaSenhaUsuario" type="password" required>
+                <input id="confirmaSenhaUsuario" type="password" minlength="4" maxlength="12" required>
                 <div id="senhaValidar">
                     <div id="campo-info">Campo Obrigatório!</div>
                 </div>
             </label><br>
 
             <label>Bairro:<br>
-                <input list="bairros" id="bairroUsuario" name="bairro"  placeholder="Selecione seu bairro" required >
+                <input list="bairros" id="bairroUsuario" name="bairro"  placeholder="Selecione seu bairro" type="text" required >
                 <datalist id="bairros">     
                 </datalist>
                 <div id="bairroValidar"></div>    
@@ -70,10 +72,8 @@
 
             <button onclick="voltar()">Voltar</button>
             <button onclick="cadastrarUsuario()">Cadastrar</button>
-            </section>
-
-          
-        </section>
+        </section>  
+    </section>
         <footer class="footer">.</footer>
     </body>
     <script src="usuario.js"></script>

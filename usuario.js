@@ -40,28 +40,29 @@ function cadastrarUsuario() {
     }
 
     //validar se o campo cpf esta vazio e se esta correto
-    if (cpf == '' || cpf == null) {
-    
+    if (cpf.value == "" || cpf == null) {
         document.getElementById("cpfValidar").innerHTML = `O campo CPF está em branco!`
-
-    }
-    if ((cpf !== '') && (validarCPF() !== true)) {
-        document.getElementById("cpfValidar").innerHTML = `CPF inválido!!`
-
     }
 
-    if ((cpf !== '') && (validarCPF() == true) && (compararCpfs() == true)) {
+    if ((cpf.value !== "") && (validarCPF() !== true) && (cpf.value.length == 11)) {
+        document.getElementById("cpfValidar").innerHTML = `Digite um CPF válido!`
+    }
+
+    if ((cpf.value !== "") && (validarCPF() !== true) && (cpf.value.length !== 11)) {
+        document.getElementById("cpfValidar").innerHTML = `O campo CPF deve conter 11 dígitos!`
+    }
+
+    if ((cpf.value !== "") && (validarCPF() == true) && (compararCpfs() == true)) {
         document.getElementById("cpfValidar").innerHTML = `Esse CPF já foi cadastrado!`
-
     } 
-    
+  
     function validarCPF(){
         if(valida_cpf(document.getElementById("cpfUsuario").value))
             return true;
-        else
-            document.getElementById("cpfValidar").innerHTML = `CPF inválido!!`
     }
     
+
+    //Validador de CPF
     function valida_cpf(cpf){
           var numeros, digitos, soma, i, resultado, digitos_iguais;
           digitos_iguais = 1;
@@ -119,15 +120,10 @@ function cadastrarUsuario() {
     if (email.value == "") {
         document.getElementById("emailValidar").innerHTML = `O campo e-mail está em branco!`
         //validar se o e-mail esta escrito corretamente
-        } else if (((email !== '') && (validarEmail(email) == false))) {
-            document.getElementById("emailValidar").innerHTML = `E-mail invalido!`
+        } else if (((email !== "") && (validarEmail(email) == false))) {
+            document.getElementById("emailValidar").innerHTML = `E-mail inválido!`
 
         }
-
-    //validacao da senha
-    if (senha.value !== senhaConfirmacao.value) {
-        document.getElementById("senhaValidar").innerHTML = `Senhas incompatíveis!`
-    }
 
     //função validar expressão do e-mail
     function validarEmail(email) {
@@ -140,6 +136,23 @@ function cadastrarUsuario() {
         }
     }
 
+    //validacao da senha
+    if (senha.value == "") {
+        document.getElementById("senhaValidar").innerHTML = `O campo senha está em branco!`
+    }  else if (senha.value !== "" && senhaConfirmacao.value === "") {
+        document.getElementById("senhaValidar").innerHTML = `O campo  de confirmação de senha está em branco!`
+    }
+
+    if (senhaConfirmacao.value == "") {
+        document.getElementById("senhaValidar").innerHTML = `O campo  de confirmação de senha está em branco!`
+    }  else if (senha.value === "" && senhaConfirmacao.value !== "") {
+        document.getElementById("senhaValidar").innerHTML = `O campo senha está em branco!`
+    }
+
+    if ((senha.value !== "" && senhaConfirmacao.value !== "") && (senha.value !== senhaConfirmacao.value)) {
+        document.getElementById("senhaValidar").innerHTML = `Os campos senhas e confirmação de senha estão com valores diferentes!`
+    }
+    
     //validar bairro (Se está em branco)
     if ((bairro.value == "") || (dataBairros.includes(bairro.value) !== true)) {
         document.getElementById("bairroValidar").innerHTML = `O campo bairro não foi selecionado!`
@@ -149,7 +162,7 @@ function cadastrarUsuario() {
     }
 
     //Fazer a validação das validações para rodar a função construtura e dar push no array
-    if ((nome.value !== "") && (nascimento.value !== "") && ((cpf !== '') && (validarCPF() == true) && (compararCpfs() !== true)) && ((email.value !== "") && (validarEmail(email) == true)) && (senha.value == senhaConfirmacao.value) && (bairro.value !== "") && (dataBairros.includes(bairro.value) == true) && (bairro.value !== null)) {
+    if ((nome.value !== "") && (nascimento.value !== "") && ((cpf !== "") && (validarCPF() == true) && (compararCpfs() !== true)) && ((email.value !== "") && (validarEmail(email) == true)) && (senha.value == senhaConfirmacao.value) && (bairro.value !== "") && (dataBairros.includes(bairro.value) == true) && (bairro.value !== null)) {
 
          let novoUsuario = new criaUsuario(nome.value, nascimento.value, cpf.value, email.value, senha.value, bairro.value)
          usuarios.push(novoUsuario)
@@ -158,12 +171,12 @@ function cadastrarUsuario() {
      }
     //limpar campos
     document.forms[0].reset();
-    document.getElementById("nomeUsuario").value = ''
-    document.getElementById("nascimentoUsuario").value = ''
-    document.getElementById("cpfUsuario").value = ''
-    document.getElementById("emailUsuario").value = ''
-    document.getElementById("senhaUsuario").value = ''
-    document.getElementById("confirmaSenhaUsuario").value = ''
+    document.getElementById("nomeUsuario").value = ""
+    document.getElementById("nascimentoUsuario").value = ""
+    document.getElementById("cpfUsuario").value = ""
+    document.getElementById("emailUsuario").value = ""
+    document.getElementById("senhaUsuario").value = "'"
+    document.getElementById("confirmaSenhaUsuario").value = ""
     document.getElementById("bairrosUsuario").value = null
 }
 
@@ -206,7 +219,7 @@ function alterarSenha() {
             alert("Senha alterada com sucesso!")
             window.location.href = "loginUsuario.html"
         } else {
-            document.getElementById("loginValidar").innerHTML = `CPF e/ou E-mail invalido!`
+            document.getElementById("loginValidar").innerHTML = `CPF e/ou E-mail inválido!`
         }
     }
 }

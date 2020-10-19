@@ -3,25 +3,49 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles1.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
         <title>Alterar Senha</title>
     </head>
     <body>
-        <h1>Alterar Senha</h1>
-        <label>CPF:
-            <input id="alterarSenhaCpf" type="number" required>
-        </label><br>
 
-        <label>E-mail:
-            <input id="alterarSenhaEmail" type="e-mail" required>
-        </label><br>
+        <section id="main">
+            <header class="header">
+                <a href="">SuperLista</a>
+                <nav class="nav">
+                    <ul class ="menu">
+                        <li><a href="ladingPage.html">Inicio</a></li>
+                        <li><a href="cadastroUsuario.html">Cadastrar</a></li>
+                        <li><a href="loginUsuario.html">Login</a></li>
+                        <li><a href="criarLista.html">Pesquisar</a></li>
+                        <li><a href="">Sobre</a></li>
+                    </ul>
+                </nav>
+            </header>
 
-        <label>Nova Senha:
-            <input id="alterarSenhaNova" type="password" required>
-            <div id="loginValidar"></div>
-        </label><br>
+            <section class="corpo">   
 
-        <button onclick="voltar()">Voltar</button>
-        <button onclick="alterarSenha()">Alterar</button>
+                <h1>Alterar Senha</h1>
+
+                <label>CPF:<br>
+                    <input id="alterarSenhaCpf" type="number" required>
+                </label><br>
+
+                <label>E-mail:<br>
+                    <input id="alterarSenhaEmail" type="e-mail" required>
+                </label><br>
+
+                <label>Nova Senha:<br>
+                    <input id="alterarSenhaNova" type="password" required>
+                    <div id="loginValidar"></div>
+                </label><br>
+
+                <button onclick="voltar()">Voltar</button>
+                <button onclick="alterarSenha()">Alterar</button>
+
+            </section>       
+        </section>  
+            <footer class="footer">.</footer>   
     </body>
     <script src="usuario.js"></script>
     <script src="produtos.js"></script>
