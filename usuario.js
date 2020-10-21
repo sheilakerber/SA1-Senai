@@ -22,6 +22,13 @@ function criaUsuario(nome, nascimento, cpf, email, senha, bairro) {
 
 //adiciona o novo usuario ao array 'usuarios[]'
 function cadastrarUsuario() {
+
+    let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
+
+    if (!listaUsuarios) {
+        listaUsuarios = [] // primeira vez que usa, se não for válido, seta para array vazio
+    }
+
     //validar cadastro
     //validar nome (Se está em branco ou já foi cadastrado)
     if (nome.value == "") {
@@ -165,9 +172,11 @@ function cadastrarUsuario() {
     if ((nome.value !== "") && (nascimento.value !== "") && (compararCpfs() !== false) && (verificarCpf() == true) && ((email.value !== "") && (validarEmail(email) == true)) && (senha.value == senhaConfirmacao.value) && (bairro.value !== "") && (dataBairros.includes(bairro.value) == true) && (bairro.value !== null)) {
 
         let novoUsuario = new criaUsuario(nome.value, nascimento.value, cpf.value, email.value, senha.value, bairro.value)
-        usuarios.push(novoUsuario)
+        
+        let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
+        listaUsuarios.push(novoUsuario)
         alert("Usuário cadastrado com sucesso!")
-        localStorage.setItem("usuários", JSON.stringify(usuarios))
+        localStorage.setItem("usuários", JSON.stringify(listaUsuarios))
         //window.location.href = "loginUsuario.html"
     }
     //limpar campos

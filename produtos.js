@@ -97,13 +97,13 @@ function inserirProduto() {
 
         //limpar campos para facilitar a add do próximo produto
         document.forms[0].reset();
-        document.getElementById("produtoValidar").innerHTML = ' '
-        document.getElementById("marcaProdutoValidar").innerHTML = ' '
-        document.getElementById("pesoVolumeProdutoValidar").innerHTML = ' '
-        document.getElementById("dataCompraProdutoValidar").innerHTML = ' '
-        document.getElementById("estabelecimentoProdutoValidar").innerHTML = ' '
-        document.getElementById("bairroProdutoValidar").innerHTML = ' '
-        document.getElementById("valorProdutoValidar").innerHTML = ' '
+        // document.getElementById("produtoValidar").innerHTML = ' '
+        // document.getElementById("marcaProdutoValidar").innerHTML = ' '
+        // document.getElementById("pesoVolumeProdutoValidar").innerHTML = ' '
+        // document.getElementById("dataCompraProdutoValidar").innerHTML = ' '
+        // document.getElementById("estabelecimentoProdutoValidar").innerHTML = ' '
+        // document.getElementById("bairroProdutoValidar").innerHTML = ' '
+        // document.getElementById("valorProdutoValidar").innerHTML = ' '
 
         alert("Produto inserido com sucesso!")
         window.location.href = "inserirProduto.html"

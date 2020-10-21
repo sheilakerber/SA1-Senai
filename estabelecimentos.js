@@ -17,6 +17,12 @@ function criaEstabelecimento(estabelecimento, cep, contato, bairroMercado) {
 }
 //adicionar novo estabelecimento no Array estabelecimentos []
 function cadastrarEstabelecimento() {
+    
+    let listaDeEstabelecimentosObjeto = JSON.parse(localStorage.getItem("estabelecimentos"))
+
+    if (!listaDeEstabelecimentosObjeto) {
+        listaDeEstabelecimentosObjeto = [] // primeira vez que usa, se não for válido, seta para array vazio
+    }
 
     //validar cadastro
     if (estabelecimento.value == '') {

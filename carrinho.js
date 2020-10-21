@@ -56,11 +56,12 @@ function Carrinho() {
             qtde.setAttribute('type', "number")
             qtde.setAttribute('name', "nomeQtde")
             qtde.setAttribute('id', `${arrayObjetosSelecionados.indexOf(compra)}`)
-            qtde.setAttribute('value', 1)
+            // qtde.setAttribute('value', 1)
 
             //insere o input dentro da tabela
             let cellQtde = row.insertCell();
-            cellQtde.appendChild(qtde)
+            let textQtde = document.createTextNode(qtde.value)
+            cellQtde.appendChild(textQtde)
             
             //inserção e cálculo subtotal
             
