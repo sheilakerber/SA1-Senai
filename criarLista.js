@@ -55,6 +55,9 @@ function gerarTabelaComparativa() {
     //pega todos os produtos salvos no local storage
     var arrayObjetosLista = JSON.parse(localStorage.getItem("cadastros"))
 
+    //ordenar os produtos por preco
+    arrayObjetosLista.sort(dynamicSort("valorProduto"))
+
     if (arrayObjetosLista) {
         //filtro para pegar apenas os objetos da lista criada pelo usuario
         produtosSelecionados = arrayObjetosLista.filter(objeto => produtosListaFinal.includes(objeto.produto))
@@ -135,6 +138,12 @@ function generateTable(table, arrayObjetosSelecionados) {
 var objListaFinal = []
 
 function produtosChecked() {
+    //faz o botao AddCarrinho aparecer na tela quando a tabela preview é gerada
+    var buttonCarrinho = document.getElementById("botaoCarrinho")
+    if (buttonCarrinho.style.display === "none") {
+        buttonCarrinho.style.display = "block"
+    }
+
     //pegar tabela
     var getTable = document.getElementById("idTabelaHtml")
 
@@ -184,6 +193,10 @@ function listaPreview() {
     document.getElementById('tabelaPreview').innerHTML = ""
 
     var listapreview = JSON.parse(localStorage.getItem("ListaFinal"))
+
+    //ordenar os produtos por nome
+    listapreview.sort(dynamicSort("Produto"))
+
     console.log('listapreview', listapreview)
 
     table = document.getElementById('tabelaPreview')
@@ -225,5 +238,24 @@ function listaPreview() {
 
         }
     }
+
     generateTablePreview(table, listapreview)
+}
+
+//funcao que ordena a lista
+//Ref:<https://ourcodeworld.com/articles/read/764/how-to-sort-alphabetically-an-array-of-objects-by-key-in-javascript>
+function dynamicSort(property) {
+    var sortOrder = 1;
+    if (property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+
+    return function(a, b) {
+        if (sortOrder == -1) {
+            return b[property].localeCompare(a[property]);
+        } else {
+            return a[property].localeCompare(b[property]);
+        }
+    }
 }
