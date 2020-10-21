@@ -138,6 +138,12 @@ function generateTable(table, arrayObjetosSelecionados) {
 var objListaFinal = []
 
 function produtosChecked() {
+    //faz o botao AddCarrinho aparecer na tela quando a tabela preview é gerada
+    var buttonCarrinho = document.getElementById("botaoCarrinho")
+    if (buttonCarrinho.style.display === "none") {
+        buttonCarrinho.style.display = "block"
+    }
+
     //pegar tabela
     var getTable = document.getElementById("idTabelaHtml")
 
