@@ -3,22 +3,42 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles1.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
         <title>Login</title>
     </head>
     <body>
-        <h1>Login</h1>
-        <label>CPF:
-            <input id="loginCpf" type="number" required>
-        </label><br>
+        <section id="main">
+            <header class="header">
+                <a href="">Super Lista</a>
+                <nav class="nav">
+                    <ul class ="menu">
+                        <li><a href="ladingPage.html">Inicio</a></li>
+                        <li><a href="cadastroUsuario.html">Cadastrar</a></li>
+                        <li><a href="loginUsuario.html">Login</a></li>
+                        <li><a href="criarLista.html">Pesquisar</a></li>
+                        <li><a href="">Sobre</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <section class="corpo">
+            <h1>Login</h1>
+            <label>CPF:<br>
+                <input id="loginCpf" type="number" required>
+            </label><br>
 
-        <label>Senha:
-            <input id="loginSenha" type="password" required>
-        </label>
-        <h5>Esqueceu sua senha? <a href="alterarSenha.html">Alterar aqui</a>!</h5>
-        <div id="loginValidar"></div>
+            <label>Senha:<br>
+                <input id="loginSenha" type="password" required>
+                <div id="loginValidar"></div>
+            </label>
+            <h5>Esqueceu sua senha? <a href="alterarSenha.html">Alterar aqui!</a></h5>
+            
 
-        <button onclick="voltar()">Voltar</button>
-        <button onclick="login()">Login</button>
+            <button onclick="voltar()">Voltar</button>
+            <button onclick="login()">Login</button>
+        </section>
+            <footer class="footer">.</footer>
+        
     </body>
     <script src="usuario.js"></script>
     <script src="produtos.js"></script>

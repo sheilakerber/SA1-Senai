@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+    <title>Painel de controle</title>
+</head>
+<body>
+    <section>
+        <input type="button" value="Listar Usuários" onclick="gerarListaUsuarios()">
+        <input type="button" value="Listar Clientes">
+        <input type="button" value="Listar Produtos" onclick="gerarListaProdutos()">
+        <input type="button" value="Listar Estabelecimentos" onclick="gerarListaEstabelecimentos()">
+    </section>
+    <section>
+        <table id="listaCadastrados"></table>
+    </section>
+    <section id='botoesEditarExcluir'>
+    </section>
+</body>
+<script src="paineldecontrole.js"></script>
+</html>

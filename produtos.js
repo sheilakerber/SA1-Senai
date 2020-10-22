@@ -3,9 +3,10 @@ var dataProduto = ["Açúcar refinado", "Arroz", "Azeite", "Café", "Farinha", "
 
 //funcao que cria a lista de produtos disponiveis em criarLista.html a partir daqueles cadastrados em inserirProduto.html
 function gerarTiposProdutos() {
-    for (i = 0; i < dataProduto.length; i++) {
+    let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
+    for (i = 0; i < listaTodosProdutos.length; i++) {
         var opcao = document.createElement('option')
-        opcao.setAttribute('value', `${dataProduto[i]}`)
+        opcao.setAttribute('value', `${listaTodosProdutos[i]}`)
         document.getElementById('listaProdutos').appendChild(opcao)
     }
 }
@@ -83,7 +84,7 @@ function inserirProduto() {
     //Fazer a validação das validações para rodar a função construtura e dar push no array
     if (todosInputsCompletos) {
 
-        let novoCadastroProduto = new criaProduto(produto.value, marcaProduto.value, volumePesoProduto.value, dataCompraProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
+        let novoCadastroProduto = new criaProduto(dataCompraProduto.value, produto.value, marcaProduto.value, volumePesoProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
 
         listaTodosProdutos.push(produto.value)
         listaCadastros.push(novoCadastroProduto)
@@ -96,16 +97,17 @@ function inserirProduto() {
 
         //limpar campos para facilitar a add do próximo produto
         document.forms[0].reset();
-        document.getElementById("produtoValidar").innerHTML = ' '
-        document.getElementById("marcaProdutoValidar").innerHTML = ' '
-        document.getElementById("pesoVolumeProdutoValidar").innerHTML = ' '
-        document.getElementById("dataCompraProdutoValidar").innerHTML = ' '
-        document.getElementById("estabelecimentoProdutoValidar").innerHTML = ' '
-        document.getElementById("bairroProdutoValidar").innerHTML = ' '
-        document.getElementById("valorProdutoValidar").innerHTML = ' '
+        // document.getElementById("produtoValidar").innerHTML = ' '
+        // document.getElementById("marcaProdutoValidar").innerHTML = ' '
+        // document.getElementById("pesoVolumeProdutoValidar").innerHTML = ' '
+        // document.getElementById("dataCompraProdutoValidar").innerHTML = ' '
+        // document.getElementById("estabelecimentoProdutoValidar").innerHTML = ' '
+        // document.getElementById("bairroProdutoValidar").innerHTML = ' '
+        // document.getElementById("valorProdutoValidar").innerHTML = ' '
 
         alert("Produto inserido com sucesso!")
-    }
+        window.location.href = "inserirProduto.html"
+        }
 }
 
 //funcao que ordena a lista

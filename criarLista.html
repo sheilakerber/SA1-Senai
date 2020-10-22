@@ -3,29 +3,33 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
         <title>Criar Lista</title>
         <script src="criarLista.js"></script>
+
     </head>
     <body onload="gerarListaProdutos()">
         <h3>
-            <a href="https://www.google.com">Inserir produto</a>
+            <a href="inserirProduto.html">Inserir produto</a>
         </h3>
 
         <form action="">
-            <input id="produtoSelecionado" list="listaProdutos">
+            <input id="produtoSelecionado" list="listaProdutos" placeholder="Selecione o produto">
             <datalist id="listaProdutos"></datalist>
-        </form>
-
-        <p id="produtosInseridosUsuario">Sua lista irá aparecer aqui:</p>
-
-        <button id="botaoAddNovoItem" onclick="addItemLista()">Add à lista</button>
-        <button onclick="finalizarLista()">Finalizar lista</button>
+        </form><br>
+        
+        <button onclick="pesquisarItemLista()">Pesquisar</button>
+        <button id="botaoAddNovoItem" onclick="produtosChecked()">Add produto(s)</button>
         <button onclick="reiniciarLista()">Reiniciar lista</button><br>
 
+        <table class="testTable" id="idTabelaHtml"></table>
+        
 
-        <p id="listaFinal"></p>
-
-        <table id="idTabelaHtml"></table>
+        <section class="preview" id="previewLista">
+            <table id="tabelaPreview"></table>
+        </section>
+        <input type="button" id="botaoCarrinho" style="display:none" value="Adicionar ao carrinho" onclick="gerarCarrinho()">
     </body>
+    <script src="carrinho.js"></script>
 </html>
