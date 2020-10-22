@@ -1,5 +1,5 @@
 //array para armazenar todos os usuarios cadastrados
-var usuarios = []
+//var usuarios = []
 
 //pega os dados do html
 var nome = document.getElementById("nomeUsuario")
@@ -22,6 +22,9 @@ function criaUsuario(nome, nascimento, cpf, email, senha, bairro) {
 
 //adiciona o novo usuario ao array 'usuarios[]'
 function cadastrarUsuario() {
+
+    //localStorage.setItem("usuários", JSON.stringify(listaUsuarios))
+
 
     let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
 
@@ -117,10 +120,10 @@ function cadastrarUsuario() {
     //validar se o cpf já foi cadastrado
     function compararCpfs() {
 
-        let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
+        //listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
         console.log(listaUsuarios)
 
-        for (i = 0; i < usuarios.length; i++) {
+        for (i = 0; i < listaUsuarios.length; i++) {
 
             let numeroCpf = cpf.value
             var validarCpf = listaUsuarios.filter(c => c.cpf.includes(numeroCpf))
@@ -136,12 +139,12 @@ function cadastrarUsuario() {
     //validar se o e-mail está em branco
     if (email.value == "") {
         document.getElementById("emailValidar").innerHTML = `O campo e-mail está em branco!`
-        //validar se o e-mail esta escrito corretamente
-        } else if (((email !== '') && (validarEmail(email) == false))) {
-            document.getElementById("emailValidar").innerHTML = `E-mail invalido!`
+            //validar se o e-mail esta escrito corretamente
+    } else if (((email !== '') && (validarEmail(email) == false))) {
+        document.getElementById("emailValidar").innerHTML = `E-mail invalido!`
 
-        } else {
-            validarEmail(email)
+    } else {
+        validarEmail(email)
     }
 
     //validacao da senha
@@ -172,12 +175,13 @@ function cadastrarUsuario() {
     if ((nome.value !== "") && (nascimento.value !== "") && (compararCpfs() !== false) && (verificarCpf() == true) && ((email.value !== "") && (validarEmail(email) == true)) && (senha.value == senhaConfirmacao.value) && (bairro.value !== "") && (dataBairros.includes(bairro.value) == true) && (bairro.value !== null)) {
 
         let novoUsuario = new criaUsuario(nome.value, nascimento.value, cpf.value, email.value, senha.value, bairro.value)
-        
-        let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
+
+        //listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
         listaUsuarios.push(novoUsuario)
+        listaUsuarios.sort(dynamicSort("nome"))
         alert("Usuário cadastrado com sucesso!")
         localStorage.setItem("usuários", JSON.stringify(listaUsuarios))
-        //window.location.href = "loginUsuario.html"
+            //window.location.href = "loginUsuario.html"
     }
     //limpar campos
     document.forms[0].reset();
@@ -186,7 +190,7 @@ function cadastrarUsuario() {
 
 //Função para logar
 function login() {
-    
+
     let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
     let loginCpf = document.getElementById("loginCpf").value
     let loginSenha = document.getElementById("loginSenha").value
@@ -214,9 +218,11 @@ function alterarSenha() {
     let emailParaChecar = document.getElementById("alterarSenhaEmail").value
 
     for (i = 0; i < listaUsuarios.length; i++) {
-        
+
         if ((cpfParaChecar == listaUsuarios[i].cpf) && (emailParaChecar == listaUsuarios[i].email)) {
-        
+
+            let usuarios
+
             listaUsuarios[i].senha = document.getElementById("alterarSenhaNova").value
             usuarios = listaUsuarios
             localStorage.setItem("usuários", JSON.stringify(usuarios))
