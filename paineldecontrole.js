@@ -502,4 +502,115 @@ function produtosEditar() {
 
 
 
+////////// EDITAR USUARIOS
+function usuariosEditar() {
+
+    document.getElementById("cabecalho").innerHTML = ''
+
+    //criar cabecalho 
+    var cabecalhoHtml = document.getElementById("cabecalho")
+
+    var titleNome = document.createElement("input");
+    titleNome.setAttribute('type', 'text');
+    titleNome.value = "Nome"
+    cabecalhoHtml.appendChild(titleNome)
+
+    var titleNascimento = document.createElement("input");
+    titleNascimento.setAttribute('type', 'text');
+    titleNascimento.value = "Nascimento"
+    cabecalhoHtml.appendChild(titleNascimento)
+
+    var titleCpf = document.createElement("input");
+    titleCpf.setAttribute('type', 'text');
+    titleCpf.value = "CPF"
+    cabecalhoHtml.appendChild(titleCpf)
+
+    var titleEmail = document.createElement("input");
+    titleEmail.setAttribute('type', 'text');
+    titleEmail.value = "E-mail"
+    cabecalhoHtml.appendChild(titleEmail)
+
+    var titleBairro = document.createElement("input");
+    titleBairro.setAttribute('type', 'text');
+    titleBairro.value = "Bairro"
+    cabecalhoHtml.appendChild(titleBairro)
+
+
+    //criar inputs para alterar dados
+    var inputNome = document.createElement("input");
+    inputNome.setAttribute('type', 'text');
+    inputNome.setAttribute('id', 'idinputNome');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputNome);
+
+    var inputNascimento = document.createElement("input");
+    inputNascimento.setAttribute('type', 'text');
+    inputNascimento.setAttribute('id', 'idinputNascimento');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputNascimento);
+
+    var inputCpf = document.createElement("input");
+    inputCpf.setAttribute('type', 'text');
+    inputCpf.setAttribute('id', 'idinputCpf');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputCpf);
+
+    var inputEmail = document.createElement("input");
+    inputEmail.setAttribute('type', 'text');
+    inputEmail.setAttribute('id', 'idinputEmail');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputEmail);
+
+    var inputBairro = document.createElement("input");
+    inputBairro.setAttribute('type', 'text');
+    inputBairro.setAttribute('id', 'idinputBairro');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputBairro);
+
+    //cria botao Salvar Atualizacoes
+    let section = document.getElementById('camposEdicao')
+    var btnSalvar = document.createElement("button")
+    btnSalvar.innerText = 'Alterar'
+    btnSalvar.addEventListener('click', alterarDados)
+    section.appendChild(btnSalvar)
+
+    //loop para colocar os valores do item selecionado e mostrar dentro dos inputs
+    var listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
+
+    //pegar tabela
+    var getTable = document.getElementById("listaCadastrados")
+
+    //get checked e colocar os valores originais 
+    var checkBoxes = getTable.getElementsByTagName("input")
+    for (i = 0; i < checkBoxes.length; i++) {
+
+        if (checkBoxes[i].checked) {
+            document.getElementById("idinputNome").value = listaUsuarios[i].nome
+            document.getElementById("idinputNascimento").value = listaUsuarios[i].nascimento
+            document.getElementById("idinputCpf").value = listaUsuarios[i].cpf
+            document.getElementById("idinputEmail").value = listaUsuarios[i].email
+            document.getElementById("idinputBairro").value = listaUsuarios[i].bairro
+            var indice = i
+        }
+    }
+
+    function alterarDados() {
+        listaUsuarios[indice].nome = document.getElementById("idinputNome").value
+        listaUsuarios[indice].nascimento = document.getElementById("idinputNascimento").value
+        listaUsuarios[indice].cpf = document.getElementById("idinputCpf").value
+        listaUsuarios[indice].email = document.getElementById("idinputEmail").value
+        listaUsuarios[indice].bairro = document.getElementById("idinputBairro").value
+
+        listaUsuarios.sort(dynamicSort("nome"))
+        localStorage.setItem('usuários', JSON.stringify(listaUsuarios))
+        alert('Dados alterados com sucesso!')
+        gerarListaUsuarios()
+
+        //let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
+        //listaUsuarios.push(arrayObjetosLista[indice].produto)
+        //localStorage.setItem("usuários", listaUsuarios)
+    }
+}
+
+
 }
