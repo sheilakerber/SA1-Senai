@@ -613,4 +613,95 @@ function usuariosEditar() {
 }
 
 
+
+////////// EDITAR ESTABELECIMENTOS
+function estabelecimentosEditar() {
+
+    document.getElementById("cabecalho").innerHTML = ''
+
+    //criar cabecalho 
+    var cabecalhoHtml = document.getElementById("cabecalho")
+
+    var titleEstabelecimento = document.createElement("input");
+    titleEstabelecimento.setAttribute('type', 'text');
+    titleEstabelecimento.value = "Estabelecimento"
+    cabecalhoHtml.appendChild(titleEstabelecimento)
+
+    var titleCep = document.createElement("input");
+    titleCep.setAttribute('type', 'text');
+    titleCep.value = "CEP"
+    cabecalhoHtml.appendChild(titleCep)
+
+    var titleContato = document.createElement("input");
+    titleContato.setAttribute('type', 'text');
+    titleContato.value = "Contato"
+    cabecalhoHtml.appendChild(titleContato)
+
+    var titleBairro = document.createElement("input");
+    titleBairro.setAttribute('type', 'text');
+    titleBairro.value = "Bairro"
+    cabecalhoHtml.appendChild(titleBairro)
+
+    //criar inputs para alterar dados
+    var inputEstabelecimento = document.createElement("input");
+    inputEstabelecimento.setAttribute('type', 'text');
+    inputEstabelecimento.setAttribute('id', 'idinputEstabelecimento');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputEstabelecimento);
+
+    var inputCep = document.createElement("input");
+    inputCep.setAttribute('type', 'text');
+    inputCep.setAttribute('id', 'idinputCep');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputCep);
+
+    var inputContato = document.createElement("input");
+    inputContato.setAttribute('type', 'text');
+    inputContato.setAttribute('id', 'idinputContato');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputContato);
+
+    var inputBairro = document.createElement("input");
+    inputBairro.setAttribute('type', 'text');
+    inputBairro.setAttribute('id', 'idinputBairro');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputBairro);
+
+    //cria botao Salvar Atualizacoes
+    let section = document.getElementById('camposEdicao')
+    var btnSalvar = document.createElement("button")
+    btnSalvar.innerText = 'Alterar'
+    btnSalvar.addEventListener('click', alterarDados)
+    section.appendChild(btnSalvar)
+
+    //loop para colocar os valores do item selecionado e mostrar dentro dos inputs
+    var listaEstabelecimentos = JSON.parse(localStorage.getItem("estabelecimentos"))
+
+    //pegar tabela
+    var getTable = document.getElementById("listaCadastrados")
+
+    //get checked e colocar os valores originais 
+    var checkBoxes = getTable.getElementsByTagName("input")
+    for (i = 0; i < checkBoxes.length; i++) {
+
+        if (checkBoxes[i].checked) {
+            document.getElementById("idinputEstabelecimento").value = listaEstabelecimentos[i].estabelecimento
+            document.getElementById("idinputCep").value = listaEstabelecimentos[i].cep
+            document.getElementById("idinputContato").value = listaEstabelecimentos[i].contato
+            document.getElementById("idinputBairro").value = listaEstabelecimentos[i].bairroMercado
+            var indice = i
+        }
+    }
+
+    function alterarDados() {
+        listaEstabelecimentos[indice].estabelecimento = document.getElementById("idinputEstabelecimento").value
+        listaEstabelecimentos[indice].cep = document.getElementById("idinputCep").value
+        listaEstabelecimentos[indice].contato = document.getElementById("idinputContato").value
+        listaEstabelecimentos[indice].bairroMercado = document.getElementById("idinputBairro").value
+
+        listaEstabelecimentos.sort(dynamicSort("estabelecimento"))
+        localStorage.setItem('estabelecimentos', JSON.stringify(listaEstabelecimentos))
+        alert('Dados alterados com sucesso!')
+        gerarListaEstabelecimentos()
+    }
 }
