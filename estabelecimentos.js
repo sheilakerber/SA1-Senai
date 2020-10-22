@@ -17,7 +17,7 @@ function criaEstabelecimento(estabelecimento, cep, contato, bairroMercado) {
 }
 //adicionar novo estabelecimento no Array estabelecimentos []
 function cadastrarEstabelecimento() {
-    
+
     let listaDeEstabelecimentosObjeto = JSON.parse(localStorage.getItem("estabelecimentos"))
 
     if (!listaDeEstabelecimentosObjeto) {
@@ -26,7 +26,7 @@ function cadastrarEstabelecimento() {
 
     //validar cadastro
     if (estabelecimento.value == '') {
-        document.getElementById("estabelecimentoValidar").innerHTML =`O campo estabelecimento está em branco!`
+        document.getElementById("estabelecimentoValidar").innerHTML = `O campo estabelecimento está em branco!`
     }
 
     if ((cep.value == "" && cep.value.length !== 8)) {
@@ -49,6 +49,7 @@ function cadastrarEstabelecimento() {
         let novoEstabelecimento = new criaEstabelecimento(estabelecimento.value, cep.value, contato.value, bairroMercado.value)
         listaEstabelecimentos.push(document.getElementById("nomeEstabelecimento").value)
         listaDeEstabelecimentosObjeto.push(novoEstabelecimento)
+        listaDeEstabelecimentosObjeto.sort(dynamicSort("estabelecimento"))
         alert("Estabelecimento cadastrado com sucesso!")
         localStorage.setItem("listaTodosEstabelecimentos", JSON.stringify(listaEstabelecimentos))
         localStorage.setItem("estabelecimentos", JSON.stringify(listaDeEstabelecimentosObjeto))
@@ -62,7 +63,7 @@ function cadastrarEstabelecimento() {
 let listaDeEstabelecimentos = JSON.parse(localStorage.getItem("listaTodosEstabelecimentos"))
 
 function gerarListaEstabelecimentos() {
-    
+
     console.log(listaDeEstabelecimentos)
     if (listaDeEstabelecimentos)
         for (i = 0; i < listaDeEstabelecimentos.length; i++) {
