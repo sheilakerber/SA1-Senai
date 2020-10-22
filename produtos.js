@@ -1,6 +1,3 @@
-//array contendo os tipos de produtos cadastraveis no sistema
-var dataProduto = ["Açúcar refinado", "Arroz", "Azeite", "Café", "Farinha", "Feijão", "Leite", "Macarrão", "Óleo", "Sal", "Vinagre"]
-
 //funcao que cria a lista de produtos disponiveis em criarLista.html a partir daqueles cadastrados em inserirProduto.html
 function gerarTiposProdutos() {
     let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
@@ -97,17 +94,10 @@ function inserirProduto() {
 
         //limpar campos para facilitar a add do próximo produto
         document.forms[0].reset();
-        // document.getElementById("produtoValidar").innerHTML = ' '
-        // document.getElementById("marcaProdutoValidar").innerHTML = ' '
-        // document.getElementById("pesoVolumeProdutoValidar").innerHTML = ' '
-        // document.getElementById("dataCompraProdutoValidar").innerHTML = ' '
-        // document.getElementById("estabelecimentoProdutoValidar").innerHTML = ' '
-        // document.getElementById("bairroProdutoValidar").innerHTML = ' '
-        // document.getElementById("valorProdutoValidar").innerHTML = ' '
 
         alert("Produto inserido com sucesso!")
         window.location.href = "inserirProduto.html"
-        }
+    }
 }
 
 //funcao que ordena a lista
