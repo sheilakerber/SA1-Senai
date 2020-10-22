@@ -377,3 +377,129 @@ function estabelecimentosDeletar() {
     alert('Estabelecimento excluído com sucesso!')
     gerarListaEstabelecimentos()
 }
+
+
+//--------------------FUNÇÕES DE EDIÇÃO---------------------------------------
+function produtosEditar() {
+
+    document.getElementById("cabecalho").innerHTML = ''
+
+    //criar cabecalho 
+    var cabecalhoHtml = document.getElementById("cabecalho")
+
+    var titleDataCompra = document.createElement("input");
+    titleDataCompra.setAttribute('type', 'text');
+    titleDataCompra.value = "Data compra"
+    cabecalhoHtml.appendChild(titleDataCompra)
+
+    var titleProduto = document.createElement("input");
+    titleProduto.setAttribute('type', 'text');
+    titleProduto.value = "Produto"
+    cabecalhoHtml.appendChild(titleProduto)
+
+    var titleMarca = document.createElement("input");
+    titleMarca.setAttribute('type', 'text');
+    titleMarca.value = "Marca"
+    cabecalhoHtml.appendChild(titleMarca)
+
+    var titlePesoVolume = document.createElement("input");
+    titlePesoVolume.setAttribute('type', 'text');
+    titlePesoVolume.value = "Peso/Volume"
+    cabecalhoHtml.appendChild(titlePesoVolume)
+
+    var titleEstabelecimento = document.createElement("input");
+    titleEstabelecimento.setAttribute('type', 'text');
+    titleEstabelecimento.value = "Estabelecimento"
+    cabecalhoHtml.appendChild(titleEstabelecimento)
+
+    var titleValor = document.createElement("input");
+    titleValor.setAttribute('type', 'text');
+    titleValor.value = "Valor (R$)"
+    cabecalhoHtml.appendChild(titleValor)
+
+    //criar inputs para alterar dados
+    var inputDataCompra = document.createElement("input");
+    inputDataCompra.setAttribute('type', 'date');
+    inputDataCompra.setAttribute('id', 'idinputDataCompra');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputDataCompra);
+
+    var inputProduto = document.createElement("input");
+    inputProduto.setAttribute('type', 'text');
+    inputProduto.setAttribute('id', 'idinputProduto');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputProduto);
+
+    var inputMarca = document.createElement("input");
+    inputMarca.setAttribute('type', 'text');
+    inputMarca.setAttribute('id', 'idinputMarca');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputMarca);
+
+    var inputPesoVolume = document.createElement("input");
+    inputPesoVolume.setAttribute('type', 'text');
+    inputPesoVolume.setAttribute('id', 'idinputPesoVolume');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputPesoVolume);
+
+    var inputEstabelecimento = document.createElement("input");
+    inputEstabelecimento.setAttribute('type', 'text');
+    inputEstabelecimento.setAttribute('id', 'idinputEstabelecimento');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputEstabelecimento);
+
+    var inputValor = document.createElement("input");
+    inputValor.setAttribute('type', 'text');
+    inputValor.setAttribute('id', 'idinputValor');
+    var parent1 = document.getElementById("camposEdicao");
+    parent1.appendChild(inputValor);
+
+    //cria botao Salvar Atualizacoes
+    let section = document.getElementById('camposEdicao')
+    var btnSalvar = document.createElement("button")
+    btnSalvar.innerText = 'Alterar'
+    btnSalvar.addEventListener('click', alterarDados)
+    section.appendChild(btnSalvar)
+
+    //loop para colocar os valores do item selecionado e mostrar dentro dos inputs
+    var arrayObjetosLista = JSON.parse(localStorage.getItem("cadastros"))
+
+    //pegar tabela
+    var getTable = document.getElementById("listaCadastrados")
+
+    //get checked e colocar os valores originais 
+    var checkBoxes = getTable.getElementsByTagName("input")
+    for (i = 0; i < checkBoxes.length; i++) {
+
+        if (checkBoxes[i].checked) {
+            document.getElementById("idinputDataCompra").value = arrayObjetosLista[i].dataCompraProduto
+            document.getElementById("idinputProduto").value = arrayObjetosLista[i].produto
+            document.getElementById("idinputMarca").value = arrayObjetosLista[i].marcaProduto
+            document.getElementById("idinputPesoVolume").value = arrayObjetosLista[i].volumePesoProduto
+            document.getElementById("idinputEstabelecimento").value = arrayObjetosLista[i].estabelecimentoProduto
+            document.getElementById("idinputValor").value = arrayObjetosLista[i].valorProduto
+            var indice = i
+        }
+    }
+
+    function alterarDados() {
+        arrayObjetosLista[indice].dataCompraProduto = document.getElementById("idinputDataCompra").value
+        arrayObjetosLista[indice].produto = document.getElementById("idinputProduto").value
+        arrayObjetosLista[indice].marcaProduto = document.getElementById("idinputMarca").value
+        arrayObjetosLista[indice].volumePesoProduto = document.getElementById("idinputPesoVolume").value
+        arrayObjetosLista[indice].estabelecimentoProduto = document.getElementById("idinputEstabelecimento").value
+        arrayObjetosLista[indice].valorProduto = document.getElementById("idinputValor").value
+
+        arrayObjetosLista.sort(dynamicSort("produto"))
+        localStorage.setItem('cadastros', JSON.stringify(arrayObjetosLista))
+        alert('Dados alterados com sucesso!')
+        gerarListaProdutos()
+        let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
+        listaTodosProdutos.push(arrayObjetosLista[indice].produto)
+        localStorage.setItem("listaTodosProdutos", listaTodosProdutos)
+    }
+}
+
+
+
+}
