@@ -52,14 +52,22 @@ function generateTableUsuarios(table, arrayObjetosSelecionados) {
 }
 
 function gerarListaUsuarios() {
+    document.getElementById("botoesEditarExcluir").innerHTML = ''
 
-        //cria botao deletar
-        let section = document.getElementById('botoesEditarExcluir')
-        section.innerHTML = ''
-        var btn = document.createElement("button")
-        btn.innerText = 'Deletar'
-        btn.addEventListener('click', usuariosDeletar)
-        section.appendChild(btn)
+    //cria botao deletar
+    let section = document.getElementById('botoesEditarExcluir')
+    section.innerHTML = ''
+    var btn = document.createElement("button")
+    btn.innerText = 'Deletar'
+    btn.addEventListener('click', usuariosDeletar)
+    section.appendChild(btn)
+
+    //cria botao editar
+    //let section = document.getElementById('botoesEditarExcluir')
+    var btn2 = document.createElement("button")
+    btn2.innerText = 'Editar'
+    btn2.addEventListener('click', usuariosEditar)
+    section.appendChild(btn2)
 
     //limpa o html para não sobrescrever resultados
     document.getElementById("listaCadastrados").innerHTML = ""
@@ -68,11 +76,11 @@ function gerarListaUsuarios() {
     let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
 
     //ordenar os usuarios pelo ID
-    listaUsuarios.sort(dynamicSort("cpf"))
+    listaUsuarios.sort(dynamicSort("nome"))
 
     if (listaUsuarios) {
-    //     //filtro para pegar apenas os objetos da lista criada pelo usuario
-    //     produtosSelecionados = listaUsuarios.filter(objeto => produtosListaFinal.includes(objeto.produto))
+        //     //filtro para pegar apenas os objetos da lista criada pelo usuario
+        //     produtosSelecionados = listaUsuarios.filter(objeto => produtosListaFinal.includes(objeto.produto))
 
         //geração da tabela no html
         let table = document.querySelector("table");
@@ -156,16 +164,20 @@ function generateTableEstabelecimentos(table, arrayObjetosSelecionados) {
 
 function gerarListaEstabelecimentos() {
 
-        //cria botao deletar
-        let section = document.getElementById('botoesEditarExcluir')
-        section.innerHTML = ''
-        var btn = document.createElement("button")
-        btn.innerText = 'Deletar'
-        btn.addEventListener('click', estabelecimentosDeletar)
-        section.appendChild(btn)
+    //cria botao deletar
+    let section = document.getElementById('botoesEditarExcluir')
+    section.innerHTML = ''
+    var btn1 = document.createElement("button")
+    btn1.innerText = 'Deletar'
+    btn1.addEventListener('click', estabelecimentosDeletar)
+    section.appendChild(btn1)
 
-    //limpa o html para não sobrescrever resultados
-    document.getElementById("listaCadastrados").innerHTML = ""
+    //cria botao editar
+    //let section = document.getElementById('botoesEditarExcluir')
+    var btn2 = document.createElement("button")
+    btn2.innerText = 'Editar'
+    btn2.addEventListener('click', estabelecimentosEditar)
+    section.appendChild(btn2)
 
     //limpa o html para não sobrescrever resultados
     document.getElementById("listaCadastrados").innerHTML = ""
@@ -177,9 +189,6 @@ function gerarListaEstabelecimentos() {
     lista.sort(dynamicSort("estabelecimento"))
 
     if (lista) {
-    //     //filtro para pegar apenas os objetos da lista criada pelo usuario
-    //     produtosSelecionados = lista.filter(objeto => produtosListaFinal.includes(objeto.produto))
-
         //geração da tabela no html
         let table = document.querySelector("table");
         let data = Object.keys(lista[0]);
@@ -196,14 +205,24 @@ function gerarListaEstabelecimentos() {
 var excluirProduto = document.getElementById("excluirProduto")
 
 function gerarListaProdutos() {
-    
+
     //cria botao deletar
     let section = document.getElementById('botoesEditarExcluir')
     section.innerHTML = ''
-    var btn = document.createElement("button")
-    btn.innerText = 'Deletar'
-    btn.addEventListener('click', produtosDeletar)
-    section.appendChild(btn)
+    var btn1 = document.createElement("button")
+    btn1.innerText = 'Deletar'
+    btn1.addEventListener('click', produtosDeletar)
+    section.appendChild(btn1)
+
+
+    //cria botao editar
+    //let section = document.getElementById('botoesEditarExcluir')
+    var btn2 = document.createElement("button")
+    btn2.innerText = 'Editar'
+    btn2.addEventListener('click', produtosEditar)
+    section.appendChild(btn2)
+
+
     //limpa o html para não sobrescrever resultados
     document.getElementById("listaCadastrados").innerHTML = ""
 
@@ -307,7 +326,7 @@ function produtosDeletar() {
         if (checkBoxes[i].checked) {
             console.log('indice checkBox', checkBoxes[i])
             console.log('Cadastros', arrayObjetosLista[i])
-            arrayObjetosLista.splice(i,1)
+            arrayObjetosLista.splice(i, 1)
         }
     }
     localStorage.setItem('cadastros', JSON.stringify(arrayObjetosLista))
@@ -329,7 +348,7 @@ function usuariosDeletar() {
         if (checkBoxes[i].checked) {
             console.log('indice checkBox', checkBoxes[i])
             console.log('Cadastros', listaUsuarios[i])
-            listaUsuarios.splice(i,1)
+            listaUsuarios.splice(i, 1)
         }
     }
     localStorage.setItem('usuários', JSON.stringify(listaUsuarios))
@@ -339,7 +358,7 @@ function usuariosDeletar() {
 
 function estabelecimentosDeletar() {
 
-    let lista = JSON.parse(localStorage.getItem("estabelecimentos"))
+    var lista = JSON.parse(localStorage.getItem("estabelecimentos"))
 
     //pegar tabela
     var getTable = document.getElementById("listaCadastrados")
@@ -351,7 +370,7 @@ function estabelecimentosDeletar() {
         if (checkBoxes[i].checked) {
             console.log('indice checkBox', checkBoxes[i])
             console.log('Cadastros', lista[i])
-            lista.splice(i,1)
+            lista.splice(i, 1)
         }
     }
     localStorage.setItem('estabelecimentos', JSON.stringify(lista))
