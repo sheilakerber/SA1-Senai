@@ -497,6 +497,8 @@ function produtosEditar() {
         let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
         listaTodosProdutos.push(arrayObjetosLista[indice].produto)
         localStorage.setItem("listaTodosProdutos", listaTodosProdutos)
+
+    document.getElementById('camposEdicao').innerHTML = ''
     }
 }
 
@@ -606,9 +608,8 @@ function usuariosEditar() {
         alert('Dados alterados com sucesso!')
         gerarListaUsuarios()
 
-        //let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
-        //listaUsuarios.push(arrayObjetosLista[indice].produto)
-        //localStorage.setItem("usuários", listaUsuarios)
+        document.getElementById('camposEdicao').innerHTML = ''
+
     }
 }
 
@@ -703,5 +704,8 @@ function estabelecimentosEditar() {
         localStorage.setItem('estabelecimentos', JSON.stringify(listaEstabelecimentos))
         alert('Dados alterados com sucesso!')
         gerarListaEstabelecimentos()
+
+        document.getElementById('camposEdicao').innerHTML = ''
+
     }
 }

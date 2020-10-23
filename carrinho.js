@@ -14,7 +14,7 @@ function Carrinho() {
 
     table = document.getElementById('tabelaCarrinho')
 
-    let dataCarrinho = ["Produto", "Marca", "Peso/Volume", "Estabelecimento", "Valor (R$)", "Quantidade", "Subtotal"]
+    let dataCarrinho = ["Produto", "Marca", "Peso/Volume", "Estabelecimento", "Valor (R$)", "Quantidade", "Subtotal (R$)"]
 
     let thead = table.createTHead();
     let row = thead.insertRow();
@@ -55,23 +55,23 @@ function Carrinho() {
             //var idCheck
             qtde.setAttribute('type', "number")
             qtde.setAttribute('name', "nomeQtde")
-            qtde.setAttribute('id', `${arrayObjetosSelecionados.indexOf(compra)}`)
-            // qtde.setAttribute('value', 1)
+            qtde.setAttribute('id', arrayObjetosSelecionados.indexOf(compra))
+            qtde.setAttribute('value', 1)
 
             //insere o input dentro da tabela
             let cellQtde = row.insertCell();
-            let textQtde = document.createTextNode(qtde.value)
-            cellQtde.appendChild(textQtde)
+            // let textQtde = document.createTextNode(qtde.value)
+            cellQtde.appendChild(qtde)
             
             //inserção e cálculo subtotal
             
-            var subTotal = document.createElement('div')
-            subTotal.setAttribute('id', `id+${arrayObjetosSelecionados.indexOf(compra)}`)
-            subTotal.setAttribute('value', document.getElementById(`${arrayObjetosSelecionados.indexOf(compra)}`).value)
-            console.log('subTotal', subTotal)
+            let cellSubtotal = row.insertCell();
+            // let textSubtotal = document.createTextNode(compra.Valor)
+            let textSubtotal = document.createElement('div')
+            textSubtotal.setAttribute('id', `ST${arrayObjetosSelecionados.indexOf(compra)}`)
+            cellSubtotal.appendChild(textSubtotal)
+            textSubtotal.innerText = compra.Valor
 
-            let cellSubtotal = row.insertCell();        
-            cellSubtotal.appendChild(subTotal)
             
             idRow = arrayObjetosSelecionados.indexOf(compra)  
             
@@ -117,14 +117,28 @@ function dynamicSort(property) {
 // }
 
 function calcular() {
-    //pegar tabela
-    var getTable = document.getElementById("tabelaCarrinho")
+    var listaCarrinho = JSON.parse(localStorage.getItem("ListaFinal"))
+    listaCarrinho.sort(dynamicSort("Produto"))
+    var total = 0
 
-    //get quantidades 
-    var quantidades = getTable.getElementsByTagName("nomeQtde")
-    
-    for (i = 0; i < quantidades.length; i++) {
-        console.log('quantidades', quantidades[i].value)
-        console.log("cells ", quantidades[i].innerText)
+    for(i=0; i<listaCarrinho.length; i++) {
+        var qtde = document.getElementById(i).value
+        console.log('qtdes', qtde)
+        var subTotal = listaCarrinho[i].Valor * qtde
+        console.log('subTotal', subTotal)
+        var sub = document.getElementById(`ST${i}`)
+        sub.innerText = subTotal
+        total += subTotal 
+    }
+
+    let dataCarrinho = ["", "", "", "", "", "TOTAL", total]
+
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for (let key of dataCarrinho) {
+        let th = document.createElement("th");
+        let text = document.createTextNode(key);
+        th.appendChild(text);
+        row.appendChild(th);
     }
 }

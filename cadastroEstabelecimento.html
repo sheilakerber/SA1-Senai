@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet" type="text/css"/>
         <title>Cadastrar Estabelecimento</title>
 
     </head>
@@ -11,28 +12,28 @@
         <h1>Cadastro de Estabelecimento</h1>
 
         <form action="">
-        <label>Estabelecimento:
+        <label>Estabelecimento:</label>
             <input id="nomeEstabelecimento" type="text" required>
             <div id="estabelecimentoValidar"></div>
-        </label><br>
+        <br>
 
-        <label>CEP:
+        <label>CEP:</label>
             <input id="cepEstabelecimento" type="number" required>
             <div id="cepValidar"></div>
-        </label><br>
+        <br>
 
-        <label>Contato:
+        <label>Contato:</label>
             <input id="contatoEstabelecimento" type="text" required>
             <div id="contatoValidar"></div>
-        </label><br>
+        <br>
         
-        <label>Bairro:
+        <label>Bairro:</label>
 
             <input list="bairros" id="bairroEstabelecimento" name="bairro" placeholder="Selecione seu bairro" required >
             <datalist id="bairros">       
             </datalist> 
             <div id="bairroEstabelecimentoValidar"></div>
-        </label><br>
+        <br>
         </form>
 
 
