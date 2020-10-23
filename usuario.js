@@ -44,16 +44,20 @@ function cadastrarUsuario() {
     }
 
     //validar se o campo cpf esta vazio e se esta correto
+    if (cpf.value == "" || cpf == null) {
+        document.getElementById("cpfValidar").innerHTML = `O campo CPF está em branco!`
+    }
 
+    if ((cpf.value !== "") && (verificarCpf() !== true) && (cpf.value.length == 11)) {
+        document.getElementById("cpfValidar").innerHTML = `Digite um CPF válido!`
+    }
 
+    if ((cpf.value !== "") && (verificarCpf() !== true) && (cpf.value.length !== 11)) {
+        document.getElementById("cpfValidar").innerHTML = `O campo CPF deve conter 11 dígitos!`
+    }
 
-    if (cpf == "") {
-        verificarCpf()
-        document.getElementById("cpfValidar").innerHTML = `Digite um CPF valido!`
-
-    } else if ((cpf !== "") && (verificarCpf() == true)) {
-        compararCpfs()
-
+    if ((cpf.value !== "") && (verificarCpf() == true) && (compararCpfs() == true)) {
+        document.getElementById("cpfValidar").innerHTML = `Esse CPF já foi cadastrado!`
     }
 
 
