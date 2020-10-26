@@ -125,13 +125,19 @@ function calcular() {
         var qtde = document.getElementById(i).value
         console.log('qtdes', qtde)
         var subTotal = listaCarrinho[i].Valor * qtde
-        console.log('subTotal', subTotal)
+
+        // console.log('tipo subTotal', typeof(subTotal))
+        // console.log('tipo qtde', typeof(qtde))
+        // console.log('subTotal', subTotal.toFixed(2))
+
         var sub = document.getElementById(`ST${i}`)
         sub.innerText = subTotal
-        total += subTotal 
+        total += subTotal
+        // parseFloat(total.toFixed(2))
+        console.log('tipo total', typeof(total))
     }
 
-    let dataCarrinho = ["", "", "", "", "", "TOTAL", total]
+    let dataCarrinho = ["", "", "", "", "", "TOTAL", parseFloat(total.toFixed(2))]
 
     let thead = table.createTHead();
     let row = thead.insertRow();

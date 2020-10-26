@@ -94,7 +94,7 @@ function generateTable(table, arrayObjetosSelecionados) {
         let row = table.insertRow();
 
         let cellDataCompra = row.insertCell();
-        let textDataCompra = document.createTextNode(compra.dataCompraProduto)
+        let textDataCompra = document.createTextNode(compra.dataCompraProduto.split('-').reverse().join('/'))
         cellDataCompra.appendChild(textDataCompra)
 
         let cellProduto = row.insertCell();

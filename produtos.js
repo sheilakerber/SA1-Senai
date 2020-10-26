@@ -1,3 +1,8 @@
+//Array para todos os produtos cadastrados
+var listaProdutos = []
+var listaCadastros = []
+
+
 //funcao que cria a lista de produtos disponiveis em criarLista.html a partir daqueles cadastrados em inserirProduto.html
 function gerarTiposProdutos() {
     let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
@@ -31,12 +36,11 @@ function criaProduto(dataCompraProduto, produto, marcaProduto, volumePesoProduto
 //adicionar novo produto ao Array listaProdutos[]
 function inserirProduto() {
 
-    let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
     let listaCadastros = JSON.parse(localStorage.getItem("cadastros"))
 
-    if (!listaTodosProdutos) {
-        listaTodosProdutos = [] // primeira vez que usa, se não for válido, seta para array vazio
-    }
+    // if (!listaTodosProdutos) {
+    //     listaTodosProdutos = [] // primeira vez que usa, se não for válido, seta para array vazio
+    // }
 
     if (!listaCadastros) {
         listaCadastros = [] // primeira vez que usa, se não for válido, seta para array vazio
@@ -83,13 +87,17 @@ function inserirProduto() {
 
         let novoCadastroProduto = new criaProduto(dataCompraProduto.value, produto.value, marcaProduto.value, volumePesoProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
 
-        listaTodosProdutos.push(produto.value)
-        listaCadastros.push(novoCadastroProduto)
+        var entradaProduto = document.getElementById("produtoInserido").value
+        
+        if(!listaProdutos.includes(entradaProduto)){
+            listaProdutos.push(entradaProduto)
+            localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))
+        }
 
+        listaCadastros.push(novoCadastroProduto)
         //ordenar os produtos alfabeticamente
         listaCadastros.sort(dynamicSort("produto"))
 
-        localStorage.setItem("listaTodosProdutos", JSON.stringify(listaTodosProdutos))
         localStorage.setItem("cadastros", JSON.stringify(listaCadastros))
 
         //limpar campos para facilitar a add do próximo produto

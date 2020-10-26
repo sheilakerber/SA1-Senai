@@ -19,7 +19,7 @@ function generateTableUsuarios(table, arrayObjetosSelecionados) {
         cellNome.appendChild(textNome)
 
         let cellNascimento = row.insertCell();
-        let textNascimento = document.createTextNode(compra.nascimento)
+        let textNascimento = document.createTextNode(compra.nascimento.split('-').reverse().join('/'))
         cellNascimento.appendChild(textNascimento)
 
         let cellCPF = row.insertCell();
@@ -53,6 +53,8 @@ function generateTableUsuarios(table, arrayObjetosSelecionados) {
 
 function gerarListaUsuarios() {
     document.getElementById("botoesEditarExcluir").innerHTML = ''
+    document.getElementById("cabecalho").innerHTML = ''
+    document.getElementById("camposEdicao").innerHTML = ''
 
     //cria botao deletar
     let section = document.getElementById('botoesEditarExcluir')
@@ -163,7 +165,10 @@ function generateTableEstabelecimentos(table, arrayObjetosSelecionados) {
 }
 
 function gerarListaEstabelecimentos() {
-
+    document.getElementById("botoesEditarExcluir").innerHTML = ''
+    document.getElementById("cabecalho").innerHTML = ''
+    document.getElementById("camposEdicao").innerHTML = ''
+    
     //cria botao deletar
     let section = document.getElementById('botoesEditarExcluir')
     section.innerHTML = ''
@@ -205,7 +210,10 @@ function gerarListaEstabelecimentos() {
 var excluirProduto = document.getElementById("excluirProduto")
 
 function gerarListaProdutos() {
-
+    document.getElementById("botoesEditarExcluir").innerHTML = ''
+    document.getElementById("cabecalho").innerHTML = ''
+    document.getElementById("camposEdicao").innerHTML = ''
+    
     //cria botao deletar
     let section = document.getElementById('botoesEditarExcluir')
     section.innerHTML = ''
@@ -269,7 +277,7 @@ function generateTable(table, arrayObjetosSelecionados) {
         let row = table.insertRow();
 
         let cellDataCompra = row.insertCell();
-        let textDataCompra = document.createTextNode(compra.dataCompraProduto)
+        let textDataCompra = document.createTextNode(compra.dataCompraProduto.split('-').reverse().join('/'))
         cellDataCompra.appendChild(textDataCompra)
 
         let cellProduto = row.insertCell();
@@ -383,6 +391,7 @@ function estabelecimentosDeletar() {
 function produtosEditar() {
 
     document.getElementById("cabecalho").innerHTML = ''
+    document.getElementById("camposEdicao").innerHTML = ''
 
     //criar cabecalho 
     var cabecalhoHtml = document.getElementById("cabecalho")
@@ -498,7 +507,8 @@ function produtosEditar() {
         listaTodosProdutos.push(arrayObjetosLista[indice].produto)
         localStorage.setItem("listaTodosProdutos", listaTodosProdutos)
 
-    document.getElementById('camposEdicao').innerHTML = ''
+        document.getElementById("cabecalho").innerHTML = ''
+        document.getElementById("camposEdicao").innerHTML = ''
     }
 }
 
@@ -508,6 +518,7 @@ function produtosEditar() {
 function usuariosEditar() {
 
     document.getElementById("cabecalho").innerHTML = ''
+    document.getElementById("camposEdicao").innerHTML = ''
 
     //criar cabecalho 
     var cabecalhoHtml = document.getElementById("cabecalho")
@@ -608,7 +619,8 @@ function usuariosEditar() {
         alert('Dados alterados com sucesso!')
         gerarListaUsuarios()
 
-        document.getElementById('camposEdicao').innerHTML = ''
+        document.getElementById("cabecalho").innerHTML = ''
+        document.getElementById("camposEdicao").innerHTML = ''
 
     }
 }
@@ -619,6 +631,7 @@ function usuariosEditar() {
 function estabelecimentosEditar() {
 
     document.getElementById("cabecalho").innerHTML = ''
+    document.getElementById("camposEdicao").innerHTML = ''
 
     //criar cabecalho 
     var cabecalhoHtml = document.getElementById("cabecalho")
@@ -705,7 +718,8 @@ function estabelecimentosEditar() {
         alert('Dados alterados com sucesso!')
         gerarListaEstabelecimentos()
 
-        document.getElementById('camposEdicao').innerHTML = ''
+        document.getElementById("cabecalho").innerHTML = ''
+        document.getElementById("camposEdicao").innerHTML = ''
 
     }
 }
