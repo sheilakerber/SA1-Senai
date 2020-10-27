@@ -36,6 +36,7 @@ function criaProduto(dataCompraProduto, produto, marcaProduto, volumePesoProduto
 //adicionar novo produto ao Array listaProdutos[]
 function inserirProduto() {
 
+    let listaProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
     let listaCadastros = JSON.parse(localStorage.getItem("cadastros"))
 
     // if (!listaTodosProdutos) {
@@ -87,8 +88,8 @@ function inserirProduto() {
 
         let novoCadastroProduto = new criaProduto(dataCompraProduto.value, produto.value, marcaProduto.value, volumePesoProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
 
-        var entradaProduto = document.getElementById("produtoInserido").value
-        
+        var entradaProduto = document.getElementById("produtoInserido").value 
+
         if(!listaProdutos.includes(entradaProduto)){
             listaProdutos.push(entradaProduto)
             localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))

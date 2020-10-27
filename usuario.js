@@ -43,6 +43,11 @@ function cadastrarUsuario() {
         document.getElementById("nascimentoValidar").innerHTML = `O campo data de nascimento está em branco!`
     }
 
+    //verifica se é maior de idade
+    if (verificarIdade() == false) {
+        document.getElementById("nascimentoValidar").innerHTML = `Pessoas menores de 18 não podem se cadastrar.`
+    }
+
     //validar se o campo cpf esta vazio e se esta correto
     if (cpf.value == "" || cpf == null) {
         document.getElementById("cpfValidar").innerHTML = `O campo CPF está em branco!`
@@ -176,7 +181,7 @@ function cadastrarUsuario() {
     }
 
     //Fazer a validação das validações para rodar a função construtura e dar push no array
-    if ((nome.value !== "") && (nascimento.value !== "") && (compararCpfs() !== false) && (verificarCpf() == true) && ((email.value !== "") && (validarEmail(email) == true)) && (senha.value == senhaConfirmacao.value) && (bairro.value !== "") && (dataBairros.includes(bairro.value) == true) && (bairro.value !== null)) {
+    if ((nome.value !== "") && (nascimento.value !== "") && (verificarIdade() == true) && (compararCpfs() !== false) && (verificarCpf() == true) && ((email.value !== "") && (validarEmail(email) == true)) && (senha.value == senhaConfirmacao.value) && (bairro.value !== "") && (dataBairros.includes(bairro.value) == true) && (bairro.value !== null)) {
 
         let novoUsuario = new criaUsuario(nome.value, nascimento.value, cpf.value, email.value, senha.value, bairro.value)
 
@@ -242,3 +247,28 @@ function alterarSenha() {
 function voltar() {
     window.history.back()
 }
+
+function verificarIdade() {
+    var data = document.getElementById("nascimentoValidar").value; // pega o valor do input
+    data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
+    var data_array = data.split("-"); // quebra a data em array
+    
+    // para o IE onde será inserido no formato dd/MM/yyyy
+    if(data_array[0].length != 4){
+       data = data_array[2]+"-"+data_array[1]+"-"+data_array[0]; // remonto a data no formato yyyy/MM/dd
+    }
+    console.log(data)
+    
+    // comparo as datas e calculo a idade
+    var hoje = new Date();
+    var nasc  = new Date(data);
+    var idade = hoje.getFullYear() - nasc.getFullYear();
+    console.log(idade)
+    var m = hoje.getMonth() - nasc.getMonth();
+    if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
+    
+    if(idade < 18){
+        return false;
+    }
+ 
+ }
