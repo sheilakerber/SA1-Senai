@@ -3,8 +3,6 @@ function gerarCarrinho() {
 }
 
 function Carrinho() {
-    // document.getElementById('tabelaCarrinho').innerHTML = ""
-
     var listaCarrinho = JSON.parse(localStorage.getItem("ListaFinal"))
 
     //ordenar os produtos por nome
@@ -28,23 +26,23 @@ function Carrinho() {
     function generateTableCarrinho(table, arrayObjetosSelecionados) {
         for (let compra of arrayObjetosSelecionados) {
             let row = table.insertRow();
-    
+
             let cellProduto = row.insertCell();
             let textProduto = document.createTextNode(compra.Produto)
             cellProduto.appendChild(textProduto)
-    
+
             let cellMarca = row.insertCell();
             let textMarca = document.createTextNode(compra.Marca)
             cellMarca.appendChild(textMarca)
-    
+
             let cellPesoVolume = row.insertCell();
             let textPesoVolume = document.createTextNode(compra.PesoVolume)
             cellPesoVolume.appendChild(textPesoVolume)
-    
+
             let cellEstabelecimento = row.insertCell();
             let textEstabelecimento = document.createTextNode(compra.Estabelecimento)
             cellEstabelecimento.appendChild(textEstabelecimento)
-    
+
             let cellValor = row.insertCell();
             let textValor = document.createTextNode(compra.Valor)
             cellValor.appendChild(textValor)
@@ -62,9 +60,8 @@ function Carrinho() {
             let cellQtde = row.insertCell();
             // let textQtde = document.createTextNode(qtde.value)
             cellQtde.appendChild(qtde)
-            
+
             //inserção e cálculo subtotal
-            
             let cellSubtotal = row.insertCell();
             // let textSubtotal = document.createTextNode(compra.Valor)
             let textSubtotal = document.createElement('div')
@@ -72,10 +69,6 @@ function Carrinho() {
             cellSubtotal.appendChild(textSubtotal)
             textSubtotal.innerText = compra.Valor
 
-            
-            idRow = arrayObjetosSelecionados.indexOf(compra)  
-            
-            
         }
     }
 
@@ -101,20 +94,6 @@ function dynamicSort(property) {
     }
 }
 
-// function salvadora() {
-//     console.log("change OK")
-
-//     console.log(document.getElementById("2"))
-//     listaCarrinho = JSON.parse(localStorage.getItem("ListaFinal"))
-//     var tabela = document.getElementById('tabelaCarrinho')
-//     var subTotal
-// console.log('salvadora', listaCarrinho)
-//     for(let i of listaCarrinho) {
-//         console.log('tabela.rows[i].cells[5]', tabela.rows[i].cells[5])
-//         subTotal = tabela.rows[i].cells[5] * tabela.rows[i].cells[6]
-//         document.getElementById(`id+${i}`).innerHTML = subTotal
-//     }
-// }
 
 function calcular() {
     var listaCarrinho = JSON.parse(localStorage.getItem("ListaFinal"))
@@ -123,18 +102,11 @@ function calcular() {
 
     for(i=0; i<listaCarrinho.length; i++) {
         var qtde = document.getElementById(i).value
-        console.log('qtdes', qtde)
         var subTotal = listaCarrinho[i].Valor * qtde
-
-        // console.log('tipo subTotal', typeof(subTotal))
-        // console.log('tipo qtde', typeof(qtde))
-        // console.log('subTotal', subTotal.toFixed(2))
 
         var sub = document.getElementById(`ST${i}`)
         sub.innerText = subTotal
         total += subTotal
-        // parseFloat(total.toFixed(2))
-        console.log('tipo total', typeof(total))
     }
 
     let dataCarrinho = ["", "", "", "", "", "TOTAL", parseFloat(total.toFixed(2))]
