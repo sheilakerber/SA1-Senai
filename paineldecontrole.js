@@ -168,7 +168,7 @@ function gerarListaEstabelecimentos() {
     document.getElementById("botoesEditarExcluir").innerHTML = ''
     document.getElementById("cabecalho").innerHTML = ''
     document.getElementById("camposEdicao").innerHTML = ''
-    
+
     //cria botao deletar
     let section = document.getElementById('botoesEditarExcluir')
     section.innerHTML = ''
@@ -213,7 +213,7 @@ function gerarListaProdutos() {
     document.getElementById("botoesEditarExcluir").innerHTML = ''
     document.getElementById("cabecalho").innerHTML = ''
     document.getElementById("camposEdicao").innerHTML = ''
-    
+
     //cria botao deletar
     let section = document.getElementById('botoesEditarExcluir')
     section.innerHTML = ''
@@ -722,4 +722,10 @@ function estabelecimentosEditar() {
         document.getElementById("camposEdicao").innerHTML = ''
 
     }
+}
+
+//funcao gerarRelatorio()
+function gerarRelatorio() {
+
+    window.open('relatorio.html', '_blank');
 }
