@@ -23,6 +23,14 @@ function criaUsuario(nome, nascimento, cpf, email, senha, bairro) {
 //adiciona o novo usuario ao array 'usuarios[]'
 function cadastrarUsuario() {
 
+    //limpar avisos de erro do html
+    document.getElementById("nomeValidar").innerHTML = ""
+    document.getElementById("nascimentoValidar").innerHTML = ""
+    document.getElementById("cpfValidar").innerHTML = ""
+    document.getElementById("emailValidar").innerHTML = ""
+    document.getElementById("senhaValidar").innerHTML = ""
+    document.getElementById("bairroValidar").innerHTML = ""
+
     //localStorage.setItem("usuários", JSON.stringify(listaUsuarios))
 
 
@@ -255,26 +263,29 @@ function voltar() {
 }
 
 function verificarIdade() {
-    var data = document.getElementById("nascimentoValidar").value; // pega o valor do input
+    var data = document.getElementById("nascimentoUsuario").value; // pega o valor do input
+    console.log("data ", data);
     data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
     var data_array = data.split("-"); // quebra a data em array
-    
+
     // para o IE onde será inserido no formato dd/MM/yyyy
-    if(data_array[0].length != 4){
-       data = data_array[2]+"-"+data_array[1]+"-"+data_array[0]; // remonto a data no formato yyyy/MM/dd
+    if (data_array[0].length != 4) {
+        data = data_array[2] + "-" + data_array[1] + "-" + data_array[0]; // remonto a data no formato yyyy/MM/dd
     }
     console.log(data)
-    
+
     // comparo as datas e calculo a idade
     var hoje = new Date();
-    var nasc  = new Date(data);
+    var nasc = new Date(data);
     var idade = hoje.getFullYear() - nasc.getFullYear();
     console.log(idade)
     var m = hoje.getMonth() - nasc.getMonth();
     if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
-    
-    if(idade < 18){
+
+    if (idade < 18) {
         return false;
+    } else {
+        return true
     }
- 
- }
+
+}
