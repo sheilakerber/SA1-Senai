@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Relatórios</title>
 </head>
 <body>
-
-   <table id="testeCarrinho"></table>
-    TESTE RELATÓRIOS!
-    <section id="relatorio"></section>       
-    
+    <section id="relatorio">
+    <label for="cpf">Busque pelo CPF:</label><input type="text" name="" id="cpf" placeholder="Digite somente números">
+    <input type="button" onclick="gerarRelatorio()" value="Gerar Relatório">
+    </section>
+    <p></p>
+    <fieldset id="fieldset" style="display: none">
+        <legend id='legenda'></legend>
+    <table id="tabelaRelatorio"></table>
+    </fieldset>
 </body>
 <script src="relatorio.js"></script>
 <script src="carrinho.js"></script>
