@@ -208,9 +208,15 @@ function login() {
         console.log(listaUsuarios[i].cpf)
         console.log(listaUsuarios[i].senha)
             //Construir validação
+            //CPFs adms: 
         if ((listaUsuarios[i].cpf == loginCpf) && (listaUsuarios[i].senha == loginSenha)) {
-            alert("Logado!")
-            window.location.href = "criarLista.html"
+            if (loginCpf === "64787041061" || loginCpf === "69865221004" || loginCpf === "53008271006") {
+                window.location.href = "paineldecontrole.html"
+                alert("SEJA BEM-VINDO! Você está logado como administrador.")
+            } else {
+                window.location.href = "criarLista.html"
+                alert("Logado! SEJA BEM-VINDO!")
+            }
         }
     }
     document.getElementById("loginValidar").innerHTML = `CPF e/ou senha estão incorreto!`
