@@ -128,6 +128,7 @@ function calcular() {
 
 }
 
+
 function salvarListaLS() {
     //limpar html de confirmacao de cpf
     // document.getElementById("confirmaCPF").innerHTML = " "
@@ -227,6 +228,18 @@ function salvarListaLS() {
 
             console.log("relatorioUsuario ", JSON.stringify(relatoriosSalvos));
             document.getElementById("idConfirmaCpf").value = ""
+
+
+            //salvando relatatórios por CPF
+            let todosRelatorios = JSON.parse(localStorage.getItem('TODOS relatórios'))
+            
+            if(!todosRelatorios){
+                todosRelatorios = []            
+            }
+
+            todosRelatorios.push(relatoriosSalvos)
+            localStorage.setItem("TODOS relatórios", JSON.stringify(todosRelatorios))
+
 
         } else {
             document.getElementById("idConfirmaCpf").value = ""
