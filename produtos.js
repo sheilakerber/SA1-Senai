@@ -10,6 +10,7 @@ function gerarTiposProdutos() {
         var opcao = document.createElement('option')
         opcao.setAttribute('value', `${listaTodosProdutos[i]}`)
         document.getElementById('listaProdutos').appendChild(opcao)
+        console.log("listaTodosProdutos ", listaTodosProdutos);
     }
 }
 
@@ -88,17 +89,20 @@ function inserirProduto() {
 
         let novoCadastroProduto = new criaProduto(dataCompraProduto.value, produto.value, marcaProduto.value, volumePesoProduto.value, estabelecimentoProduto.value, bairroProduto.value, valorProduto.value)
 
-        var entradaProduto = document.getElementById("produtoInserido").value 
+        var entradaProduto = document.getElementById("produtoInserido").value
 
-        if(!listaProdutos.includes(entradaProduto)){
+        if (!listaProdutos) {
             listaProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
+        }
+
+        if (!listaProdutos.includes(entradaProduto)) {
             listaProdutos.push(entradaProduto)
         }
         listaProdutos.sort()
         localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))
 
         listaCadastros.push(novoCadastroProduto)
-        //ordenar os produtos alfabeticamente
+            //ordenar os produtos alfabeticamente
         listaCadastros.sort(dynamicSort("produto"))
 
         localStorage.setItem("cadastros", JSON.stringify(listaCadastros))
