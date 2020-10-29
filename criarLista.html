@@ -9,12 +9,24 @@
 
     </head>
     <body onload="gerarListaProdutos()">
-        <h3>
+        <header class="header">
+            <a href="">SuperLista</a>
+            <nav class="nav">
+                <ul class ="menu">
+                    <li><a href="ladingPage.html">Inicio</a></li>
+                    <li><a href="cadastroUsuario.html">Cadastrar</a></li>
+                    <li><a href="loginUsuario.html">Login</a></li>
+                    <li><a href="criarLista.html">Criar Lista</a></li>
+                    <li><a href="">Sobre</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- <h3>
             <a href="inserirProduto.html">Inserir produto</a>
-        </h3>
-
+        </h3> -->
+        <br>
         <form action="">
-            <input id="produtoSelecionado" list="listaProdutos" placeholder="Selecione o produto">
+            <label for="">Pesquisar produto:</label><input id="produtoSelecionado" list="listaProdutos" placeholder="Selecione o produto">
             <datalist id="listaProdutos"></datalist>
         </form><br>
         
@@ -24,8 +36,8 @@
 
         <table class="testTable" id="idTabelaHtml"></table>
         
-
         <section class="preview" id="previewLista">
+            <h3 id='IDh3' style="display: none">Prévia do seu carrinho:</h3>
             <table id="tabelaPreview"></table>
         </section>
         <input type="button" id="botaoCarrinho" style="display:none" value="Adicionar ao carrinho" onclick="gerarCarrinho()">

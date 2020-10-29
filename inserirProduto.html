@@ -7,51 +7,62 @@
         <title>Inserir Produto</title>
     </head>
     <body onload="gerarBairros(), gerarListaProdutos(),  gerarListaEstabelecimentos()">
-
-        <h3><a href="criarLista.html">Criar Lista</a></h3>
+        <header class="header">
+            <a href="">SuperLista</a>
+            <nav class="nav">
+                <ul class ="menu">
+                    <li><a href="ladingPage.html">Inicio</a></li>
+                    <li><a href="cadastroUsuario.html">Cadastrar</a></li>
+                    <li><a href="loginUsuario.html">Login</a></li>
+                    <li><a href="criarLista.html">Criar Lista</a></li>
+                    <li><a href="">Sobre</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- <h3><a href="criarLista.html">Criar Lista</a></h3> -->
         <h2>Complete as informações abaixo</h2>
 
         <form action="">
         <label>Produto:</label>
             <input list="listaProdutos" name="listaProdutos" placeholder="Escolha da lista" id="produtoInserido"/>
-            <div id="produtoValidar"></div>
+            <div class='alert' id="produtoValidar"></div>
             <datalist id="listaProdutos"></datalist>
         <br>
 
         <label>Marca:</label>
                 <input list="marcaProduto" name="marcaProduto" id="marcaProdutoInserido" placeholder="Marca do produto" required="required">
-                <div id="marcaProdutoValidar"></div>
+                <div class='alert' id="marcaProdutoValidar"></div>
                 <datalist id="marcaProdutoInserido"></datalist>
             <br>
 
             <label>Peso/Volume:</label>
                 <input list="volumePesoProduto" name="volumePesoProduto" id="volumePesoProdutoInserido" placeholder="Ex: 1L, 500g, 1Kg" required="required">
-                <div id="pesoVolumeProdutoValidar"></div>
+                <div class='alert' id="pesoVolumeProdutoValidar"></div>
                 <datalist id="volumePesoProdutoInserido"></datalist>
             <br>
 
 
         <label>Data da compra:</label>
             <input id="dataCompra" type="date" required>
-            <div id="dataCompraProdutoValidar"></div>
+            <div class='alert' id="dataCompraProdutoValidar"></div>
         <br>
 
         <label>Estabelecimento:</label>
             <input list="listaEstabelecimentos" name="listaEstabelecimento" id="estabelecimentoProduto" placeholder="Local da compra">
-            <div id="estabelecimentoProdutoValidar"></div>
+            <div class='alert' id="estabelecimentoProdutoValidar"></div>
             <datalist id="listaEstabelecimentos" >         
             </datalist>
         <br>
 
         <label>Bairro:</label>
             <input list="bairros" id="bairroProduto" name="bairro" placeholder="Selecione seu bairro" required >
-            <div id="bairroProdutoValidar"></div>
+            <div class='alert' id="bairroProdutoValidar"></div>
             <datalist id="bairros"></datalist> 
         <br>
 
         <label>Valor unitário:</label>
             <input id="valorProduto" type="number" required placeholder="Ex: 2.50">
-            <div id="valorProdutoValidar"></div>
+            <div class='alert' id="valorProdutoValidar"></div>
         <br>
         </form>
 

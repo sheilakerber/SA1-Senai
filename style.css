@@ -1,3 +1,191 @@
+html {
+  font-family: 'Lato', sans-serif;
+  
+}
+
+header, ul, li {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  font-size: 19px;
+  color:#29EF74;
+  text-align: center;
+  background: rgb(248, 245, 245); 
+
+}
+
+a {
+  text-decoration: none;
+
+}
+
+h1 {
+  color: #29EF74;
+  font-size: 26px;
+  font-weight:bold;
+
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 5px;
+  color: white;
+  background: #29EF74;
+
+}
+
+header > a {
+  color: white;
+  font-size: 25px;
+
+}
+
+header > a:hover {
+  color: orange;
+  font-size: 27px;
+
+}
+
+.menu {
+  background: #29EF74;
+  display: flex;
+
+}
+
+.menu li {
+  background: #29EF74;
+  margin-left: 11px;
+  
+}
+
+.menu li a {
+  color: white;
+  display: block;
+  padding: 11px;
+
+}
+
+.menu li a:hover {
+  color: orange;
+  display: block;
+  padding: 11px;
+
+}
+
+.bolha {
+  /* background: rgb(248, 245, 245); */
+  /* font-size: 15px; */
+  /* margin: 0 auto; */
+  /* padding:45px; */
+  /* max-width: 300px; */
+  /* height: 760px; */
+  /* align-items: center; */
+  /* font-weight:bold; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  /* width: 3em; */
+}
+
+input[type="button"], button {
+  color: white;
+  background: rgba(41, 239, 116, 0.8);
+  border: 2px solid #29EF74;
+  border-radius: 3px;
+  font-size: 15px;
+  width: 160px;
+  height: 25px;
+  outline: none; 
+
+}
+
+input[type="button"]:hover, button:hover {
+  color:white;
+  background: #29EF74;
+  border: 1px solid;
+  font-size: 16px;
+  width: 160px;
+  height: 27px;
+  cursor: pointer;
+}
+
+.footer {
+  background: #29EF74;
+}
+
+#campo-info, #nomeValidar, #nascimentoValidar, #cpfValidar, #emailValidar, #bairroValidar {
+  color: orange;
+  font-size: 12px;
+  font-weight: lighter;
+  font-style:italic;
+
+}
+
+#nomeValidar, #nascimentoValidar, #cpfValidar, #emailValidar, #bairroValidar, #senhaValidar, #loginValidar,#loginValidar {
+  color: rgb(109, 109, 109);
+  font-size: 12px;
+  font-weight: lighter;
+  font-style:italic;
+
+}
+
+.alert {
+    color: rgb(109, 109, 109);
+    font-size: 12px;
+    font-weight: lighter;
+    font-style:italic;
+}
+
+input {
+  border: 1px solid #29EF74;
+  border-radius: 3px;
+  /* width: 150px; */
+  /* text-align: center; */
+  color: rgb(31, 31, 31);
+
+}
+
+
+input[type="date"] {
+  color: rgb(134, 134, 134);
+
+}
+
+
+input[type="text"], input[type="number"], input[type="date"], input[type="email"],input[type="password"] {
+  outline-color :orange;
+}
+
+input:hover {
+  border: 1px solid orange;
+}
+
+input[type="number"]:-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  
+}
+
+input[type="number"] { 
+ -moz-appearance: textfield;
+ appearance: textfield;
+
+}
+
+h5 > a {
+  color:orange;
+  
+}
+
+h5 > a:hover {
+  color:orange;
+
+}
+
+/* -------------------------css antigo ----------------------*/
+
+
 table, th, td {
     padding: 5px;
     text-align: center

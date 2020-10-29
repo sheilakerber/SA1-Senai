@@ -3,25 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
         <title>Alterar Senha</title>
     </head>
     <body>
+
+    <section class="bolha">
         <h1>Alterar Senha</h1>
-        <label>CPF:
+        <label>CPF:</label>
             <input id="alterarSenhaCpf" type="number" required>
-        </label><br>
+        <br>
 
-        <label>E-mail:
+        <label>E-mail:</label>
             <input id="alterarSenhaEmail" type="e-mail" required>
-        </label><br>
+        <br>
 
-        <label>Nova Senha:
+        <label>Nova Senha:</label>
             <input id="alterarSenhaNova" type="password" required>
             <div id="loginValidar"></div>
-        </label><br>
+        <br>
 
         <button onclick="voltar()">Voltar</button>
         <button onclick="alterarSenha()">Alterar</button>
+    </section>
     </body>
     <script src="usuario.js"></script>
     <script src="produtos.js"></script>

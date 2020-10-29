@@ -3,20 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
         <title>Login</title>
     </head>
     <body>
         <h1>Login</h1>
-        <label>CPF:
+        <label>CPF:</label>
             <input id="loginCpf" type="number" required>
-        </label><br>
+        <br>
 
-        <label>Senha:
+        <label>Senha:</label>
             <input id="loginSenha" type="password" required>
-        </label>
         <h5>Esqueceu sua senha? <a href="alterarSenha.html">Alterar aqui</a>!</h5>
         <div id="loginValidar"></div>
-
+        
         <button onclick="voltar()">Voltar</button>
         <button onclick="login()">Login</button>
     </body>

@@ -141,6 +141,7 @@ function produtosChecked() {
     var buttonCarrinho = document.getElementById("botaoCarrinho")
     if (buttonCarrinho.style.display === "none") {
         buttonCarrinho.style.display = "block"
+        document.getElementById('IDh3').style.display = "block"
     }
 
     //pegar tabela
@@ -189,6 +190,7 @@ function reiniciarLista() {
 }
 
 function listaPreview() {
+
     document.getElementById('tabelaPreview').innerHTML = ""
 
     var listapreview = JSON.parse(localStorage.getItem("ListaFinal"))
