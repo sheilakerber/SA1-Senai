@@ -47,14 +47,13 @@ function cadastrarEstabelecimento() {
     if ((estabelecimento.value !== "") && (cep.value !== "") && (cep.value.length == 8) && (contato.value !== "") && (bairroMercado.value !== "") && (dataBairros.includes(bairroMercado.value) == true) && (bairroMercado.value !== null)) {
 
         let novoEstabelecimento = new criaEstabelecimento(estabelecimento.value, cep.value, contato.value, bairroMercado.value)
-        
+
         var entradaEstabelecimento = document.getElementById("nomeEstabelecimento").value
-        
-        if(!listaEstabelecimentos.includes(entradaEstabelecimento)){
+
+        if (!listaEstabelecimentos.includes(entradaEstabelecimento)) {
             listaEstabelecimentos.push(entradaEstabelecimento)
             localStorage.setItem("listaTodosEstabelecimentos", JSON.stringify(listaEstabelecimentos))
         }
-        
         listaDeEstabelecimentosObjeto.push(novoEstabelecimento)
         listaDeEstabelecimentosObjeto.sort(dynamicSort("estabelecimento"))
         alert("Estabelecimento cadastrado com sucesso!")
@@ -70,17 +69,13 @@ function cadastrarEstabelecimento() {
 function gerarListaEstabelecimentos() {
 
     let listaDeEstabelecimentos = JSON.parse(localStorage.getItem("listaTodosEstabelecimentos"))
-    
     listaDeEstabelecimentos.sort()
-    console.log(listaDeEstabelecimentos)
 
     if (listaDeEstabelecimentos) {
-                
         for (i = 0; i < listaDeEstabelecimentos.length; i++) {
             var opcao = document.createElement('option')
             opcao.setAttribute('value', `${listaDeEstabelecimentos[i]}`)
             document.getElementById('listaEstabelecimentos').appendChild(opcao)
-            
         }
 
     }

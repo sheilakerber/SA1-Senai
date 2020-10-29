@@ -1,7 +1,6 @@
 //funcao que gera a lista de produtos a partir dos itens cadastrados no local storage
 function gerarListaProdutos() {
     var lista = JSON.parse(localStorage.getItem("listaTodosProdutos"))
-
     if (lista) {
         //filtra a lista para não repetir o tipo de produto
         var listaFiltrada = lista.filter(function(elem, index, lista) {
@@ -185,7 +184,7 @@ function reiniciarLista() {
     //limpa o html para não sobrescrever resultados
     document.getElementById("idTabelaHtml").innerHTML = ""
     document.getElementById('tabelaPreview').innerHTML = ""
-    //limpar array produtosListaFinal
+        //limpar array produtosListaFinal
     produtosListaFinal = []
 }
 
@@ -215,23 +214,23 @@ function listaPreview() {
     function generateTablePreview(table, arrayObjetosSelecionados) {
         for (let compra of arrayObjetosSelecionados) {
             let row = table.insertRow();
-    
+
             let cellProduto = row.insertCell();
             let textProduto = document.createTextNode(compra.Produto)
             cellProduto.appendChild(textProduto)
-    
+
             let cellMarca = row.insertCell();
             let textMarca = document.createTextNode(compra.Marca)
             cellMarca.appendChild(textMarca)
-    
+
             let cellPesoVolume = row.insertCell();
             let textPesoVolume = document.createTextNode(compra.PesoVolume)
             cellPesoVolume.appendChild(textPesoVolume)
-    
+
             let cellEstabelecimento = row.insertCell();
             let textEstabelecimento = document.createTextNode(compra.Estabelecimento)
             cellEstabelecimento.appendChild(textEstabelecimento)
-    
+
             let cellValor = row.insertCell();
             let textValor = document.createTextNode(compra.Valor)
             cellValor.appendChild(textValor)
