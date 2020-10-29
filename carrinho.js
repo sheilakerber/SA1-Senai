@@ -102,7 +102,7 @@ function calcular() {
 
     var listaCarrinho = JSON.parse(localStorage.getItem("ListaFinal"))
     listaCarrinho.sort(dynamicSort("Produto"))
-    // let total = 0
+    let total = 0
 
     for (i = 0; i < listaCarrinho.length; i++) {
         var qtde = document.getElementById(i).value
@@ -111,14 +111,14 @@ function calcular() {
 
         var sub = document.getElementById(`ST${i}`)
         sub.innerText = subTotal
-        subTotal += subTotal
+        total += subTotal
     }
 
-    if (totalListaLS != subTotal){
+    if (totalListaLS != total){
 
     document.getElementById('tabelaTotal').innerHTML = ""
     table = document.getElementById('tabelaTotal')
-    let dataCarrinho = ["", "", "", "", "", "TOTAL", parseFloat(subTotal.toFixed(2))]
+    let dataCarrinho = ["", "", "", "", "", "TOTAL", parseFloat(total.toFixed(2))]
 
     thead = table.createTHead();
     let row = thead.insertRow();
@@ -130,7 +130,7 @@ function calcular() {
     }
 
 }
-    totalListaLS = subTotal
+    totalListaLS = total
 }
 
 
