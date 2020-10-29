@@ -1,11 +1,12 @@
-var todosRelatorios = JSON.parse(localStorage.getItem("TODOS relatórios"))
-var dadosLista = todosRelatorios[0].pop()
-table = document.getElementById('tabelaRelatorio')
 
 function gerarRelatorio() {
+var cpfEntrada = document.getElementById('cpf').value
+var todosRelatorios = JSON.parse(localStorage.getItem(cpfEntrada))
+var dadosLista = todosRelatorios.pop()
+table = document.getElementById('tabelaRelatorio')
     document.getElementById('fieldset').setAttribute('style', 'display: block')
     document.getElementById("legenda").innerHTML = `CPF: ${dadosLista.cpfUsuario} - Data: ${dadosLista.dataLista} - Total: ${dadosLista.TotalLista}`
-    generateTableCarrinho(table, todosRelatorios[0])
+    generateTableCarrinho(table, todosRelatorios)
 }
 
 function generateTableCarrinho(table, arrayObjetosSelecionados) {

@@ -96,12 +96,13 @@ function dynamicSort(property) {
     }
 }
 
-var totalListaLS
+let totalListaLS
 
 function calcular() {
+
     var listaCarrinho = JSON.parse(localStorage.getItem("ListaFinal"))
     listaCarrinho.sort(dynamicSort("Produto"))
-    var total = 0
+    // let total = 0
 
     for (i = 0; i < listaCarrinho.length; i++) {
         var qtde = document.getElementById(i).value
@@ -110,10 +111,14 @@ function calcular() {
 
         var sub = document.getElementById(`ST${i}`)
         sub.innerText = subTotal
-        total += subTotal
+        subTotal += subTotal
     }
 
-    let dataCarrinho = ["", "", "", "", "", "TOTAL", parseFloat(total.toFixed(2))]
+    if (totalListaLS != subTotal){
+
+    document.getElementById('tabelaTotal').innerHTML = ""
+    table = document.getElementById('tabelaTotal')
+    let dataCarrinho = ["", "", "", "", "", "TOTAL", parseFloat(subTotal.toFixed(2))]
 
     thead = table.createTHead();
     let row = thead.insertRow();
@@ -124,8 +129,8 @@ function calcular() {
         row.appendChild(th);
     }
 
-    totalListaLS = total
-
+}
+    totalListaLS = subTotal
 }
 
 
@@ -190,7 +195,7 @@ function salvarListaLS() {
             //funcao para salvar a tabela a ser enviada para o LS
             var tableRelatorio = document.getElementById("tabelaCarrinho");
 
-            for (i = 1; i < tableRelatorio.rows.length-1; i++) {
+            for (i = 1; i < tableRelatorio.rows.length; i++) {
                 var qtidade = document.getElementById(i - 1)
                 var subtotal = document.getElementById(`ST${i - 1}`)
 
@@ -224,21 +229,21 @@ function salvarListaLS() {
 
             //JSON.stringify(localStorage.setItem("", relatoriosSalvos))
 
-            localStorage.setItem("RELATORIO-LISTA-FINAL", JSON.stringify(relatoriosSalvos))
+            localStorage.setItem(confirmaCpf.value, JSON.stringify(relatoriosSalvos))
 
-            console.log("relatorioUsuario ", JSON.stringify(relatoriosSalvos));
+            // console.log("relatorioUsuario ", JSON.stringify(relatoriosSalvos));
             document.getElementById("idConfirmaCpf").value = ""
 
 
-            //salvando relatatórios por CPF
-            let todosRelatorios = JSON.parse(localStorage.getItem('TODOS relatórios'))
+            // //salvando relatatórios por CPF
+            // let todosRelatorios = JSON.parse(localStorage.getItem('TODOS relatórios'))
             
-            if(!todosRelatorios){
-                todosRelatorios = []            
-            }
+            // if(!todosRelatorios){
+            //     todosRelatorios = []            
+            // }
 
-            todosRelatorios.push(relatoriosSalvos)
-            localStorage.setItem("TODOS relatórios", JSON.stringify(todosRelatorios))
+            // todosRelatorios.push(relatoriosSalvos)
+            // localStorage.setItem("TODOS relatórios", JSON.stringify(todosRelatorios))
 
 
         } else {
