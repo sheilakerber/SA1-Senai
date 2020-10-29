@@ -2,7 +2,6 @@
 var listaProdutos = []
 var listaCadastros = []
 
-
 //funcao que cria a lista de produtos disponiveis em criarLista.html a partir daqueles cadastrados em inserirProduto.html
 function gerarTiposProdutos() {
     let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
@@ -37,12 +36,12 @@ function criaProduto(dataCompraProduto, produto, marcaProduto, volumePesoProduto
 //adicionar novo produto ao Array listaProdutos[]
 function inserirProduto() {
 
-    // let listaProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
+    let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
     let listaCadastros = JSON.parse(localStorage.getItem("cadastros"))
 
-    // if (!listaTodosProdutos) {
-    //     listaTodosProdutos = [] // primeira vez que usa, se não for válido, seta para array vazio
-    // }
+    if (!listaTodosProdutos) {
+        listaTodosProdutos = [] // primeira vez que usa, se não for válido, seta para array vazio
+    }
 
     if (!listaCadastros) {
         listaCadastros = [] // primeira vez que usa, se não for válido, seta para array vazio
@@ -55,10 +54,12 @@ function inserirProduto() {
         document.getElementById("produtoValidar").innerHTML = `O campo produto está em branco!`
         todosInputsCompletos = false
     }
+
     if (marcaProduto.value == "") {
         document.getElementById("marcaProdutoValidar").innerHTML = `O campo marca está em branco!`
         todosInputsCompletos = false
     }
+
     if (volumePesoProduto.value == "") {
         document.getElementById("pesoVolumeProdutoValidar").innerHTML = `O campo volume/peso está em branco!`
         todosInputsCompletos = false
@@ -91,18 +92,15 @@ function inserirProduto() {
 
         var entradaProduto = document.getElementById("produtoInserido").value
 
-        if (!listaProdutos) {
-            listaProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
-        }
+        listaTodosProdutos.push(entradaProduto)
 
-        if (!listaProdutos.includes(entradaProduto)) {
-            listaProdutos.push(entradaProduto)
-        }
-        listaProdutos.sort()
-        localStorage.setItem("listaTodosProdutos", JSON.stringify(listaProdutos))
+        listaTodosProdutos.sort()
+
+        localStorage.setItem("listaTodosProdutos", JSON.stringify(listaTodosProdutos))
 
         listaCadastros.push(novoCadastroProduto)
-            //ordenar os produtos alfabeticamente
+
+        //ordenar os produtos alfabeticamente
         listaCadastros.sort(dynamicSort("produto"))
 
         localStorage.setItem("cadastros", JSON.stringify(listaCadastros))
