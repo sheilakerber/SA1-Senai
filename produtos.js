@@ -50,6 +50,14 @@ function inserirProduto() {
     //variavel para validar se existem campos vazios
     let todosInputsCompletos = true
 
+    var hoje = new Date().getTime()
+    var dataComparar = new Date(dataCompraProduto.value).getTime()
+
+    if (dataComparar > hoje) {
+        todosInputsCompletos = false
+        document.getElementById("dataCompraProdutoValidar").innerHTML = `A data não pode ser posterior ao dia de hoje!`
+    }
+
     if (produto.value == "") {
         document.getElementById("produtoValidar").innerHTML = `O campo produto está em branco!`
         todosInputsCompletos = false

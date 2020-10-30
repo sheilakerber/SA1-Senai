@@ -13,34 +13,33 @@
             <a href="">SuperLista</a>
             <nav class="nav">
                 <ul class ="menu">
-                    <li><a href="ladingPage.html">Inicio</a></li>
                     <li><a href="cadastroUsuario.html">Cadastrar</a></li>
                     <li><a href="loginUsuario.html">Login</a></li>
                     <li><a href="criarLista.html">Criar Lista</a></li>
-                    <li><a href="">Sobre</a></li>
                 </ul>
             </nav>
         </header>
-        <!-- <h3>
-            <a href="inserirProduto.html">Inserir produto</a>
-        </h3> -->
         <br>
         <form action="">
             <label for="">Pesquisar produto:</label><input id="produtoSelecionado" list="listaProdutos" placeholder="Selecione o produto">
             <datalist id="listaProdutos"></datalist>
-        </form><br>
+            <input type="button" id="botaoPesquisar" onclick="pesquisarItemLista()" value="Pesquisar">
+        </form>
         
-        <button onclick="pesquisarItemLista()">Pesquisar</button>
-        <button id="botaoAddNovoItem" onclick="produtosChecked()">Add produto(s)</button>
-        <button onclick="reiniciarLista()">Reiniciar lista</button><br>
-
         <table class="testTable" id="idTabelaHtml"></table>
+
+        <button id="botaoAddNovoItem" style="display:none" onclick="produtosChecked()">Add produto(s)</button>
+
+        <hr>
+        <section  class="preview" id="previewLista">
+        <fieldset><legend>Prévia do seu carrinho</legend>
+        <table id="tabelaPreview"></table>
         
-        <section class="preview" id="previewLista">
-            <h3 id='IDh3' style="display: none">Prévia do seu carrinho:</h3>
-            <table id="tabelaPreview"></table>
-        </section>
         <input type="button" id="botaoCarrinho" style="display:none" value="Adicionar ao carrinho" onclick="gerarCarrinho()">
+        <button id="botaoReiniciarLista" style="display:none" onclick="reiniciarLista()">Reiniciar lista</button>
+        </section>
+        </fieldset>
+
     </body>
     <script src="carrinho.js"></script>
 </html>

@@ -7,12 +7,28 @@
     <title>Carrinho</title>
 </head>
 <body onload="Carrinho()">
+     <header class="header">
+            <a href="">SuperLista</a>
+            <nav class="nav">
+                <ul class ="menu">
+                    <li><a href="ladingPage.html">Inicio</a></li>
+                    <li><a href="cadastroUsuario.html">Cadastrar</a></li>
+                    <li><a href="loginUsuario.html">Login</a></li>
+                    <li><a href="criarLista.html">Criar Lista</a></li>
+                    <li><a href="">Sobre</a></li>
+                </ul>
+            </nav>
+        </header>
     <section>
+        <br><br>
+        <fieldset id="fieldSetCarrinho"><legend id="legCarrinho">Atualize a quantidade dos produtos e calcule o valor total
+</legend>
         <table id="tabelaCarrinho"></table>
         <table id="tabelaTotal"></table>
-        <input type="button" value="Calcular Total" onclick="calcular()">
-        <input type="button" value="Salvar Lista" onclick="salvarListaLS()">
+        <input class="botCarrinho" type="button" value="Calcular Total" onclick="calcular()">
+        <input class="botCarrinho" type="button" value="Salvar Lista" onclick="salvarListaLS()">
     </section>
+    </fieldset><br><br>
     
     <section id='confirmaCPF'>
     </section>

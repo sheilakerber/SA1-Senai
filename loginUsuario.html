@@ -6,7 +6,16 @@
         <link rel="stylesheet" href="style.css">
         <title>Login</title>
     </head>
-    <body>
+    <body class="login">
+        <header class="header">
+            <a href="">SuperLista</a>
+            <nav class="nav">
+                <ul class ="menu">
+                    <li><a href="cadastroUsuario.html">Cadastre-se</a></li>
+
+                    </ul>
+            </nav>
+        </header>
         <h1>Login</h1>
         <label>CPF:</label>
             <input id="loginCpf" type="number" required>
@@ -14,7 +23,7 @@
 
         <label>Senha:</label>
             <input id="loginSenha" type="password" required>
-        <h5>Esqueceu sua senha? <a href="alterarSenha.html">Alterar aqui</a>!</h5>
+        <h5>Esqueceu sua senha? <a href="alterarSenha.html">Alterar aqui!</a></h5>
         <div id="loginValidar"></div>
         
         <button onclick="voltar()">Voltar</button>

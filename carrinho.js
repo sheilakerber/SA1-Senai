@@ -53,6 +53,7 @@ function Carrinho() {
             //var idCheck
             qtde.setAttribute('type', "number")
             qtde.setAttribute('name', "nomeQtde")
+            qtde.setAttribute('class', "inputQtdeTab")
             qtde.setAttribute('id', arrayObjetosSelecionados.indexOf(compra))
             qtde.setAttribute('value', 1)
 
@@ -114,37 +115,37 @@ function calcular() {
         total += subTotal
     }
 
-    if (totalListaLS != total){
+    if (totalListaLS != total) {
 
-    document.getElementById('tabelaTotal').innerHTML = ""
-    table = document.getElementById('tabelaTotal')
-    let dataCarrinho = ["", "", "", "", "", "TOTAL", parseFloat(total.toFixed(2))]
+        document.getElementById('tabelaTotal').innerHTML = ""
+        table = document.getElementById('tabelaTotal')
+        let dataCarrinho = ["", "", "", "", "", "TOTAL", parseFloat(total.toFixed(2))]
 
-    thead = table.createTHead();
-    let row = thead.insertRow();
-    for (let key of dataCarrinho) {
-        let th = document.createElement("th");
-        let text = document.createTextNode(key);
-        th.appendChild(text);
-        row.appendChild(th);
+        thead = table.createTHead();
+        let row = thead.insertRow();
+        for (let key of dataCarrinho) {
+            let th = document.createElement("th");
+            let text = document.createTextNode(key);
+            th.appendChild(text);
+            row.appendChild(th);
+        }
+
     }
-
-}
     totalListaLS = total
 }
 
 
 function salvarListaLS() {
     //limpar html de confirmacao de cpf
-    // document.getElementById("confirmaCPF").innerHTML = " "
+    document.getElementById("confirmaCPF").innerHTML = " "
 
     //solicitar confirmacao de cpf
     var cpfValidar = document.getElementById("confirmaCPF")
 
     //cria texto no html
-    var htmlConfirmaCpf = document.createElement('p');
+    var htmlConfirmaCpf = document.createElement('b');
     cpfValidar.appendChild(htmlConfirmaCpf)
-    htmlConfirmaCpf.innerHTML = "Confirme seu CPF"
+    htmlConfirmaCpf.innerHTML = "Confirme seu CPF: "
 
     //cria input para inserir cpf
     var confirmaCpf = document.createElement("input");
@@ -154,6 +155,8 @@ function salvarListaLS() {
 
     //cria botao confirmar
     var botaoConfirmaCpf = document.createElement("button");
+    botaoConfirmaCpf.setAttribute('id', 'botConfirmaCpf')
+
     cpfValidar.appendChild(botaoConfirmaCpf)
     botaoConfirmaCpf.innerHTML = "Confirmar"
     botaoConfirmaCpf.addEventListener('click', confirmeCpf)
@@ -166,6 +169,7 @@ function salvarListaLS() {
         //div para validacao
         let divConfirmacaoCpf = document.createElement('div')
         divConfirmacaoCpf.setAttribute('id', 'confirmarCpf')
+        divConfirmacaoCpf.setAttribute('class', 'alert')
         confirmaCPF.appendChild(divConfirmacaoCpf)
 
         //pegar div de confirmacao
@@ -190,7 +194,7 @@ function salvarListaLS() {
 
 
         if (confirmar) {
-            window.alert('Cpf Correto!')
+            window.alert('Lista salva com sucesso!')
 
             //funcao para salvar a tabela a ser enviada para o LS
             var tableRelatorio = document.getElementById("tabelaCarrinho");
@@ -212,18 +216,18 @@ function salvarListaLS() {
                 tempListaLS.Valor = tableRelatorio.rows[i].cells[4].innerText
                 tempListaLS.Quantidade = qtidade.value
                 tempListaLS.SubTotal = subtotal.innerHTML
-                
+
                 relatoriosSalvos.push(tempListaLS)
                 console.log("relatoriosSalvos: ", relatoriosSalvos);
                 localStorage.setItem("RELATORIO-LISTA-FINAL", JSON.stringify(relatoriosSalvos))
-                }
-                
-                var now = new Date
-                var diaAtual = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`
-                
-                relatorioUsuario.cpfUsuario = confirmaCpf.value
-                relatorioUsuario.dataLista = diaAtual
-                relatorioUsuario.TotalLista = totalListaLS
+            }
+
+            var now = new Date
+            var diaAtual = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`
+
+            relatorioUsuario.cpfUsuario = confirmaCpf.value
+            relatorioUsuario.dataLista = diaAtual
+            relatorioUsuario.TotalLista = totalListaLS
 
             relatoriosSalvos.push(relatorioUsuario)
 
@@ -237,7 +241,7 @@ function salvarListaLS() {
 
             // //salvando relatatórios por CPF
             // let todosRelatorios = JSON.parse(localStorage.getItem('TODOS relatórios'))
-            
+
             // if(!todosRelatorios){
             //     todosRelatorios = []            
             // }
@@ -249,7 +253,7 @@ function salvarListaLS() {
         } else {
             document.getElementById("idConfirmaCpf").value = ""
             divConfirmacao.innerHTML = 'Cpf incorreto ou não cadastrado no banco de dados!'
-            // document.getElementById("idConfirmaCpf").value = ""
+                // document.getElementById("idConfirmaCpf").value = ""
         }
     }
 }

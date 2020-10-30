@@ -1,16 +1,24 @@
-
 function gerarRelatorio() {
-var cpfEntrada = document.getElementById('cpf').value
-var todosRelatorios = JSON.parse(localStorage.getItem(cpfEntrada))
-var dadosLista = todosRelatorios.pop()
-table = document.getElementById('tabelaRelatorio')
-    document.getElementById('fieldset').setAttribute('style', 'display: block')
-    document.getElementById("legenda").innerHTML = `CPF: ${dadosLista.cpfUsuario} - Data: ${dadosLista.dataLista} - Total: ${dadosLista.TotalLista}`
-    generateTableCarrinho(table, todosRelatorios)
+    document.getElementById("tabelaRelatorio").innerHTML = ''
+    var cpfEntrada = document.getElementById('cpf').value
+
+    if (cpfEntrada == null || cpfEntrada == 0) {
+        alert("Por favor, insira um CPF.")
+        window.location.href = "relatorio.html"
+
+    } else {
+        var todosRelatorios = JSON.parse(localStorage.getItem(cpfEntrada))
+        var dadosLista = todosRelatorios.pop()
+        table = document.getElementById('tabelaRelatorio')
+        document.getElementById('fieldset').setAttribute('style', 'display: block')
+        document.getElementById("legenda").innerHTML = `CPF: ${dadosLista.cpfUsuario} - Data: ${dadosLista.dataLista} - Total: ${dadosLista.TotalLista}`
+        generateTableCarrinho(table, todosRelatorios)
+        document.getElementById('cpf').value = ''
+    }
 }
 
 function generateTableCarrinho(table, arrayObjetosSelecionados) {
-    
+
     let dataCarrinho = ["Produto", "Marca", "Peso/Volume", "Estabelecimento", "Valor (R$)", "Quantidade", "Subtotal (R$)"]
 
     let thead = table.createTHead();

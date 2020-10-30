@@ -21,9 +21,14 @@ var produtosListaFinal = []
 
 //funcao que mostra os itens escolhidos na tela, conforme o usuário escolhe os produtos
 function pesquisarItemLista() {
+
+    var buttonAddProduto = document.getElementById("botaoAddNovoItem")
+    if (buttonAddProduto.style.display === "none") {
+        buttonAddProduto.style.display = "block"
+    }
     //limpar array antes de inserir proximo produto
     produtosListaFinal = []
-
+    botaoCarrinho
     var novoProduto = document.getElementById("produtoSelecionado").value
 
     if (novoProduto == "") {
@@ -141,7 +146,12 @@ function produtosChecked() {
     var buttonCarrinho = document.getElementById("botaoCarrinho")
     if (buttonCarrinho.style.display === "none") {
         buttonCarrinho.style.display = "block"
-        document.getElementById('IDh3').style.display = "block"
+            //document.getElementById('IDh3').style.display = "block"
+    }
+
+    var buttonReiniciarLista = document.getElementById("botaoReiniciarLista")
+    if (buttonReiniciarLista.style.display === "none") {
+        buttonReiniciarLista.style.display = "block"
     }
 
     //pegar tabela
@@ -181,11 +191,19 @@ function produtosChecked() {
     listaPreview()
 }
 
+//<h3 id='IDh3' style="display: none">Prévia do seu carrinho:</h3>
+
 function reiniciarLista() {
     //limpa o html para não sobrescrever resultados
     document.getElementById("idTabelaHtml").innerHTML = ""
     document.getElementById('tabelaPreview').innerHTML = ""
-        //limpar array produtosListaFinal
+    document.getElementById('botaoAddNovoItem').style.display = "none"
+    document.getElementById('botaoCarrinho').style.display = "none"
+    document.getElementById('previewLista').style.display = "none"
+    document.getElementById('botaoReiniciarLista').style.display = "none"
+
+
+    //limpar array produtosListaFinal
     produtosListaFinal = []
 }
 
