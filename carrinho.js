@@ -136,6 +136,8 @@ function calcular() {
 
 
 function salvarListaLS() {
+
+    calcular()
     //limpar html de confirmacao de cpf
     document.getElementById("confirmaCPF").innerHTML = " "
 
@@ -232,7 +234,7 @@ function salvarListaLS() {
             relatoriosSalvos.push(relatorioUsuario)
 
             //JSON.stringify(localStorage.setItem("", relatoriosSalvos))
-
+            
             localStorage.setItem(confirmaCpf.value, JSON.stringify(relatoriosSalvos))
 
             // console.log("relatorioUsuario ", JSON.stringify(relatoriosSalvos));

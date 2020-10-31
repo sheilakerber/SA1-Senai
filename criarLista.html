@@ -11,11 +11,11 @@
     <body onload="gerarListaProdutos()">
         <header class="header">
             <a href="">SuperLista</a>
-            <img id="imgMarioCarrinho" src="/img/marioCarrinho.png" alt="" srcset="">
+            <img id="imgMarioCarrinho" src="img/marioCarrinho.png" alt="" srcset="">
             <nav class="nav">
                 <ul class ="menu">
                     <li><a href="cadastroUsuario.html">Cadastrar</a></li>
-                    <li><a href="inserirProduto.html">Inserir Produto</a></li>
+                    <li><a href="criarLista.html">Criar Lista</a></li>
                     <li><a href="loginUsuario.html">Login</a></li>
                 </ul>
             </nav>
@@ -23,8 +23,8 @@
         <br>
         <div id="mainDiv">
         <form action="">
-            <label for="">Pesquisar produto:</label><input id="produtoSelecionado" list="listaProdutos" placeholder="Selecione o produto">
-            <datalist id="listaProdutos"></datalist>
+            <label for="">Pesquisar produto:</label><input type="text" id="produtoSelecionado" list="listaProdutos" placeholder="Selecione o produto">
+            <datalist type="text" id="listaProdutos"></datalist>
             <input type="button" id="botaoPesquisar" onclick="pesquisarItemLista()" value="Pesquisar">
         </form>
         

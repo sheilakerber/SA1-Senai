@@ -9,7 +9,7 @@
     <body onload="gerarBairros()">
         <header class="header">
             <a href="">SuperLista</a>
-            <img id="imgMarioCarrinho" src="/img/marioCarrinho.png" alt="" srcset="">
+            <img id="imgMarioCarrinho" src="img/marioCarrinho.png" alt="" srcset="">
 
             <nav class="nav">
                 <ul class ="menu">
@@ -22,7 +22,7 @@
         </header>
 
         <div id="mainDiv">
-
+            
         <h1>Cadastro de Usuários</h1>
         
         <form action="">
@@ -57,16 +57,18 @@
         <br>
 
         <label>Bairro:</label>
-            <input list="bairros" id="bairroUsuario" name="bairro" placeholder="Selecione seu bairro" required >
+            <input type="text" list="bairros" id="bairroUsuario" name="bairro" placeholder="Selecione seu bairro" required >
             <datalist id="bairros">     
             </datalist>
             <div class='alert' id="bairroValidar"></div>    
         <br>
         </form>
-
-        <button onclick="voltar()">Voltar</button>
-        <button onclick="cadastrarUsuario()">Cadastrar</button>
+        <section id="bolhaAlterarSenha" class="bolha">
+            <button onclick="voltar()">Voltar</button>
+            <button onclick="cadastrarUsuario()">Cadastrar</button>
+        </section>
         </div>
+        
 
     </body>
     <script src="usuario.js"></script>

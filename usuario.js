@@ -172,7 +172,7 @@ function cadastrarUsuario() {
     //função validar expressão do e-mail
     function validarEmail(email) {
         var emailCheck = email.value;
-        var filtro = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+        var filtro = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         if (filtro.test(emailCheck)) {
             return true;
         } else {

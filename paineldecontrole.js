@@ -399,38 +399,6 @@ function produtosEditar() {
     document.getElementById("cabecalho").innerHTML = ''
     document.getElementById("camposEdicao").innerHTML = ''
 
-    //criar cabecalho 
-    var cabecalhoHtml = document.getElementById("cabecalho")
-
-    var titleDataCompra = document.createElement("input");
-    titleDataCompra.setAttribute('type', 'text');
-    titleDataCompra.value = "Data compra"
-    cabecalhoHtml.appendChild(titleDataCompra)
-
-    var titleProduto = document.createElement("input");
-    titleProduto.setAttribute('type', 'text');
-    titleProduto.value = "Produto"
-    cabecalhoHtml.appendChild(titleProduto)
-
-    var titleMarca = document.createElement("input");
-    titleMarca.setAttribute('type', 'text');
-    titleMarca.value = "Marca"
-    cabecalhoHtml.appendChild(titleMarca)
-
-    var titlePesoVolume = document.createElement("input");
-    titlePesoVolume.setAttribute('type', 'text');
-    titlePesoVolume.value = "Peso/Volume"
-    cabecalhoHtml.appendChild(titlePesoVolume)
-
-    var titleEstabelecimento = document.createElement("input");
-    titleEstabelecimento.setAttribute('type', 'text');
-    titleEstabelecimento.value = "Estabelecimento"
-    cabecalhoHtml.appendChild(titleEstabelecimento)
-
-    var titleValor = document.createElement("input");
-    titleValor.setAttribute('type', 'text');
-    titleValor.value = "Valor (R$)"
-    cabecalhoHtml.appendChild(titleValor)
 
     //criar inputs para alterar dados
     var inputDataCompra = document.createElement("input");
@@ -526,35 +494,6 @@ function usuariosEditar() {
     document.getElementById("cabecalho").innerHTML = ''
     document.getElementById("camposEdicao").innerHTML = ''
 
-    //criar cabecalho 
-    var cabecalhoHtml = document.getElementById("cabecalho")
-
-    var titleNome = document.createElement("input");
-    titleNome.setAttribute('type', 'text');
-    titleNome.value = "Nome"
-    cabecalhoHtml.appendChild(titleNome)
-
-    var titleNascimento = document.createElement("input");
-    titleNascimento.setAttribute('type', 'text');
-    titleNascimento.value = "Nascimento"
-    cabecalhoHtml.appendChild(titleNascimento)
-
-    var titleCpf = document.createElement("input");
-    titleCpf.setAttribute('type', 'text');
-    titleCpf.value = "CPF"
-    cabecalhoHtml.appendChild(titleCpf)
-
-    var titleEmail = document.createElement("input");
-    titleEmail.setAttribute('type', 'text');
-    titleEmail.value = "E-mail"
-    cabecalhoHtml.appendChild(titleEmail)
-
-    var titleBairro = document.createElement("input");
-    titleBairro.setAttribute('type', 'text');
-    titleBairro.value = "Bairro"
-    cabecalhoHtml.appendChild(titleBairro)
-
-
     //criar inputs para alterar dados
     var inputNome = document.createElement("input");
     inputNome.setAttribute('type', 'text');
@@ -639,28 +578,6 @@ function estabelecimentosEditar() {
     document.getElementById("cabecalho").innerHTML = ''
     document.getElementById("camposEdicao").innerHTML = ''
 
-    //criar cabecalho 
-    var cabecalhoHtml = document.getElementById("cabecalho")
-
-    var titleEstabelecimento = document.createElement("input");
-    titleEstabelecimento.setAttribute('type', 'text');
-    titleEstabelecimento.value = "Estabelecimento"
-    cabecalhoHtml.appendChild(titleEstabelecimento)
-
-    var titleCep = document.createElement("input");
-    titleCep.setAttribute('type', 'text');
-    titleCep.value = "CEP"
-    cabecalhoHtml.appendChild(titleCep)
-
-    var titleContato = document.createElement("input");
-    titleContato.setAttribute('type', 'text');
-    titleContato.value = "Contato"
-    cabecalhoHtml.appendChild(titleContato)
-
-    var titleBairro = document.createElement("input");
-    titleBairro.setAttribute('type', 'text');
-    titleBairro.value = "Bairro"
-    cabecalhoHtml.appendChild(titleBairro)
 
     //criar inputs para alterar dados
     var inputEstabelecimento = document.createElement("input");

@@ -9,7 +9,7 @@
     <body class="login">
         <header class="header">
             <a href="">SuperLista</a>
-            <img id="imgMarioCarrinho" src="/img/marioCarrinho.png" alt="" srcset="">
+            <img id="imgMarioCarrinho" src="img/marioCarrinho.png" alt="" srcset="">
             <nav class="nav">
                 <ul class ="menu">
                     <li><a href="cadastroUsuario.html">Cadastre-se</a></li>
@@ -21,14 +21,14 @@
         <label>CPF:</label>
             <input id="loginCpf" type="number" required>
         <br>
-
         <label>Senha:</label>
             <input id="loginSenha" type="password" required>
         <h5>Esqueceu sua senha? <a href="alterarSenha.html">Alterar aqui!</a></h5>
         <div id="loginValidar"></div>
-        
-        <button onclick="voltar()">Voltar</button>
-        <button onclick="login()">Login</button>
+        <section id="bolhaAlterarSenha" class="bolha">
+            <button onclick="voltar()">Voltar</button>
+            <button onclick="login()">Login</button>
+        </section>
         </div>
     </body>
     <script src="usuario.js"></script>

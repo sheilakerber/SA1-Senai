@@ -63,6 +63,7 @@ body #mainDiv {
     height: 20px;
 }
 
+
 .header,
 ul,
 li {
@@ -128,19 +129,6 @@ header>a:hover {
     padding: 11px;
 }
 
-.bolha {
-    /* background: rgb(248, 245, 245); */
-    /* font-size: 15px; */
-    /* margin: 0 auto; */
-    /* padding:45px; */
-    /* max-width: 300px; */
-    /* height: 760px; */
-    /* align-items: center; */
-    /* font-weight:bold; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* width: 3em; */
-}
 
 input[type="button"],
 button {
@@ -163,10 +151,6 @@ button:hover {
     width: 160px;
     height: 27px;
     cursor: pointer;
-}
-
-.footer {
-    background: #29EF74;
 }
 
 #campo-info,
@@ -217,11 +201,11 @@ input[type="number"],
 input[type="date"],
 input[type="email"],
 input[type="password"] {
-    outline-color: orange;
+    outline-color: rgb(175, 174, 174);
 }
 
 input:hover {
-    border: 1px solid orange;
+    border: 1px solid rgb(175, 174, 174);
 }
 
 input[type="number"]:-webkit-inner-spin-button {
@@ -234,11 +218,11 @@ input[type="number"] {
 }
 
 h5>a {
-    color: orange;
+    color: rgb(175, 174, 174);
 }
 
 h5>a:hover {
-    color: orange;
+    color: rgb(175, 174, 174);
 }
 
 body #botaoAddNovoItem {
@@ -388,6 +372,9 @@ body #produtoSelecionado {
     margin-top: 7%;
 }
 
+#camposEdicao {
+    text-align: center;
+}
 
 /* -------------------------css antigo ----------------------*/
 
