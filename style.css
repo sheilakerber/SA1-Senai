@@ -19,11 +19,56 @@ body {
     margin: -20px 0 50px;
 } */
 
-header,
+body #mainDiv {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0 50px;
+}
+
+#mainDiv button {
+    margin-top: 5px;
+}
+
+#mainDiv label {
+    width: fit-content;
+    margin: 2px 5px;
+}
+
+#nomeUsuario {
+    width: 260px;
+    height: 20px;
+}
+
+#cpfUsuario {
+    width: 280px;
+    height: 20px;
+}
+
+#emailUsuario,
+#senhaUsuario {
+    width: 260px;
+    height: 20px;
+}
+
+#confirmaSenhaUsuario {
+    width: 175px;
+    height: 20px;
+}
+
+#bairroUsuario {
+    width: 263px;
+    height: 20px;
+}
+
+.header,
 ul,
 li {
     margin: 0px;
-    padding: 0px;
+    padding: 0;
+    border-radius: 20px 0;
     list-style: none;
     font-size: 19px;
     color: #29EF74;
@@ -160,8 +205,6 @@ button:hover {
 input {
     border: 1px solid #29EF74;
     border-radius: 3px;
-    /* width: 150px; */
-    /* text-align: center; */
     color: rgb(31, 31, 31);
 }
 
@@ -220,8 +263,57 @@ body #produtoSelecionado {
     height: 20px;
 }
 
-#cpf {
+#cpf,
+#loginCpf,
+#loginSenha,
+#alterarSenhaCpf,
+#alterarSenhaEmail,
+#alterarSenhaNova,
+#nomeEstabelecimento,
+#cepEstabelecimento,
+#contatoEstabelecimento,
+#bairroEstabelecimento,
+#produtoInserido,
+#marcaProdutoInserido,
+#volumePesoProdutoInserido,
+#dataCompra,
+#estabelecimentoProduto,
+#bairroProduto,
+#valorProduto {
     height: 20px;
+}
+
+#loginCpf,
+#loginSenha {
+    width: 235px;
+}
+
+#alterarSenhaCpf,
+#alterarSenhaEmail,
+#alterarSenhaNova {
+    width: 170px;
+}
+
+#nomeEstabelecimento,
+#cepEstabelecimento,
+#contatoEstabelecimento,
+#bairroEstabelecimento,
+#produtoInserido,
+#marcaProdutoInserido,
+#volumePesoProdutoInserido,
+#dataCompra,
+#estabelecimentoProduto,
+#bairroProduto,
+#valorProduto {
+    width: 170px;
+}
+
+#bolhaAlterarSenha {
+    margin: 10px 30px;
+}
+
+#botListarEstab {
+    width: fit-content;
 }
 
 #previewLista {
@@ -253,6 +345,47 @@ body #produtoSelecionado {
 
 #botConfirmaCpf {
     margin-top: 4px;
+}
+
+.botDinPainelCtrl {
+    margin: 0 2px;
+}
+
+
+/* EDICAO IMAGENS */
+
+#imgMarioCarrinho {
+    width: 65px;
+}
+
+#imgPrateleiraProdutos {
+    opacity: 0.9;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    margin-right: 200px;
+    margin-top: 10%;
+}
+
+#imgCadastroEstabelecimento {
+    opacity: 0.9;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    margin-right: 200px;
+    margin-top: 7%;
+}
+
+#imgAlterarSenha {
+    opacity: 0.7;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    margin-right: 20%;
+    margin-top: 7%;
 }
 
 

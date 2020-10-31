@@ -61,6 +61,7 @@ function gerarListaUsuarios() {
     section.innerHTML = ''
     var btn = document.createElement("button")
     btn.innerText = 'Deletar'
+    btn.setAttribute('class', 'botDinPainelCtrl')
     btn.addEventListener('click', usuariosDeletar)
     section.appendChild(btn)
 
@@ -69,6 +70,7 @@ function gerarListaUsuarios() {
     var btn2 = document.createElement("button")
     btn2.innerText = 'Editar'
     btn2.addEventListener('click', usuariosEditar)
+    btn2.setAttribute('class', 'botDinPainelCtrl')
     section.appendChild(btn2)
 
     //limpa o html para não sobrescrever resultados
@@ -174,6 +176,7 @@ function gerarListaEstabelecimentos() {
     section.innerHTML = ''
     var btn1 = document.createElement("button")
     btn1.innerText = 'Deletar'
+    btn1.setAttribute('class', 'botDinPainelCtrl')
     btn1.addEventListener('click', estabelecimentosDeletar)
     section.appendChild(btn1)
 
@@ -181,6 +184,7 @@ function gerarListaEstabelecimentos() {
     //let section = document.getElementById('botoesEditarExcluir')
     var btn2 = document.createElement("button")
     btn2.innerText = 'Editar'
+    btn2.setAttribute('class', 'botDinPainelCtrl')
     btn2.addEventListener('click', estabelecimentosEditar)
     section.appendChild(btn2)
 
@@ -219,6 +223,7 @@ function gerarListaProdutos() {
     section.innerHTML = ''
     var btn1 = document.createElement("button")
     btn1.innerText = 'Deletar'
+    btn1.setAttribute('class', 'botDinPainelCtrl')
     btn1.addEventListener('click', produtosDeletar)
     section.appendChild(btn1)
 
@@ -227,6 +232,7 @@ function gerarListaProdutos() {
     //let section = document.getElementById('botoesEditarExcluir')
     var btn2 = document.createElement("button")
     btn2.innerText = 'Editar'
+    btn2.setAttribute('class', 'botDinPainelCtrl')
     btn2.addEventListener('click', produtosEditar)
     section.appendChild(btn2)
 

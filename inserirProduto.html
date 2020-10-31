@@ -9,16 +9,17 @@
     <body onload="gerarBairros(), gerarListaProdutos(),  gerarListaEstabelecimentos()">
         <header class="header">
             <a href="">SuperLista</a>
+            <img id="imgMarioCarrinho" src="/img/marioCarrinho.png" alt="" srcset="">
+
             <nav class="nav">
                 <ul class ="menu">
-                    <li><a href="ladingPage.html">Inicio</a></li>
                     <li><a href="cadastroUsuario.html">Cadastrar</a></li>
-                    <li><a href="loginUsuario.html">Login</a></li>
                     <li><a href="criarLista.html">Criar Lista</a></li>
-                    <li><a href="">Sobre</a></li>
+                    <li><a href="loginUsuario.html">Login</a></li>
                 </ul>
             </nav>
         </header>
+        <img id="imgPrateleiraProdutos" src="img/imgPrateleiraProdutos.svg" alt="Produtos diversos" srcset="">
         <h2>Complete as informações abaixo</h2>
 
         <form action="">
@@ -67,7 +68,6 @@
 
         <button onclick="voltar()">Voltar</button>
         <button onclick="inserirProduto()">Inserir Produto</button>
-
     </body>
     <script src="usuario.js"></script>
     <script src="produtos.js"></script>

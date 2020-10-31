@@ -9,15 +9,19 @@
     <body onload="gerarBairros()">
         <header class="header">
             <a href="">SuperLista</a>
+            <img id="imgMarioCarrinho" src="/img/marioCarrinho.png" alt="" srcset="">
+
             <nav class="nav">
                 <ul class ="menu">
                     <li><a href="cadastroUsuario.html">Cadastrar</a></li>
-                    <li><a href="loginUsuario.html">Login</a></li>
                     <li><a href="criarLista.html">Criar Lista</a></li>
-                    <li><a href="">Sobre</a></li>
+                    <li><a href="loginUsuario.html">Login</a></li>
+
                 </ul>
             </nav>
         </header>
+
+        <div id="mainDiv">
 
         <h1>Cadastro de Usuários</h1>
         
@@ -47,7 +51,7 @@
             <div class='alert' >Campo Obrigatório.</div>
         <br>
 
-        <label>Confirme sua senha:</label>
+        <label>Confirmar senha:</label>
             <input id="confirmaSenhaUsuario" type="password" required>
             <div class='alert' id="senhaValidar">Campo Obrigatório.</div>
         <br>
@@ -62,6 +66,7 @@
 
         <button onclick="voltar()">Voltar</button>
         <button onclick="cadastrarUsuario()">Cadastrar</button>
+        </div>
 
     </body>
     <script src="usuario.js"></script>
