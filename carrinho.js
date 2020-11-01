@@ -196,7 +196,14 @@ function salvarListaLS() {
 
 
         if (confirmar) {
-            window.alert('Lista salva com sucesso!')
+
+            window.swal(
+                {
+                    title: 'LISTA SALVA!',
+                    text: 'Lista salva com sucesso!',
+                    icon: 'success',
+                    button: 'OK'
+                })
 
             //funcao para salvar a tabela a ser enviada para o LS
             var tableRelatorio = document.getElementById("tabelaCarrinho");

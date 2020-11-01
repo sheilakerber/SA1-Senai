@@ -32,10 +32,26 @@ function pesquisarItemLista() {
     var novoProduto = document.getElementById("produtoSelecionado").value
 
     if (novoProduto == "") {
-        alert("Por favor, selecione um produto!")
+
+        swal(
+            {
+                title: 'ATENÇÃO!',
+                text: 'Por favor, selecione um produto!',
+                icon: 'info',
+                button: 'OK'
+            })
+
     } else {
         if (produtosListaFinal.includes(novoProduto)) {
-            alert("Este produto já foi adicionado à lista!")
+
+            swal(
+                {
+                    title: 'ATENÇÃO!',
+                    text: 'Este produto já foi adicionado à lista!',
+                    icon: 'error',
+                    button: 'OK'
+                })
+
         } else {
             produtosListaFinal.push(novoProduto)
         }
@@ -73,7 +89,14 @@ function gerarTabelaComparativa() {
         generateTableHead(table, data);
         generateTable(table, produtosSelecionados);
     } else {
-        alert("Nenhum produto cadastrado")
+        
+        swal(
+            {
+                title: 'ATENÇÃO!',
+                text: 'Nenhum produto cadastrado!',
+                icon: 'info',
+                button: 'OK'
+            })
     }
 }
 

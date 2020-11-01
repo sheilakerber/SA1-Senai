@@ -56,7 +56,14 @@ function cadastrarEstabelecimento() {
         }
         listaDeEstabelecimentosObjeto.push(novoEstabelecimento)
         listaDeEstabelecimentosObjeto.sort(dynamicSort("estabelecimento"))
-        alert("Estabelecimento cadastrado com sucesso!")
+
+        swal(
+            {
+                title: 'CADASTRADO!',
+                text: 'Estabelecimento cadastrado com sucesso!',
+                icon: 'success',
+                button: 'OK'
+            })
         localStorage.setItem("estabelecimentos", JSON.stringify(listaDeEstabelecimentosObjeto))
     }
 

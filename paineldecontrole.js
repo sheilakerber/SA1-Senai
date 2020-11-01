@@ -93,7 +93,13 @@ function gerarListaUsuarios() {
         generateHeadUsuarios(table, data);
         generateTableUsuarios(table, listaUsuarios);
     } else {
-        alert("Nenhum usuario cadastrado")
+        swal(
+            {
+                title: 'ATENÇÃO!',
+                text: 'Nenhum usuario cadastrado!',
+                icon: 'error',
+                button: 'OK'
+            })
     }
 }
 
@@ -205,7 +211,13 @@ function gerarListaEstabelecimentos() {
         generateHeadEstabelecimentos(table, data);
         generateTableEstabelecimentos(table, lista);
     } else {
-        alert("Nenhum usuario cadastrado")
+        swal(
+            {
+                title: 'ATENÇÃO!',
+                text: 'Nenhum estabelecimento cadastrado!',
+                icon: 'error',
+                button: 'OK'
+            })
     }
 
 }
@@ -257,7 +269,13 @@ function gerarListaProdutos() {
         generateTableHead(table, data);
         generateTable(table, arrayObjetosLista);
     } else {
-        alert("Nenhum produto cadastrado")
+        swal(
+            {
+                title: 'ATENÇÃO!',
+                text: 'Nenhum produto cadastrado!',
+                icon: 'error',
+                button: 'OK'
+            })
     }
 
 }
@@ -344,7 +362,13 @@ function produtosDeletar() {
         }
     }
     localStorage.setItem('cadastros', JSON.stringify(arrayObjetosLista))
-    alert('Produto excluído com sucesso!')
+    swal(
+        {
+            title: 'EXCLUIDO!',
+            text: 'Produto excluído com sucesso!',
+            icon: 'success',
+            button: 'OK'
+        })
     gerarListaProdutos()
 }
 
@@ -366,7 +390,13 @@ function usuariosDeletar() {
         }
     }
     localStorage.setItem('usuários', JSON.stringify(listaUsuarios))
-    alert('Usuário excluído com sucesso!')
+    swal(
+        {
+            title: 'EXCLUIDO!',
+            text: 'Usuário excluído com sucesso!',
+            icon: 'success',
+            button: 'OK'
+        })
     gerarListaUsuarios()
 }
 
@@ -388,7 +418,13 @@ function estabelecimentosDeletar() {
         }
     }
     localStorage.setItem('estabelecimentos', JSON.stringify(lista))
-    alert('Estabelecimento excluído com sucesso!')
+    swal(
+        {
+            title: 'EXCLUIDO!',
+            text: 'Estabelecimento excluído com sucesso!',
+            icon: 'success',
+            button: 'OK'
+        })
     gerarListaEstabelecimentos()
 }
 
@@ -475,7 +511,13 @@ function produtosEditar() {
 
         arrayObjetosLista.sort(dynamicSort("produto"))
         localStorage.setItem('cadastros', JSON.stringify(arrayObjetosLista))
-        alert('Dados alterados com sucesso!')
+        swal(
+            {
+                title: 'ALTERADO!',
+                text: 'Dados alterados com sucesso!',
+                icon: 'success',
+                button: 'OK'
+            })
         gerarListaProdutos()
         let listaTodosProdutos = JSON.parse(localStorage.getItem("listaTodosProdutos"))
         listaTodosProdutos.push(arrayObjetosLista[indice].produto)
@@ -561,7 +603,13 @@ function usuariosEditar() {
 
         listaUsuarios.sort(dynamicSort("nome"))
         localStorage.setItem('usuários', JSON.stringify(listaUsuarios))
-        alert('Dados alterados com sucesso!')
+        swal(
+            {
+                title: 'ALTERADO!',
+                text: 'Dados alterados com sucesso!',
+                icon: 'success',
+                button: 'OK'
+            })
         gerarListaUsuarios()
 
         document.getElementById("cabecalho").innerHTML = ''
@@ -638,7 +686,13 @@ function estabelecimentosEditar() {
 
         listaEstabelecimentos.sort(dynamicSort("estabelecimento"))
         localStorage.setItem('estabelecimentos', JSON.stringify(listaEstabelecimentos))
-        alert('Dados alterados com sucesso!')
+        swal(
+            {
+                title: 'ALTERADO!',
+                text: 'Dados alterados com sucesso!',
+                icon: 'success',
+                button: 'OK'
+            })
         gerarListaEstabelecimentos()
 
         document.getElementById("cabecalho").innerHTML = ''

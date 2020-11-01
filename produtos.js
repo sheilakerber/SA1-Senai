@@ -116,8 +116,16 @@ function inserirProduto() {
         //limpar campos para facilitar a add do próximo produto
         document.forms[0].reset();
 
-        alert("Produto inserido com sucesso!")
-        window.location.href = "inserirProduto.html"
+        swal(
+            {
+                title: 'PRODUTO INSERIDO!',
+                text: 'Produto inserido com sucesso!',
+                icon: 'success',
+                button: 'OK'
+            }).then(function() {
+                window.location.href = "inserirProduto.html";
+            });
+        
     }
 }
 

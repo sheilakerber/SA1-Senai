@@ -3,8 +3,15 @@ function gerarRelatorio() {
     var cpfEntrada = document.getElementById('cpf').value
 
     if (cpfEntrada == null || cpfEntrada == 0) {
-        alert("Por favor, insira um CPF.")
-        window.location.href = "relatorio.html"
+        swal(
+            {
+                title: 'ATENÇÃO!',
+                text: 'Por favor, insira um CPF.',
+                icon: 'info',
+                button: 'OK'
+            }).then(function() {
+                window.location.href = "relatorio.html";
+            });
 
     } else {
         var todosRelatorios = JSON.parse(localStorage.getItem(cpfEntrada))
