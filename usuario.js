@@ -196,15 +196,14 @@ function cadastrarUsuario() {
         //listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
         listaUsuarios.push(novoUsuario)
         listaUsuarios.sort(dynamicSort("nome"))
-        swal(
-            {
-                title: 'CADASTRADO!',
-                text: 'Usuário cadastrado com sucesso!',
-                icon: 'success',
-                button: 'OK'
-            }).then(function() {
-                window.location.href = "loginUsuario.html";
-            });
+        swal({
+            title: 'CADASTRADO!',
+            text: 'Usuário cadastrado com sucesso!',
+            icon: 'success',
+            button: 'OK'
+        }).then(function() {
+            window.location.href = "loginUsuario.html";
+        });
         localStorage.setItem("usuários", JSON.stringify(listaUsuarios))
 
     }
@@ -227,25 +226,25 @@ function login() {
             //CPFs adms: 
         if ((listaUsuarios[i].cpf == loginCpf) && (listaUsuarios[i].senha == loginSenha)) {
             if (loginCpf === "64787041061" || loginCpf === "69865221004" || loginCpf === "53008271006") {
-                
-            
+
+
                 swal({
-                        title: 'LOGADO!',
-                        text: 'SEJA BEM-VINDO! Você está logado como administrador.',
-                        icon: 'success',
-                        button: 'OK'
-                    }).then(function() {
-                        window.location = "paineldecontrole.html";
-                    });
+                    title: 'LOGADO!',
+                    text: 'SEJA BEM-VINDO! Você está logado como administrador.',
+                    icon: 'success',
+                    button: 'OK'
+                }).then(function() {
+                    window.location = "paineldecontrole.html";
+                });
             } else {
                 swal({
-                        title: 'LOGADO!',
-                        text: 'Logado! SEJA BEM-VINDO!',
-                        icon: 'success',
-                        button: 'OK'
-                    }).then(function() {
-                        window.location = "criarLista.html";
-                    });                    
+                    title: 'LOGADO!',
+                    text: 'Logado! SEJA BEM-VINDO!',
+                    icon: 'success',
+                    button: 'OK'
+                }).then(function() {
+                    window.location = "criarLista.html";
+                });
             }
         }
     }
@@ -277,17 +276,16 @@ function alterarSenha() {
             usuarios = listaUsuarios
             localStorage.setItem("usuários", JSON.stringify(usuarios))
 
-            swal(
-                {
-                    title: 'SENHA ALTERADA!',
-                    text: 'Senha alterada com sucesso!',
-                    icon: 'success',
-                    button: 'OK'
-                }).then(function() {
-                    window.location.href = "loginUsuario.html";
-                });
+            swal({
+                title: 'SENHA ALTERADA!',
+                text: 'Senha alterada com sucesso!',
+                icon: 'success',
+                button: 'OK'
+            }).then(function() {
+                window.location.href = "loginUsuario.html";
+            });
 
-            
+
         } else {
             document.getElementById("loginValidar").innerHTML = `CPF e/ou E-mail invalido!`
         }
@@ -324,6 +322,4 @@ function verificarIdade() {
     } else {
         return true
     }
-
 }
-
