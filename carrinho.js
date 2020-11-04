@@ -111,7 +111,7 @@ function calcular() {
         var subTotal = listaCarrinho[i].Valor * qtde
 
         var sub = document.getElementById(`ST${i}`)
-        sub.innerText = subTotal
+        sub.innerText = parseFloat(subTotal.toFixed(2))
         total += subTotal
     }
 
@@ -236,7 +236,7 @@ function salvarListaLS() {
 
             relatorioUsuario.cpfUsuario = confirmaCpf.value
             relatorioUsuario.dataLista = diaAtual
-            relatorioUsuario.TotalLista = totalListaLS
+            relatorioUsuario.TotalLista = parseFloat(totalListaLS.toFixed(2))
 
             relatoriosSalvos.push(relatorioUsuario)
 

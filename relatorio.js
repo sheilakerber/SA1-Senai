@@ -18,7 +18,7 @@ function gerarRelatorio() {
         var dadosLista = todosRelatorios.pop()
         table = document.getElementById('tabelaRelatorio')
         document.getElementById('fieldset').setAttribute('style', 'display: block')
-        document.getElementById("legenda").innerHTML = `CPF: ${dadosLista.cpfUsuario} - Data: ${dadosLista.dataLista} - Total: ${dadosLista.TotalLista}`
+        document.getElementById("legenda").innerHTML = `CPF: ${dadosLista.cpfUsuario} - Data: ${dadosLista.dataLista} - Total: R$ ${dadosLista.TotalLista}`
         generateTableCarrinho(table, todosRelatorios)
         document.getElementById('cpf').value = ''
     }
