@@ -245,6 +245,7 @@ function reiniciarLista() {
 
     //limpar array produtosListaFinal
     produtosListaFinal = []
+    window.location.href = "criarLista.html"
 }
 
 function listaPreview() {
