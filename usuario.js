@@ -287,7 +287,7 @@ function alterarSenha() {
 
 
         } else {
-            document.getElementById("loginValidar").innerHTML = `CPF e/ou E-mail invalido!`
+            document.getElementById("loginValidar").innerHTML = `CPF e/ou E-mail inválido!`
         }
     }
 }
