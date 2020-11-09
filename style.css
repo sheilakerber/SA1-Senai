@@ -173,14 +173,14 @@ button:hover {
 #senhaValidar,
 #loginValidar,
 #loginValidar {
-    color: rgb(109, 109, 109);
+    color: orange;
     font-size: 12px;
     font-weight: lighter;
     font-style: italic;
 }
 
 .alert {
-    color: rgb(109, 109, 109);
+    color: orange;
     font-size: 12px;
     font-weight: lighter;
     font-style: italic;
@@ -384,6 +384,7 @@ body #produtoSelecionado {
     background-color: #29EF74;
     font-size: 10px;
 }
+
 .swal-button {
     background: rgba(41, 239, 116, 0.8);
     color: #fff;
