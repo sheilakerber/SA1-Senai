@@ -209,7 +209,6 @@ function cadastrarUsuario() {
     }
     //limpar campos
     document.forms[0].reset();
-
 }
 
 //Função para logar
@@ -226,7 +225,6 @@ function login() {
             //CPFs adms: 
         if ((listaUsuarios[i].cpf == loginCpf) && (listaUsuarios[i].senha == loginSenha)) {
             if (loginCpf === "64787041061" || loginCpf === "69865221004" || loginCpf === "53008271006") {
-
 
                 swal({
                     title: 'LOGADO!',
@@ -249,9 +247,9 @@ function login() {
         }
     }
 
-
-
-
+    if ((listaUsuarios[i].cpf !== loginCpf) || (listaUsuarios[i].senha !== loginSenha)) {
+        document.getElementById("loginValidar").innerHTML = `CPF e/ou senha estão incorreto!`
+    }
 
     document.getElementById("loginValidar").innerHTML = `CPF e/ou senha estão incorreto!`
 }
