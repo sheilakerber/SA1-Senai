@@ -29,10 +29,8 @@ function pesquisarItemLista() {
     //limpar array antes de inserir proximo produto
     produtosListaFinal = []
     botaoCarrinho
-    
 
     if (novoProduto == "") {
-
         swal(
             {
                 title: 'ATENÇÃO!',
@@ -59,7 +57,6 @@ function pesquisarItemLista() {
     }
     //forma mais simples de resetar todos os campos
     document.forms[0].reset();
-
     gerarTabelaComparativa()
 }
 
@@ -152,7 +149,6 @@ function generateTable(table, arrayObjetosSelecionados) {
         checkSign.setAttribute('type', "checkbox")
         checkSign.setAttribute('name', "nomeCheckbox")
         checkSign.setAttribute('id', `${arrayObjetosSelecionados.indexOf(compra)}`)
-            //console.log("arrayObjetosSelecionados.indexOf(compra) ", arrayObjetosSelecionados.indexOf(compra));
 
         //insere o checkbox dentro da tabela
         let cellCheckBox = row.insertCell();
@@ -189,18 +185,10 @@ function produtosChecked() {
     for (i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked) {
             var row = checkBoxes[i].parentNode.parentNode
-                //listaInnerHtml += row.cells[i].innerHTML
 
             //pega o conteudo das celulas dos itens selecionados
             var cells = row.getElementsByTagName("td")
-                // console.log("cells ", cells[0].innerText);
-                // console.log("cells ", cells[1].innerText);
-                // console.log("cells ", cells[2].innerText);
-                // console.log("cells ", cells[3].innerText);
-                // console.log("cells ", cells[4].innerText);
-                // console.log("cells ", cells[5].innerText);
-                // console.log("cells ", cells[6].innerText);
-
+         
             var tempObjeto = {}
             tempObjeto.Produto = cells[1].innerText
             tempObjeto.Marca = cells[2].innerText
@@ -211,7 +199,6 @@ function produtosChecked() {
             objListaFinal.push(tempObjeto)
             console.log("objListaFinal: ", objListaFinal);
             localStorage.setItem("ListaFinal", JSON.stringify(objListaFinal))
-
         }
     }
     listaPreview()
@@ -221,7 +208,6 @@ function produtosChecked() {
     var buttonCarrinho = document.getElementById("botaoCarrinho")
     if (buttonCarrinho.style.display === "none") {
         buttonCarrinho.style.display = "block"
-            //document.getElementById('IDh3').style.display = "block"
     }
 
     var buttonReiniciarLista = document.getElementById("botaoReiniciarLista")
@@ -231,8 +217,6 @@ function produtosChecked() {
 
 }
 
-//<h3 id='IDh3' style="display: none">Prévia do seu carrinho:</h3>
-
 function reiniciarLista() {
     //limpa o html para não sobrescrever resultados
     document.getElementById("idTabelaHtml").innerHTML = ""
@@ -241,7 +225,6 @@ function reiniciarLista() {
     document.getElementById('botaoCarrinho').style.display = "none"
     document.getElementById('previewLista').style.display = "none"
     document.getElementById('botaoReiniciarLista').style.display = "none"
-
 
     //limpar array produtosListaFinal
     produtosListaFinal = []
@@ -295,10 +278,8 @@ function listaPreview() {
             let cellValor = row.insertCell();
             let textValor = document.createTextNode(compra.Valor)
             cellValor.appendChild(textValor)
-
         }
     }
-
     generateTablePreview(table, listapreview)
 }
 
@@ -319,53 +300,3 @@ function dynamicSort(property) {
         }
     }
 }
-
-
-//Polyfill
-if (!Array.prototype.includes) {
-    Object.defineProperty(Array.prototype, 'includes', {
-      value: function(searchElement, fromIndex) {
-  
-        // 1. Let O be ? ToObject(this value).
-        if (this == null) {
-          throw new TypeError('"this" is null or not defined');
-        }
-  
-        var o = Object(this);
-  
-        // 2. Let len be ? ToLength(? Get(O, "length")).
-        var len = o.length >>> 0;
-  
-        // 3. If len is 0, return false.
-        if (len === 0) {
-          return false;
-        }
-  
-        // 4. Let n be ? ToInteger(fromIndex).
-        //    (If fromIndex is undefined, this step produces the value 0.)
-        var n = fromIndex | 0;
-  
-        // 5. If n ≥ 0, then
-        //  a. Let k be n.
-        // 6. Else n < 0,
-        //  a. Let k be len + n.
-        //  b. If k < 0, let k be 0.
-        var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
-  
-        // 7. Repeat, while k < len
-        while (k < len) {
-          // a. Let elementK be the result of ? Get(O, ! ToString(k)).
-          // b. If SameValueZero(searchElement, elementK) is true, return true.
-          // c. Increase k by 1.
-          // NOTE: === provides the correct "SameValueZero" comparison needed here.
-          if (o[k] === searchElement) {
-            return true;
-          }
-          k++;
-        }
-  
-        // 8. Return false
-        return false;
-      }
-    });
-  }

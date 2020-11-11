@@ -41,13 +41,10 @@ function generateTableUsuarios(table, arrayObjetosSelecionados) {
         checkSign.setAttribute('type', "checkbox")
         checkSign.setAttribute('name', "nomeCheckbox")
         checkSign.setAttribute('id', `${arrayObjetosSelecionados.indexOf(compra)}`)
-            //console.log("arrayObjetosSelecionados.indexOf(compra) ", arrayObjetosSelecionados.indexOf(compra));
 
         //insere o checkbox dentro da tabela
         let cellCheckBox = row.insertCell();
         cellCheckBox.appendChild(checkSign)
-
-        // idRow = arrayObjetosSelecionados.indexOf(compra)
     }
 }
 
@@ -66,7 +63,6 @@ function gerarListaUsuarios() {
     section.appendChild(btn)
 
     //cria botao editar
-    //let section = document.getElementById('botoesEditarExcluir')
     var btn2 = document.createElement("button")
     btn2.innerText = 'Editar'
     btn2.addEventListener('click', usuariosEditar)
@@ -83,9 +79,6 @@ function gerarListaUsuarios() {
     listaUsuarios.sort(dynamicSort("nome"))
 
     if (listaUsuarios) {
-        //     //filtro para pegar apenas os objetos da lista criada pelo usuario
-        //     produtosSelecionados = listaUsuarios.filter(objeto => produtosListaFinal.includes(objeto.produto))
-
         //geração da tabela no html
         let table = document.querySelector("table");
         let data = Object.keys(listaUsuarios[0]);
@@ -162,13 +155,10 @@ function generateTableEstabelecimentos(table, arrayObjetosSelecionados) {
         checkSign.setAttribute('type', "checkbox")
         checkSign.setAttribute('name', "nomeCheckbox")
         checkSign.setAttribute('id', `${arrayObjetosSelecionados.indexOf(compra)}`)
-            //console.log("arrayObjetosSelecionados.indexOf(compra) ", arrayObjetosSelecionados.indexOf(compra));
 
         //insere o checkbox dentro da tabela
         let cellCheckBox = row.insertCell();
         cellCheckBox.appendChild(checkSign)
-
-        // idRow = arrayObjetosSelecionados.indexOf(compra)
     }
 }
 
@@ -187,7 +177,6 @@ function gerarListaEstabelecimentos() {
     section.appendChild(btn1)
 
     //cria botao editar
-    //let section = document.getElementById('botoesEditarExcluir')
     var btn2 = document.createElement("button")
     btn2.innerText = 'Editar'
     btn2.setAttribute('class', 'botDinPainelCtrl')
@@ -219,7 +208,6 @@ function gerarListaEstabelecimentos() {
                 button: 'OK'
             })
     }
-
 }
 
 // ----------------------LISTA PRODUTOS------------------------------
@@ -239,7 +227,6 @@ function gerarListaProdutos() {
     btn1.addEventListener('click', produtosDeletar)
     section.appendChild(btn1)
 
-
     //cria botao editar
     //let section = document.getElementById('botoesEditarExcluir')
     var btn2 = document.createElement("button")
@@ -247,7 +234,6 @@ function gerarListaProdutos() {
     btn2.setAttribute('class', 'botDinPainelCtrl')
     btn2.addEventListener('click', produtosEditar)
     section.appendChild(btn2)
-
 
     //limpa o html para não sobrescrever resultados
     document.getElementById("listaCadastrados").innerHTML = ""
@@ -260,7 +246,6 @@ function gerarListaProdutos() {
 
     if (arrayObjetosLista) {
         //filtro para pegar apenas os objetos da lista criada pelo usuario
-        // produtosSelecionados = arrayObjetosLista.filter(objeto => produtosListaFinal.includes(objeto.produto))
 
         //geração da tabela no html
         let table = document.querySelector("table");
@@ -277,7 +262,6 @@ function gerarListaProdutos() {
                 button: 'OK'
             })
     }
-
 }
 
 //   TABELA que COMPARA os PRECOS  Referencia: https://www.valentinog.com/blog/html-table/
@@ -292,9 +276,6 @@ function generateTableHead(table) {
         row.appendChild(th);
     }
 }
-
-// var idRow
-// var novoArrayListaCompras = []
 
 function generateTable(table, arrayObjetosSelecionados) {
     for (let compra of arrayObjetosSelecionados) {
@@ -331,16 +312,12 @@ function generateTable(table, arrayObjetosSelecionados) {
         checkSign.setAttribute('type', "checkbox")
         checkSign.setAttribute('name', "nomeCheckbox")
         checkSign.setAttribute('id', `${arrayObjetosSelecionados.indexOf(compra)}`)
-            //console.log("arrayObjetosSelecionados.indexOf(compra) ", arrayObjetosSelecionados.indexOf(compra));
 
         //insere o checkbox dentro da tabela
         let cellCheckBox = row.insertCell();
         cellCheckBox.appendChild(checkSign)
-
-        // idRow = arrayObjetosSelecionados.indexOf(compra)
     }
 }
-
 
 //--------------------FUNÇÕES DE DELEÇÃO---------------------------------------
 
@@ -428,13 +405,11 @@ function estabelecimentosDeletar() {
     gerarListaEstabelecimentos()
 }
 
-
 //--------------------FUNÇÕES DE EDIÇÃO---------------------------------------
 function produtosEditar() {
 
     document.getElementById("cabecalho").innerHTML = ''
     document.getElementById("camposEdicao").innerHTML = ''
-
 
     //criar inputs para alterar dados
     var inputDataCompra = document.createElement("input");
@@ -528,8 +503,6 @@ function produtosEditar() {
     }
 }
 
-
-
 ////////// EDITAR USUARIOS
 function usuariosEditar() {
 
@@ -614,18 +587,14 @@ function usuariosEditar() {
 
         document.getElementById("cabecalho").innerHTML = ''
         document.getElementById("camposEdicao").innerHTML = ''
-
     }
 }
-
-
 
 ////////// EDITAR ESTABELECIMENTOS
 function estabelecimentosEditar() {
 
     document.getElementById("cabecalho").innerHTML = ''
     document.getElementById("camposEdicao").innerHTML = ''
-
 
     //criar inputs para alterar dados
     var inputEstabelecimento = document.createElement("input");
@@ -697,11 +666,9 @@ function estabelecimentosEditar() {
 
         document.getElementById("cabecalho").innerHTML = ''
         document.getElementById("camposEdicao").innerHTML = ''
-
     }
 }
 
-//funcao gerarRelatorio()
 function gerarRelatorio() {
 
     window.open('relatorio.html', '_blank');

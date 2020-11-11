@@ -163,7 +163,6 @@ function salvarListaLS() {
     botaoConfirmaCpf.innerHTML = "Confirmar"
     botaoConfirmaCpf.addEventListener('click', confirmeCpf)
 
-
     //array para salvar listas no LS
     var listasLocalStorage = []
 
@@ -194,7 +193,6 @@ function salvarListaLS() {
         var relatoriosSalvos = []
         var relatorioUsuario = {}
 
-
         if (confirmar) {
 
             window.swal(
@@ -211,10 +209,6 @@ function salvarListaLS() {
             for (i = 1; i < tableRelatorio.rows.length; i++) {
                 var qtidade = document.getElementById(i - 1)
                 var subtotal = document.getElementById(`ST${i - 1}`)
-
-                // console.log("qtidade ", qtidade.value);
-                // console.log("subtotal ", subtotal.innerText);
-                // console.log("i ", i - 1);
 
                 var tempListaLS = {}
 
@@ -239,30 +233,14 @@ function salvarListaLS() {
             relatorioUsuario.TotalLista = parseFloat(totalListaLS.toFixed(2))
 
             relatoriosSalvos.push(relatorioUsuario)
-
-            //JSON.stringify(localStorage.setItem("", relatoriosSalvos))
-            
+           
             localStorage.setItem(confirmaCpf.value, JSON.stringify(relatoriosSalvos))
 
-            // console.log("relatorioUsuario ", JSON.stringify(relatoriosSalvos));
             document.getElementById("idConfirmaCpf").value = ""
-
-
-            // //salvando relatatórios por CPF
-            // let todosRelatorios = JSON.parse(localStorage.getItem('TODOS relatórios'))
-
-            // if(!todosRelatorios){
-            //     todosRelatorios = []            
-            // }
-
-            // todosRelatorios.push(relatoriosSalvos)
-            // localStorage.setItem("TODOS relatórios", JSON.stringify(todosRelatorios))
-
 
         } else {
             document.getElementById("idConfirmaCpf").value = ""
             divConfirmacao.innerHTML = 'Cpf incorreto ou não cadastrado no banco de dados!'
-                // document.getElementById("idConfirmaCpf").value = ""
         }
     }
 }

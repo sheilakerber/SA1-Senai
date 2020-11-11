@@ -66,12 +66,8 @@ function cadastrarEstabelecimento() {
             })
         localStorage.setItem("estabelecimentos", JSON.stringify(listaDeEstabelecimentosObjeto))
     }
-
     document.forms[0].reset();
-
 }
-
-
 
 function gerarListaEstabelecimentos() {
 
@@ -84,6 +80,5 @@ function gerarListaEstabelecimentos() {
             opcao.setAttribute('value', `${listaDeEstabelecimentos[i]}`)
             document.getElementById('listaEstabelecimentos').appendChild(opcao)
         }
-
     }
 }

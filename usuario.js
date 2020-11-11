@@ -31,9 +31,6 @@ function cadastrarUsuario() {
     document.getElementById("senhaValidar").innerHTML = ""
     document.getElementById("bairroValidar").innerHTML = ""
 
-    //localStorage.setItem("usuários", JSON.stringify(listaUsuarios))
-
-
     let listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
 
     if (!listaUsuarios) {
@@ -136,12 +133,8 @@ function cadastrarUsuario() {
 
     //validar se o cpf já foi cadastrado
     function compararCpfs() {
-
-        //listaUsuarios = JSON.parse(localStorage.getItem("usuários"))
         console.log(listaUsuarios)
-
         for (i = 0; i < listaUsuarios.length; i++) {
-
             let numeroCpf = cpf.value
             var validarCpf = listaUsuarios.filter(c => c.cpf.includes(numeroCpf))
             console.log(validarCpf)
@@ -150,7 +143,6 @@ function cadastrarUsuario() {
                 return false
             }
         }
-
     }
 
     //validar se o e-mail está em branco
@@ -205,7 +197,6 @@ function cadastrarUsuario() {
             window.location.href = "loginUsuario.html";
         });
         localStorage.setItem("usuários", JSON.stringify(listaUsuarios))
-
     }
     //limpar campos
     document.forms[0].reset();
@@ -225,7 +216,6 @@ function login() {
             //CPFs adms: 
         if ((listaUsuarios[i].cpf == loginCpf) && (listaUsuarios[i].senha == loginSenha)) {
             if (loginCpf === "64787041061" || loginCpf === "69865221004" || loginCpf === "53008271006") {
-
                 swal({
                     title: 'LOGADO!',
                     text: 'SEJA BEM-VINDO! Você está logado como administrador.',
@@ -250,12 +240,8 @@ function login() {
     if ((listaUsuarios[i].cpf !== loginCpf) || (listaUsuarios[i].senha !== loginSenha)) {
         document.getElementById("loginValidar").innerHTML = `CPF e/ou senha estão incorreto!`
     }
-
     document.getElementById("loginValidar").innerHTML = `CPF e/ou senha estão incorreto!`
 }
-
-//delimitar no html min e max tamanho dos campos 
-//maxlenght="40"     minlenght="5"
 
 //função alterar senha
 function alterarSenha() {
@@ -282,7 +268,6 @@ function alterarSenha() {
             }).then(function() {
                 window.location.href = "loginUsuario.html";
             });
-
 
         } else {
             document.getElementById("loginValidar").innerHTML = `CPF e/ou E-mail inválido!`
